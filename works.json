@@ -7,10 +7,8 @@
     "category": "video",
     "thumbnail": "images/video-thumb.jpg",
     "emoji": "🎬",
-    "video": "https://youtu.be/BguIOytDtq4",
-    "images": [
-      "images/video-1.jpg",
-      "images/video-2.jpg"
+    "video": "https://youtu.be/BguIOytDtq4","https://www.youtube.com/watch?v=IbXL8MDZ_MY","https://www.youtube.com/watch?v=K8kV-UjTsHI"
+    
     ],
     "client": "啪哩啪哩%z%Z",
     "year": "2024",
@@ -60,7 +58,7 @@
   "gridGallery": {
     "columns": 3,
     "images": [
-      "images/LINE_01.png",
+      "images/LINE_01.jpg",
       "images/LINE_02.png",
       "images/LINE_03.png",
       "images/LINE_04.png",
@@ -84,6 +82,20 @@
     "detailedDescription": "針對 Google Ads、Facebook Ads 等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現。",
     "category": "graphic",
     "thumbnail": "images/ad-thumb.jpg",
+    "emoji": "🎯",
+    "images": [
+      "images/ad-1.jpg"
+    ],
+    "year": "2024",
+    "technologies": ["Photoshop", "Illustrator"]
+  }
+  {
+    "id": "Single-Page-3D-1",
+    "title": "銷售劇本",
+    "description": "一頁式商品介紹設計，簡潔明瞭的展現商品優勢。",
+    "detailedDescription": "將產品濃縮成高轉換率的單頁銷售文案，結合消費者痛點與共鳴建立，打造吸睛與行動呼籲結合的銷售頁面。",
+    "category": "graphic",
+    "thumbnail": "Single Page-3D_03.png",
     "emoji": "🎯",
     "images": [
       "images/ad-1.jpg"
