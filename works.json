@@ -1,0 +1,80 @@
+[
+  {
+    "id": "video-edit-1",
+    "title": "影片剪輯",
+    "description": "產品廣告、品牌形象、MAD 等影片剪輯作品",
+    "detailedDescription": "這是一系列影片剪輯作品，涵蓋產品宣傳、品牌形象以及 MAD 創作。透過節奏掌控、色彩調校與轉場設計，為不同類型的內容注入視覺張力。",
+    "category": "video",
+    "thumbnail": "images/video-thumb.jpg",
+    "emoji": "🎬",
+    "video": "https://www.youtube.com/watch?v=YOUR_VIDEO_ID",
+    "images": [
+      "images/video-1.jpg",
+      "images/video-2.jpg"
+    ],
+    "client": "某科技公司",
+    "year": "2024",
+    "technologies": ["Premiere Pro", "After Effects", "DaVinci Resolve"]
+  },
+  {
+    "id": "3d-product-1",
+    "title": "產品 3D 建模",
+    "description": "高精度 3C 產品建模，用於電商平台展示",
+    "detailedDescription": "為電商平台打造的高精度 3C 產品 3D 模型，注重材質真實感與細節呈現。透過精確建模與燈光設計，讓產品在網頁上也能展現出實體質感。",
+    "category": "3d",
+    "thumbnail": "images/3d-thumb.jpg",
+    "emoji": "🎨",
+    "images": [
+      "images/3d-1.jpg",
+      "images/3d-2.jpg",
+      "images/3d-3.jpg"
+    ],
+    "year": "2024",
+    "technologies": ["Blender", "Photoshop", "Substance Painter"]
+  },
+  {
+    "id": "graphic-ecommerce-1",
+    "title": "電商視覺設計",
+    "description": "產品主視覺、Banner 設計，提升轉換率",
+    "detailedDescription": "針對電商平台設計的視覺素材，包含產品主視覺、促銷 Banner、以及商品詳情頁設計。透過清晰的資訊架構與吸睛的視覺語言，有效提升點擊率與轉換率。",
+    "category": "graphic",
+    "thumbnail": "images/graphic-ecommerce-thumb.jpg",
+    "emoji": "🖼️",
+    "images": [
+      "images/graphic-1.jpg",
+      "images/graphic-2.jpg"
+    ],
+    "client": "某電商品牌",
+    "year": "2023",
+    "technologies": ["Illustrator", "Photoshop"]
+  },
+  {
+    "id": "graphic-social-1",
+    "title": "社群媒體設計",
+    "description": "Instagram、Facebook 貼文視覺設計",
+    "detailedDescription": "為社群平台設計的系列視覺內容，維持品牌調性的同時，針對不同平台特性調整視覺比例與資訊呈現方式。",
+    "category": "graphic",
+    "thumbnail": "images/social-thumb.jpg",
+    "emoji": "📱",
+    "images": [
+      "images/social-1.jpg",
+      "images/social-2.jpg"
+    ],
+    "year": "2024",
+    "technologies": ["Illustrator", "Photoshop", "Figma"]
+  },
+  {
+    "id": "graphic-ad-1",
+    "title": "廣告素材設計",
+    "description": "數位廣告圖像設計，符合平台規格",
+    "detailedDescription": "針對 Google Ads、Facebook Ads 等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現。",
+    "category": "graphic",
+    "thumbnail": "images/ad-thumb.jpg",
+    "emoji": "🎯",
+    "images": [
+      "images/ad-1.jpg"
+    ],
+    "year": "2024",
+    "technologies": ["Photoshop", "Illustrator"]
+  }
+]
