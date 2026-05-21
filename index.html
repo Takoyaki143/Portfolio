@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skat - Graphic Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #151515;
+            --bg-hover: #1f1f1f;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #2a2a2a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.75rem 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .category-btn:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .category-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Work Grid */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .work-item {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .work-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .work-thumbnail {
+            width: 100%;
+            height: 250px;
+            background: var(--bg-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 3rem;
+        }
+
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .work-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .skills {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            padding: 1rem 2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .contact-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo">SKAT</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">作品</a></li>
+                <li><a href="#about" class="nav-link">關於</a></li>
+                <li><a href="#contact" class="nav-link">聯絡</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="page-section">
+        <div class="container">
+            <div class="hero">
+                <h1>Graphic Designer</h1>
+                <p>專注於 3C 電商視覺設計，擅長平面設計、3D 建模與影片製作，打造專業精緻的品牌視覺體驗。</p>
+            </div>
+
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">全部作品</button>
+                <button class="category-btn" data-category="video">影片</button>
+                <button class="category-btn" data-category="3d">3D</button>
+                <button class="category-btn" data-category="graphic">平面設計</button>
+            </div>
+
+            <div class="work-grid" id="workGrid">
+                <!-- Video Works -->
+                <div class="work-item" data-category="video">
+                    <div class="work-thumbnail">🎬</div>
+                    <div class="work-info">
+                        <h3>產品宣傳影片</h3>
+                        <p>3C 產品廣告影片製作，結合動態圖形與產品特寫</p>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="video">
+                    <div class="work-thumbnail">🎥</div>
+                    <div class="work-info">
+                        <h3>品牌形象影片</h3>
+                        <p>企業品牌故事影片，傳達品牌價值與理念</p>
+                    </div>
+                </div>
+
+                <!-- 3D Works -->
+                <div class="work-item" data-category="3d">
+                    <div class="work-thumbnail">🎨</div>
+                    <div class="work-info">
+                        <h3>產品 3D 建模</h3>
+                        <p>高精度 3C 產品建模，用於電商平台展示</p>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="3d">
+                    <div class="work-thumbnail">💎</div>
+                    <div class="work-info">
+                        <h3>3D 場景設計</h3>
+                        <p>產品情境場景建模，提升視覺吸引力</p>
+                    </div>
+                </div>
+
+                <!-- Graphic Works -->
+                <div class="work-item" data-category="graphic">
+                    <div class="work-thumbnail">🖼️</div>
+                    <div class="work-info">
+                        <h3>電商視覺設計</h3>
+                        <p>產品主視覺、Banner 設計，提升轉換率</p>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="graphic">
+                    <div class="work-thumbnail">📱</div>
+                    <div class="work-info">
+                        <h3>社群媒體設計</h3>
+                        <p>Instagram、Facebook 貼文視覺設計</p>
+                    </div>
+                </div>
+
+                <div class="work-item" data-category="graphic">
+                    <div class="work-thumbnail">🎯</div>
+                    <div class="work-info">
+                        <h3>廣告素材設計</h3>
+                        <p>數位廣告圖像設計，符合平台規格</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="page-section hidden">
+        <div class="container">
+            <div class="about-content">
+                <h2>關於我</h2>
+                <p>我是一位專注於電商視覺設計的平面設計師，擁有五年 3C 電商領域的實務經驗。</p>
+                <p>我的工作涵蓋品牌視覺規劃、產品攝影後製、廣告素材設計以及 3D 產品建模。我熟練使用 Adobe Creative Suite（Illustrator、Photoshop、Premiere、After Effects）以及 Blender，並將 AI 工具整合至工作流程中，提升設計效率與品質。</p>
+                <p>我致力於為品牌打造專業、精緻且具有高度辨識度的視覺形象，透過設計提升產品價值與用戶體驗。</p>
+
+                <h3 style="margin-top: 3rem; margin-bottom: 1rem;">專業技能</h3>
+                <div class="skills">
+                    <span class="skill-tag">Adobe Illustrator</span>
+                    <span class="skill-tag">Adobe Photoshop</span>
+                    <span class="skill-tag">Adobe Premiere</span>
+                    <span class="skill-tag">Adobe After Effects</span>
+                    <span class="skill-tag">Blender 3D</span>
+                    <span class="skill-tag">電商視覺設計</span>
+                    <span class="skill-tag">產品攝影</span>
+                    <span class="skill-tag">品牌設計</span>
+                    <span class="skill-tag">影片製作</span>
+                    <span class="skill-tag">AI 設計工具</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-section hidden">
+        <div class="container">
+            <div class="contact-content">
+                <h2>聯絡方式</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">歡迎與我聯繫討論合作機會</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">
+                        <span>📧</span>
+                        <span>Email</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>💼</span>
+                        <span>Behance</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>🔗</span>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Skat. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Page Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.page-section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+
+                // Update active nav link
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // Show target section
+                sections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Category Filter
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const workItems = document.querySelectorAll('.work-item');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+
+                // Update active button
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter work items
+                workItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
