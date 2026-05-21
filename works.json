@@ -2,27 +2,27 @@
   {
     "id": "video-edit-1",
     "title": "影片剪輯",
-    "description": "產品廣告、品牌形象、MAD 等影片剪輯作品",
-    "detailedDescription": "這是一系列影片剪輯作品，涵蓋產品宣傳、品牌形象以及 MAD 創作。透過節奏掌控、色彩調校與轉場設計，為不同類型的內容注入視覺張力。",
+    "description": "品牌形象、MAD等影片剪輯作品",
+    "detailedDescription": "這是一系列影片剪輯作品，涵蓋品牌形象、商品展示以及 MAD 創作。透過節奏掌控、色彩調校與轉場設計，為不同類型的內容注入視覺張力。",
     "category": "video",
     "thumbnail": "images/video-thumb.jpg",
     "emoji": "🎬",
-    "video": "https://www.youtube.com/watch?v=YOUR_VIDEO_ID",
+    "video": "https://youtu.be/BguIOytDtq4",
     "images": [
       "images/video-1.jpg",
       "images/video-2.jpg"
     ],
-    "client": "某科技公司",
+    "client": "啪哩啪哩%z%Z",
     "year": "2024",
-    "technologies": ["Premiere Pro", "After Effects", "DaVinci Resolve"]
+    "technologies": ["Premiere Pro", "After Effects"]
   },
   {
     "id": "3d-product-1",
     "title": "產品 3D 建模",
-    "description": "高精度 3C 產品建模，用於電商平台展示",
-    "detailedDescription": "為電商平台打造的高精度 3C 產品 3D 模型，注重材質真實感與細節呈現。透過精確建模與燈光設計，讓產品在網頁上也能展現出實體質感。",
+    "description": "3C 產品建模，用於電商平台展示，以及素材製作等多種用途。",
+    "detailedDescription": "為電商平台打造的 產品 3D 模型，注重材質真實感與細節呈現。透過建模與燈光設計，讓產品在網頁上也能展現出更清晰的外型。",
     "category": "3d",
-    "thumbnail": "images/3d-thumb.jpg",
+    "thumbnail": "images/3D_01.png",
     "emoji": "🎨",
     "images": [
       "images/3d-1.jpg",
@@ -30,38 +30,47 @@
       "images/3d-3.jpg"
     ],
     "year": "2024",
-    "technologies": ["Blender", "Photoshop", "Substance Painter"]
+    "technologies": ["Blender", "Photoshop"]
   },
   {
     "id": "graphic-ecommerce-1",
     "title": "電商視覺設計",
     "description": "產品主視覺、Banner 設計，提升轉換率",
-    "detailedDescription": "針對電商平台設計的視覺素材，包含產品主視覺、促銷 Banner、以及商品詳情頁設計。透過清晰的資訊架構與吸睛的視覺語言，有效提升點擊率與轉換率。",
+    "detailedDescription": "針對電商平台設計的視覺素材，包含產品主視覺、促銷 Banner、以及商品詳情頁設計。透過清晰的資訊架構與吸睛的視覺語言，提升點擊率與轉換率。",
     "category": "graphic",
-    "thumbnail": "images/graphic-ecommerce-thumb.jpg",
+    "thumbnail": "images/banner_03.png",
     "emoji": "🖼️",
     "images": [
-      "images/graphic-1.jpg",
-      "images/graphic-2.jpg"
+      "images/banner_01.jpg",
+      "images/banner_02.jpg",
+      "images/banner_04.png"
     ],
-    "client": "某電商品牌",
-    "year": "2023",
+    "client": "啪哩啪哩%z%Z",
+    "year": "2022-2024",
     "technologies": ["Illustrator", "Photoshop"]
   },
   {
     "id": "graphic-social-1",
     "title": "社群媒體設計",
-    "description": "Instagram、Facebook 貼文視覺設計",
-    "detailedDescription": "為社群平台設計的系列視覺內容，維持品牌調性的同時，針對不同平台特性調整視覺比例與資訊呈現方式。",
+    "description": "Instagram、Facebook貼文視覺設計",
+    "detailedDescription": "為社群平台設計的系列視覺內容，維持品牌調性的同時，針對不同平台特性調整視覺比例與資訊呈現方式；並根據不同風格，產出符合需求的文案。",
     "category": "graphic",
-    "thumbnail": "images/social-thumb.jpg",
+    "thumbnail": "images/LINE_02.png",
     "emoji": "📱",
     "images": [
-      "images/social-1.jpg",
-      "images/social-2.jpg"
+      "images/LINE_01.png",
+      "images/LINE_03.png",
+      "images/LINE_04.png",
+      "images/LINE_04.png",
+      "images/IG/IG_1_01.png",
+      "images/IG/IG_1_02.png",
+      "images/IG/IG_1_03.png",
+      "images/IG/IG_1_04.png",
+      "images/IG/IG_1_05.png",
+      "images/IG/IG_1_06.png"
     ],
     "year": "2024",
-    "technologies": ["Illustrator", "Photoshop", "Figma"]
+    "technologies": ["Illustrator", "Photoshop"]
   },
   {
     "id": "graphic-ad-1",
