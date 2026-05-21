@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品詳情 - Skat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #151515;
+            --bg-hover: #1f1f1f;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #2a2a2a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+
+        .back-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-hover);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Work Header */
+        .work-header {
+            margin-bottom: 3rem;
+        }
+
+        .work-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .work-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .work-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        /* Media Section */
+        .media-section {
+            margin-bottom: 3rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .image-gallery {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-image {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Details Section */
+        .details-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .detail-item h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item p {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            padding: 0.4rem 0.8rem;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .error {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .error h2 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .error p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .error a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .error a:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .work-header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">SKAT</a>
+            <a href="index.html" class="back-btn">
+                <span>←</span>
+                <span>返回作品集</span>
+            </a>
+        </nav>
+    </header>
+
+    <div id="content">
+        <div class="loading">
+            <p>載入中...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Skat. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Get work ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const workId = urlParams.get('id');
+
+        async function loadWorkDetail() {
+            try {
+                const response = await fetch('works.json');
+                const works = await response.json();
+                const work = works.find(w => w.id === workId);
+
+                if (!work) {
+                    showError('找不到該作品');
+                    return;
+                }
+
+                displayWork(work);
+            } catch (error) {
+                console.error('Error loading work:', error);
+                showError('載入作品時發生錯誤');
+            }
+        }
+
+        function displayWork(work) {
+            document.title = `${work.title} - Skat`;
+
+            const contentDiv = document.getElementById('content');
+            
+            // Build media section
+            let mediaHTML = '';
+            
+            // Video
+            if (work.video) {
+                const videoId = extractVideoId(work.video);
+                if (videoId) {
+                    mediaHTML += `
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/${videoId}" 
+                                    allowfullscreen></iframe>
+                        </div>
+                    `;
+                }
+            }
+
+            // Images
+            if (work.images && work.images.length > 0) {
+                mediaHTML += '<div class="image-gallery">';
+                work.images.forEach(img => {
+                    mediaHTML += `
+                        <div class="gallery-image">
+                            <img src="${img}" alt="${work.title}">
+                        </div>
+                    `;
+                });
+                mediaHTML += '</div>';
+            }
+
+            // Build tech tags
+            let techTagsHTML = '';
+            if (work.technologies && work.technologies.length > 0) {
+                techTagsHTML = '<div class="tech-tags">';
+                work.technologies.forEach(tech => {
+                    techTagsHTML += `<span class="tech-tag">${tech}</span>`;
+                });
+                techTagsHTML += '</div>';
+            }
+
+            // Build details section
+            let detailsHTML = '';
+            if (work.client || work.year || work.technologies) {
+                detailsHTML = `
+                    <div class="details-section">
+                        <div class="details-grid">
+                            ${work.client ? `
+                                <div class="detail-item">
+                                    <h3>客戶</h3>
+                                    <p>${work.client}</p>
+                                </div>
+                            ` : ''}
+                            ${work.year ? `
+                                <div class="detail-item">
+                                    <h3>年份</h3>
+                                    <p>${work.year}</p>
+                                </div>
+                            ` : ''}
+                            ${work.technologies && work.technologies.length > 0 ? `
+                                <div class="detail-item">
+                                    <h3>使用技術</h3>
+                                    ${techTagsHTML}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            contentDiv.innerHTML = `
+                <div class="container">
+                    <div class="work-header">
+                        <h1>${work.title}</h1>
+                        <div class="work-meta">
+                            <span class="meta-tag">${getCategoryName(work.category)}</span>
+                        </div>
+                        <p class="work-description">${work.detailedDescription || work.description}</p>
+                    </div>
+                    
+                    <div class="media-section">
+                        ${mediaHTML}
+                    </div>
+
+                    ${detailsHTML}
+                </div>
+            `;
+        }
+
+        function extractVideoId(url) {
+            // YouTube URL patterns
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/,
+                /youtube\.com\/embed\/([^&\s]+)/
+            ];
+            
+            for (const pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) return match[1];
+            }
+            
+            return null;
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'video': '影片',
+                '3d': '3D',
+                'graphic': '平面設計'
+            };
+            return names[category] || category;
+        }
+
+        function showError(message) {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = `
+                <div class="error">
+                    <h2>糟糕！</h2>
+                    <p>${message}</p>
+                    <a href="index.html">返回首頁</a>
+                </div>
+            `;
+        }
+
+        // Load work on page load
+        if (workId) {
+            loadWorkDetail();
+        } else {
+            showError('未指定作品 ID');
+        }
+    </script>
+</body>
+</html>
