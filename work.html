@@ -154,6 +154,99 @@
             display: block;
         }
 
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .carousel-wrapper {
+            overflow: hidden;
+            border-radius: 12px;
+            background: var(--bg-secondary);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-nav.prev {
+            left: 1rem;
+        }
+
+        .carousel-nav.next {
+            right: 1rem;
+        }
+
+        .carousel-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: var(--text-primary);
+        }
+
+        .carousel-counter {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
         /* Details Section */
         .details-section {
             margin-top: 4rem;
@@ -321,17 +414,23 @@
                 }
             }
 
-            // Images
+            // Images - check if carousel is enabled
             if (work.images && work.images.length > 0) {
-                mediaHTML += '<div class="image-gallery">';
-                work.images.forEach(img => {
-                    mediaHTML += `
-                        <div class="gallery-image">
-                            <img src="${img}" alt="${work.title}">
-                        </div>
-                    `;
-                });
-                mediaHTML += '</div>';
+                if (work.carousel) {
+                    // Use carousel for this work
+                    mediaHTML += buildCarousel(work.images);
+                } else {
+                    // Use grid layout
+                    mediaHTML += '<div class="image-gallery">';
+                    work.images.forEach(img => {
+                        mediaHTML += `
+                            <div class="gallery-image">
+                                <img src="${img}" alt="${work.title}">
+                            </div>
+                        `;
+                    });
+                    mediaHTML += '</div>';
+                }
             }
 
             // Build tech tags
@@ -390,6 +489,133 @@
                     ${detailsHTML}
                 </div>
             `;
+
+            // Initialize carousel if present
+            if (work.carousel && work.images && work.images.length > 0) {
+                initCarousel();
+            }
+        }
+
+        function buildCarousel(images) {
+            let slidesHTML = '';
+            let dotsHTML = '';
+            
+            images.forEach((img, index) => {
+                slidesHTML += `
+                    <div class="carousel-slide">
+                        <img src="${img}" alt="Slide ${index + 1}">
+                    </div>
+                `;
+                dotsHTML += `<button class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></button>`;
+            });
+
+            return `
+                <div class="carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            ${slidesHTML}
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" aria-label="Previous">‹</button>
+                    <button class="carousel-nav next" aria-label="Next">›</button>
+                    <div class="carousel-dots">
+                        ${dotsHTML}
+                    </div>
+                    <div class="carousel-counter">
+                        <span class="current-slide">1</span> / <span class="total-slides">${images.length}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function initCarousel() {
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const prevBtn = document.querySelector('.carousel-nav.prev');
+            const nextBtn = document.querySelector('.carousel-nav.next');
+            const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+            const currentSlideEl = document.querySelector('.current-slide');
+            
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+                
+                // Update counter
+                currentSlideEl.textContent = currentIndex + 1;
+                
+                // Update button states
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === slides.length - 1;
+            }
+
+            // Next button
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < slides.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            // Previous button
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            // Dots navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                } else if (e.key === 'ArrowRight' && currentIndex < slides.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            // Touch swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50 && currentIndex < slides.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+                if (touchEndX > touchStartX + 50 && currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            }
+
+            // Initial state
+            updateCarousel();
         }
 
         function extractVideoId(url) {
