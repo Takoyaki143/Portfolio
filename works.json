@@ -64,7 +64,9 @@
       "images/LINE_04.png",
       "images/LINE_05.png"]
   },
-    "carouselImages": [
+    "gridGallery": {
+    "columns": 3,
+    "images": [
       "images/IG/IG_1_01.png",
       "images/IG/IG_1_02.png",
       "images/IG/IG_1_03.png",
