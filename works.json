@@ -3,11 +3,11 @@
     "id": "video-edit-1",
     "title": "影片剪輯",
     "description": "品牌形象、MAD等影片剪輯作品",
-    "detailedDescription": "這是一系列影片剪輯作品，涵蓋品牌形象、商品展示以及 MAD 創作。透過節奏掌控、色彩調校與轉場設計，為不同類型的內容注入視覺張力。",
+    "detailedDescription": "這是一系列影片剪輯作品，涵蓋品牌形象、商品展示以及 MAD 創作。透過節奏掌控、色彩調校與轉場設計,為不同類型的內容注入視覺張力。",
     "category": "video",
     "thumbnail": "images/video-thumb.jpg",
     "emoji": "🎬",
-    "video": "https://youtu.be/BguIOytDtq4","https://www.youtube.com/watch?v=IbXL8MDZ_MY","https://www.youtube.com/watch?v=K8kV-UjTsHI",
+    "video": "https://youtu.be/BguIOytDtq4",
     "client": "啪哩啪哩%z%Z",
     "year": "2024",
     "technologies": ["Premiere Pro", "After Effects"]
@@ -53,25 +53,22 @@
     "category": "graphic",
     "thumbnail": "images/LINE_02.png",
     "emoji": "📱",
-  "gridGallery": {
-    "columns": 3,
-    "images": [
-      "images/LINE_01.jpg",
-      "images/LINE_02.png",
-      "images/LINE_03.png",
-      "images/LINE_04.png",
-      "images/LINE_05.png"]
-  },
     "gridGallery": {
-    "columns": 3,
-    "images": [
-      "images/IG/IG_1_01.png",
-      "images/IG/IG_1_02.png",
-      "images/IG/IG_1_03.png",
-      "images/IG/IG_1_04.png",
-      "images/IG/IG_1_05.png",
-      "images/IG/IG_1_06.png"
-    ],
+      "columns": 3,
+      "images": [
+        "images/LINE_01.jpg",
+        "images/LINE_02.png",
+        "images/LINE_03.png",
+        "images/LINE_04.png",
+        "images/LINE_05.png",
+        "images/IG/IG_1_01.png",
+        "images/IG/IG_1_02.png",
+        "images/IG/IG_1_03.png",
+        "images/IG/IG_1_04.png",
+        "images/IG/IG_1_05.png",
+        "images/IG/IG_1_06.png"
+      ]
+    },
     "year": "2024",
     "technologies": ["Illustrator", "Photoshop"]
   },
@@ -88,14 +85,14 @@
     ],
     "year": "2024",
     "technologies": ["Photoshop", "Illustrator"]
-  }
+  },
   {
     "id": "Single-Page-3D-1",
     "title": "銷售劇本",
     "description": "一頁式商品介紹設計，簡潔明瞭的展現商品優勢。",
     "detailedDescription": "將產品濃縮成高轉換率的單頁銷售文案，結合消費者痛點與共鳴建立，打造吸睛與行動呼籲結合的銷售頁面。",
     "category": "graphic",
-    "thumbnail": "Single Page-3D_03.png",
+    "thumbnail": "images/Single Page-3D_03.png",
     "emoji": "🎯",
     "images": [
       "images/ad-1.jpg"
