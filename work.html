@@ -414,23 +414,31 @@
                 }
             }
 
-            // Images - check if carousel is enabled
+            // Images - support both carousel and grid
+            if (work.carouselImages && work.carouselImages.length > 0) {
+                mediaHTML += buildCarousel(work.carouselImages, 'carousel-1');
+            }
+
             if (work.images && work.images.length > 0) {
-                if (work.carousel) {
-                    // Use carousel for this work
-                    mediaHTML += buildCarousel(work.images);
-                } else {
-                    // Use grid layout
-                    mediaHTML += '<div class="image-gallery">';
-                    work.images.forEach(img => {
-                        mediaHTML += `
-                            <div class="gallery-image">
-                                <img src="${img}" alt="${work.title}">
-                            </div>
-                        `;
-                    });
-                    mediaHTML += '</div>';
-                }
+                mediaHTML += '<div class="image-gallery">';
+                work.images.forEach(img => {
+                    mediaHTML += `
+                        <div class="gallery-image">
+                            <img src="${img}" alt="${work.title}">
+                        </div>
+                    `;
+                });
+                mediaHTML += '</div>';
+            }
+
+            // Support multiple carousels
+            if (work.additionalCarousels && work.additionalCarousels.length > 0) {
+                work.additionalCarousels.forEach((carousel, index) => {
+                    if (carousel.title) {
+                        mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${carousel.title}</h3>`;
+                    }
+                    mediaHTML += buildCarousel(carousel.images, `carousel-${index + 2}`);
+                });
             }
 
             // Build tech tags
@@ -490,13 +498,14 @@
                 </div>
             `;
 
-            // Initialize carousel if present
-            if (work.carousel && work.images && work.images.length > 0) {
-                initCarousel();
+            // Initialize all carousels if present
+            const carousels = document.querySelectorAll('.carousel-container');
+            if (carousels.length > 0) {
+                carousels.forEach(carousel => initCarousel(carousel));
             }
         }
 
-        function buildCarousel(images) {
+        function buildCarousel(images, carouselId = 'carousel-1') {
             let slidesHTML = '';
             let dotsHTML = '';
             
@@ -510,7 +519,7 @@
             });
 
             return `
-                <div class="carousel-container">
+                <div class="carousel-container" data-carousel-id="${carouselId}">
                     <div class="carousel-wrapper">
                         <div class="carousel-track">
                             ${slidesHTML}
@@ -528,13 +537,13 @@
             `;
         }
 
-        function initCarousel() {
-            const track = document.querySelector('.carousel-track');
+        function initCarousel(carouselContainer) {
+            const track = carouselContainer.querySelector('.carousel-track');
             const slides = Array.from(track.children);
-            const prevBtn = document.querySelector('.carousel-nav.prev');
-            const nextBtn = document.querySelector('.carousel-nav.next');
-            const dots = Array.from(document.querySelectorAll('.carousel-dot'));
-            const currentSlideEl = document.querySelector('.current-slide');
+            const prevBtn = carouselContainer.querySelector('.carousel-nav.prev');
+            const nextBtn = carouselContainer.querySelector('.carousel-nav.next');
+            const dots = Array.from(carouselContainer.querySelectorAll('.carousel-dot'));
+            const currentSlideEl = carouselContainer.querySelector('.current-slide');
             
             let currentIndex = 0;
 
@@ -577,17 +586,6 @@
                     currentIndex = index;
                     updateCarousel();
                 });
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft' && currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                } else if (e.key === 'ArrowRight' && currentIndex < slides.length - 1) {
-                    currentIndex++;
-                    updateCarousel();
-                }
             });
 
             // Touch swipe support
