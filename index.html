@@ -80,20 +80,64 @@
 
         /* Hero Section */
         .hero {
+            position: relative;
             text-align: center;
-            padding: 4rem 0;
+            padding: 0;
+            margin-bottom: 4rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            background-image: url('YOUR_IMAGE_URL_HERE'); /* 替換成你的圖片網址 */
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* 黑色半透明 */
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--bg-primary)); /* 底部淡出漸層 */
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
+            padding: 0 2rem;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--text-secondary);
+            color: #e8e8e8;
             max-width: 600px;
-            margin: 0 auto 3rem;
+            margin: 0 auto;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
         }
 
         /* Category Filter */
@@ -106,7 +150,7 @@
         }
 
         .category-btn {
-            padding: 0.75rem 2rem;
+            padding: 0.5rem 1.25rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             color: var(--text-secondary);
@@ -122,9 +166,9 @@
         }
 
         .category-btn.active {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
+            background: #9a9a9a;
+            color: #151515;
+            border-color: #9a9a9a;
         }
 
         /* Work Grid */
@@ -141,6 +185,10 @@
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid var(--border);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .work-item:hover {
@@ -151,7 +199,9 @@
         .work-thumbnail {
             width: 100%;
             height: 250px;
-            background: var(--bg-hover);
+            background-size: cover;
+            background-position: center;
+            background-color: var(--bg-hover);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -260,6 +310,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero-image {
+                height: 400px;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
@@ -294,8 +348,12 @@
     <section id="home" class="page-section">
         <div class="container">
             <div class="hero">
-                <h1>Graphic Designer</h1>
-                <p>專注於 3C 電商視覺設計，擅長平面設計、3D 建模與影片製作，打造專業精緻的品牌視覺體驗。</p>
+                <div class="hero-image">
+                    <div class="hero-content">
+                        <h1>Graphic Designer</h1>
+                        <p>專注於 3C 電商視覺設計，擅長平面設計、3D 建模與影片製作，打造專業精緻的品牌視覺體驗。</p>
+                    </div>
+                </div>
             </div>
 
             <div class="category-filter">
@@ -306,64 +364,7 @@
             </div>
 
             <div class="work-grid" id="workGrid">
-                <!-- Video Works -->
-                <div class="work-item" data-category="video">
-                    <div class="work-thumbnail">🎬</div>
-                    <div class="work-info">
-                        <h3>產品宣傳影片</h3>
-                        <p>3C 產品廣告影片製作，結合動態圖形與產品特寫</p>
-                    </div>
-                </div>
-
-                <div class="work-item" data-category="video">
-                    <div class="work-thumbnail">🎥</div>
-                    <div class="work-info">
-                        <h3>品牌形象影片</h3>
-                        <p>企業品牌故事影片，傳達品牌價值與理念</p>
-                    </div>
-                </div>
-
-                <!-- 3D Works -->
-                <div class="work-item" data-category="3d">
-                    <div class="work-thumbnail">🎨</div>
-                    <div class="work-info">
-                        <h3>產品 3D 建模</h3>
-                        <p>高精度 3C 產品建模，用於電商平台展示</p>
-                    </div>
-                </div>
-
-                <div class="work-item" data-category="3d">
-                    <div class="work-thumbnail">💎</div>
-                    <div class="work-info">
-                        <h3>3D 場景設計</h3>
-                        <p>產品情境場景建模，提升視覺吸引力</p>
-                    </div>
-                </div>
-
-                <!-- Graphic Works -->
-                <div class="work-item" data-category="graphic">
-                    <div class="work-thumbnail">🖼️</div>
-                    <div class="work-info">
-                        <h3>電商視覺設計</h3>
-                        <p>產品主視覺、Banner 設計，提升轉換率</p>
-                    </div>
-                </div>
-
-                <div class="work-item" data-category="graphic">
-                    <div class="work-thumbnail">📱</div>
-                    <div class="work-info">
-                        <h3>社群媒體設計</h3>
-                        <p>Instagram、Facebook 貼文視覺設計</p>
-                    </div>
-                </div>
-
-                <div class="work-item" data-category="graphic">
-                    <div class="work-thumbnail">🎯</div>
-                    <div class="work-info">
-                        <h3>廣告素材設計</h3>
-                        <p>數位廣告圖像設計，符合平台規格</p>
-                    </div>
-                </div>
+                <!-- 作品會從 works.json 自動載入 -->
             </div>
         </div>
     </section>
@@ -410,10 +411,6 @@
                         <span>💼</span>
                         <span>Behance</span>
                     </a>
-                    <a href="#" class="contact-link">
-                        <span>🔗</span>
-                        <span>LinkedIn</span>
-                    </a>
                 </div>
             </div>
         </div>
@@ -424,6 +421,95 @@
     </footer>
 
     <script>
+        // Load works from JSON
+        let allWorks = [];
+
+        async function loadWorks() {
+            try {
+                const response = await fetch('works.json');
+                allWorks = await response.json();
+                displayWorks('all');
+            } catch (error) {
+                console.error('Error loading works:', error);
+                // 如果 JSON 載入失敗，顯示範例資料
+                allWorks = [
+                    {
+                        id: "video-edit-1",
+                        title: "影片剪輯",
+                        description: "產品廣告、品牌形象、MAD 等影片剪輯作品",
+                        category: "video",
+                        thumbnail: "",
+                        emoji: "🎬"
+                    },
+                    {
+                        id: "3d-model-1",
+                        title: "產品 3D 建模",
+                        description: "高精度 3C 產品建模，用於電商平台展示",
+                        category: "3d",
+                        thumbnail: "",
+                        emoji: "🎨"
+                    },
+                    {
+                        id: "graphic-ecommerce",
+                        title: "電商視覺設計",
+                        description: "產品主視覺、Banner 設計，提升轉換率",
+                        category: "graphic",
+                        thumbnail: "",
+                        emoji: "🖼️"
+                    },
+                    {
+                        id: "graphic-social",
+                        title: "社群媒體設計",
+                        description: "Instagram、Facebook 貼文視覺設計",
+                        category: "graphic",
+                        thumbnail: "",
+                        emoji: "📱"
+                    },
+                    {
+                        id: "graphic-ad",
+                        title: "廣告素材設計",
+                        description: "數位廣告圖像設計，符合平台規格",
+                        category: "graphic",
+                        thumbnail: "",
+                        emoji: "🎯"
+                    }
+                ];
+                displayWorks('all');
+            }
+        }
+
+        function displayWorks(category) {
+            const grid = document.getElementById('workGrid');
+            grid.innerHTML = '';
+
+            const filteredWorks = category === 'all' 
+                ? allWorks 
+                : allWorks.filter(work => work.category === category);
+
+            filteredWorks.forEach(work => {
+                const workItem = document.createElement('a');
+                workItem.className = 'work-item';
+                workItem.href = `work.html?id=${work.id}`;
+                workItem.dataset.category = work.category;
+
+                const thumbnailStyle = work.thumbnail 
+                    ? `background-image: url('${work.thumbnail}')` 
+                    : '';
+
+                workItem.innerHTML = `
+                    <div class="work-thumbnail" style="${thumbnailStyle}">
+                        ${!work.thumbnail ? work.emoji : ''}
+                    </div>
+                    <div class="work-info">
+                        <h3>${work.title}</h3>
+                        <p>${work.description}</p>
+                    </div>
+                `;
+
+                grid.appendChild(workItem);
+            });
+        }
+
         // Page Navigation
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('.page-section');
@@ -450,7 +536,6 @@
 
         // Category Filter
         const categoryBtns = document.querySelectorAll('.category-btn');
-        const workItems = document.querySelectorAll('.work-item');
 
         categoryBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -460,16 +545,13 @@
                 categoryBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                // Filter work items
-                workItems.forEach(item => {
-                    if (category === 'all' || item.dataset.category === category) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+                // Display filtered works
+                displayWorks(category);
             });
         });
+
+        // Load works on page load
+        loadWorks();
     </script>
 </body>
 </html>
