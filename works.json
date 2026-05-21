@@ -1,27 +1,27 @@
 [
   {
-  "id": "video-edit-1",
-  "title": "影片剪輯",
-  "videos": [
-    {
-      "url": "https://youtu.be/BguIOytDtq4",
-      "title": "Casual lifestyle | 2024",
-      "description": "負責品牌的概念短影片剪輯。主要使用Premiere做初步剪輯與調色、速度微調等。最後的Logo動畫使用Effect製作。"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=IbXL8MDZ_MY",
-      "title": "產品展示 | 2023",
-      "description": "使用Blender進行建模與動畫渲染，最後使用Adobe Premiere進行剪輯串場。此影片用於品牌網站的部分背景區塊。"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=K8kV-UjTsHI",
-      "title": "練習作品｜2023",
-      "description": "《葬送のフリーレン》動畫片段剪輯，主要使用Effect製作字體動畫與過場。"
-    }
-  ],
-  "category": "video",
-  "thumbnail": "images/video-thumb.jpg"
-}
+    "id": "video-edit-1",
+    "title": "影片剪輯",
+    "videos": [
+      {
+        "url": "https://youtu.be/BguIOytDtq4",
+        "title": "Casual lifestyle | 2024",
+        "description": "負責品牌的概念短影片剪輯。主要使用Premiere做初步剪輯與調色、速度微調等。最後的Logo動畫使用Effect製作。"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=IbXL8MDZ_MY",
+        "title": "產品展示 | 2023",
+        "description": "使用Blender進行建模與動畫渲染，最後使用Adobe Premiere進行剪輯串場。此影片用於品牌網站的部分背景區塊。"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=K8kV-UjTsHI",
+        "title": "練習作品｜2023",
+        "description": "《葬送のフリーレン》動畫片段剪輯，主要使用Effect製作字體動畫與過場。"
+      }
+    ],
+    "category": "video",
+    "thumbnail": "images/video-thumb.jpg"
+  },
   {
     "id": "3d-product-1",
     "title": "產品 3D 建模",
@@ -59,35 +59,37 @@
     "id": "graphic-social-1",
     "title": "社群媒體設計",
     "description": "Instagram、Facebook貼文視覺設計",
-    "detailedDescription": "為社群平台設計的系列視覺內容，維持品牌調性的同時，針對不同平台特性調整視覺比例與資訊呈現方式；並根據不同風格，產出符合需求的文案。",
+    "detailedDescription": "為社群平台設計的系列視覺內容,維持品牌調性的同時，針對不同平台特性調整視覺比例與資訊呈現方式；並根據不同風格，產出符合需求的文案。",
     "category": "graphic",
     "thumbnail": "images/LINE_02.png",
     "emoji": "📱",
     "gridGallery": {
-    "columns": 3,
-    "images": [
-      "images/LINE_01.jpg",
-      "images/LINE_02.png",
-      "images/LINE_03.png",
-      "images/LINE_04.png",
-      "images/LINE_05.png",
-      "images/FB/fb_01.png",
-      "images/FB/fb_02.png"
-    ]
-  },
-  "additionalGalleries": [
-    {
-      "title": "Instagram 貼文系列",
-      "description": "為品牌 IG 設計的「知識懶人包」，用於提高品牌互動、增加其他點擊率。",
       "columns": 3,
       "images": [
-        "images/IG/IG_1_01.png",
-        "images/IG/IG_1_02.png",
-        "images/IG/IG_1_03.png",
-        "images/IG/IG_1_04.png",
-        "images/IG/IG_1_05.png",
-        "images/IG/IG_1_06.png"
+        "images/LINE_01.jpg",
+        "images/LINE_02.png",
+        "images/LINE_03.png",
+        "images/LINE_04.png",
+        "images/LINE_05.png",
+        "images/FB/fb_01.png",
+        "images/FB/fb_02.png"
       ]
+    },
+    "additionalGalleries": [
+      {
+        "title": "Instagram 貼文系列",
+        "description": "為品牌 IG 設計的「知識懶人包」，用於提高品牌互動、增加其他點擊率。",
+        "columns": 3,
+        "images": [
+          "images/IG/IG_1_01.png",
+          "images/IG/IG_1_02.png",
+          "images/IG/IG_1_03.png",
+          "images/IG/IG_1_04.png",
+          "images/IG/IG_1_05.png",
+          "images/IG/IG_1_06.png"
+        ]
+      }
+    ],
     "year": "2023-2026",
     "technologies": ["Illustrator", "Photoshop"]
   },
