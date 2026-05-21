@@ -571,27 +571,55 @@
             // Build media section
             let mediaHTML = '';
             
-            // Video
-            if (work.video) {
-                const videoId = extractVideoId(work.video);
-                if (videoId) {
-                    mediaHTML += `
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/${videoId}" 
-                                    allowfullscreen></iframe>
-                        </div>
-                    `;
-                }
-            }
+// Videos - support multiple videos with descriptions
+if (work.videos && work.videos.length > 0) {
+    work.videos.forEach(videoData => {
+        const videoId = extractVideoId(videoData.url);
+        if (videoId) {
+            mediaHTML += `
+                ${videoData.title ? `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${videoData.title}</h3>` : ''}
+                ${videoData.description ? `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${videoData.description}</p>` : ''}
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/${videoId}" 
+                            allowfullscreen></iframe>
+                </div>
+            `;
+        }
+    });
+} else if (work.video) {
+    // Fallback for old single video format
+    const videoId = extractVideoId(work.video);
+    if (videoId) {
+        mediaHTML += `
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/${videoId}" 
+                        allowfullscreen></iframe>
+            </div>
+        `;
+    }
+}
 
             // Images - support carousel, grid, and gridGallery
             if (work.carouselImages && work.carouselImages.length > 0) {
                 mediaHTML += buildCarousel(work.carouselImages, 'carousel-1');
             }
 
-            if (work.gridGallery && work.gridGallery.images && work.gridGallery.images.length > 0) {
-                mediaHTML += buildGridGallery(work.gridGallery);
-            }
+           if (work.gridGallery && work.gridGallery.images && work.gridGallery.images.length > 0) {
+    mediaHTML += buildGridGallery(work.gridGallery);
+}
+
+// Support multiple grid galleries
+if (work.additionalGalleries && work.additionalGalleries.length > 0) {
+    work.additionalGalleries.forEach(gallery => {
+        if (gallery.title) {
+            mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${gallery.title}</h3>`;
+        }
+        if (gallery.description) {
+            mediaHTML += `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${gallery.description}</p>`;
+        }
+        mediaHTML += buildGridGallery(gallery);
+    });
+}
 
             if (work.images && work.images.length > 0) {
                 mediaHTML += '<div class="image-gallery">';
