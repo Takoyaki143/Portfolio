@@ -2,11 +2,12 @@
   {
     "id": "video-edit-1",
     "title": "影片剪輯",
+    "description": "使用Premiere與Effect剪輯品牌形象、產品展示，以及其他興趣剪輯。"
     "videos": [
       {
         "url": "https://youtu.be/BguIOytDtq4",
         "title": "Casual lifestyle | 2024",
-        "description": "負責品牌的概念短影片剪輯。主要使用Premiere做初步剪輯與調色、速度微調等。最後的Logo動畫使用Effect製作。"
+        "description": "負責品牌的概念短影片剪輯，主要使用Premiere做初步剪輯與調色、速度微調等。"
       },
       {
         "url": "https://www.youtube.com/watch?v=IbXL8MDZ_MY",
@@ -17,10 +18,17 @@
         "url": "https://www.youtube.com/watch?v=K8kV-UjTsHI",
         "title": "練習作品｜2023",
         "description": "《葬送のフリーレン》動畫片段剪輯，主要使用Effect製作字體動畫與過場。"
+      },
+      {
+        "url": "https://youtube.com/shorts/MQVweeGQkWU?feature=share",
+        "title": "委託作品｜2023",
+        "description": "VTuber實況精華/Short剪輯，主要使用Effect與網路素材。"
       }
     ],
     "category": "video",
-    "thumbnail": "images/video-thumb.jpg"
+    "thumbnail": "images/video_0.png"
+    "year": "2023",
+    "technologies": ["Premiere","Effect","Blender", "Photoshop"]
   },
   {
     "id": "3d-product-1",
@@ -30,12 +38,51 @@
     "category": "3d",
     "thumbnail": "images/3D_01.png",
     "emoji": "🎨",
+    "gridGallery": {
+    "columns": 3,
     "images": [
-      "images/3d-1.jpg",
-      "images/3d-2.jpg",
-      "images/3d-3.jpg"
-    ],
-    "year": "2024",
+      "images/3D-deatil/3D_05/3D_05_deatil_01.jpg",
+      "images/3D-deatil/3D_05/3D_05_deatil_02.jpg",
+      "images/3D-deatil/3D_05/3D_05_deatil_03.jpg",
+      "images/3D-deatil/3D_05/3D_05_deatil_04.jpg",
+      "images/3D-deatil/3D_05/3D_05_deatil_05.jpg"
+    ]
+  },
+  "additionalGalleries": [
+    {
+      "columns": 3,
+      "images": [
+        "images/3D-deatil/3D_02/3D_02_deatil_01.jpg",
+        "images/3D-deatil/3D_02/3D_02_deatil_02.jpg",
+        "images/3D-deatil/3D_02/3D_02_deatil_03.jpg",
+        "images/3D-deatil/3D_02/3D_02_deatil_04.jpg",
+        "images/3D-deatil/3D_02/3D_02_deatil_05.jpg"
+      ]
+    },
+    {
+      "columns": 3,
+      "images": [
+        "images/3D-deatil/3D_06/3D_06_deatil_01.jpg",
+        "images/3D-deatil/3D_06/3D_06_deatil_02.jpg",
+        "images/3D-deatil/3D_06/3D_06_deatil_03.jpg",
+        "images/3D-deatil/3D_06/3D_06_deatil_04.jpg",
+        "images/3D-deatil/3D_06/3D_06_deatil_05.jpg",
+        "images/3D-deatil/3D_06/3D_06_deatil_06.jpg"
+      ]
+    }
+    {
+      "columns": 3,
+      "images": [
+        "images/3D-deatil/3D_01/3D_01_deatil_01.jpg",
+        "images/3D-deatil/3D_01/3D_01_deatil_02.jpg",
+        "images/3D-deatil/3D_01/3D_01_deatil_03.jpg",
+        "images/3D-deatil/3D_01/3D_01_deatil_04.jpg",
+        "images/3D-deatil/3D_01/3D_01_deatil_05.jpg",
+        "images/3D-deatil/3D_01/3D_01_deatil_06.jpg"
+      ]
+    }
+  ],
+    "year": "2025-2026",
     "technologies": ["Blender", "Photoshop"]
   },
   {
@@ -44,38 +91,69 @@
     "description": "產品主視覺、Banner 設計，提升轉換率",
     "detailedDescription": "針對電商平台設計的視覺素材，包含產品主視覺、促銷 Banner、以及商品詳情頁設計。透過清晰的資訊架構與吸睛的視覺語言，提升點擊率與轉換率。",
     "category": "graphic",
-    "thumbnail": "images/banner_03.png",
+    "thumbnail": "images/banner_0.png",
     "emoji": "🖼️",
-    "images": [
-      "images/banner_01.jpg",
-      "images/banner_02.jpg",
-      "images/banner_04.png"
-    ],
+    "gridGallery": {
+      "columns": 3,
+      "images": [
+        "images/graphic-ecommerce/3D_06_1.png",
+        "images/graphic-ecommerce/3D_06_2.png",
+        "images/graphic-ecommerce/3D_06_3.png",
+        "images/graphic-ecommerce/3D_06_4.png",
+        "images/graphic-ecommerce/3D_06_5.png"
+      ]
+    },
+     "additionalGalleries": [
+    {
+      "columns": 3,
+      "images": [
+        "images/graphic-ecommerce/3D_01_1.png",
+        "images/graphic-ecommerce/3D_01_2.png",
+        "images/graphic-ecommerce/3D_01_3.png",
+        "images/graphic-ecommerce/3D_01_4.png",
+        "images/graphic-ecommerce/3D_01_5.png",
+      ]
+    }
+     ],
     "client": "啪哩啪哩%z%Z",
-    "year": "2022-2024",
+    "year": "2022-2026",
     "technologies": ["Illustrator", "Photoshop"]
   },
   {
     "id": "graphic-social-1",
     "title": "社群媒體設計",
     "description": "Instagram、Facebook貼文視覺設計",
-    "detailedDescription": "為社群平台設計的系列視覺內容,維持品牌調性的同時，針對不同平台特性調整視覺比例與資訊呈現方式；並根據不同風格，產出符合需求的文案。",
+    "detailedDescription": "為社群平台設計的系列視覺內容，維持品牌調性的同時，針對不同平台特性調整視覺比例與資訊呈現方式；並根據不同風格，產出符合需求的文案。",
     "category": "graphic",
-    "thumbnail": "images/LINE_02.png",
+    "thumbnail": "images/graphic-social_0.png",
     "emoji": "📱",
     "gridGallery": {
       "columns": 3,
       "images": [
+        "images/graphic-social/graphic-social-IG_4.jpg",
+        "images/graphic-social/graphic-social-IG_5.jpg",
+        "images/graphic-social/graphic-social-IG_6.jpg",
+        "images/graphic-social/graphic-social-IG_7.jpg",
+        "images/graphic-social/graphic-social-IG_8.jpg",
+        "images/graphic-social/graphic-social-IG_9.jpg",
+        "images/graphic-social/graphic-social-IG_1.jpg",
+        "images/graphic-social/graphic-social-IG_2.jpg",
+        "images/graphic-social/graphic-social-IG_3.jpg"
+      ]
+    },
+    "additionalGalleries": [
+      {
+        "title": "節日活動設計",
+        "description": "根據季節、節日等設計活動視覺圖，以清晰明瞭的視覺呈現優惠活動，用以吸引追蹤者的目光，並增加其轉換率。",
+        "columns": 3,
+       "images": [
         "images/LINE_01.jpg",
         "images/LINE_02.png",
         "images/LINE_03.png",
         "images/LINE_04.png",
         "images/LINE_05.png",
-        "images/FB/fb_01.png",
-        "images/FB/fb_02.png"
-      ]
-    },
-    "additionalGalleries": [
+       ]
+      }
       {
         "title": "Instagram 貼文系列",
         "description": "為品牌 IG 設計的「知識懶人包」，用於提高品牌互動、增加其他點擊率。",
@@ -97,14 +175,20 @@
     "id": "graphic-ad-1",
     "title": "廣告素材設計",
     "description": "數位廣告圖像設計，符合平台規格",
-    "detailedDescription": "針對 Google Ads、Facebook Ads 等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現。",
+    "detailedDescription": "針對Facebook Ads、LINE Ads等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現。",
     "category": "graphic",
     "thumbnail": "images/ad-thumb.jpg",
     "emoji": "🎯",
+    "gridGallery": {
+    "columns": 2,
     "images": [
-      "images/ad-1.jpg"
-    ],
-    "year": "2024",
+      "images/FB-ad-1.jpg",
+      "images/FB-ad-2.jpg",
+      "images/FB-ad-3.jpg",
+      "images/FB-ad-4.jpg"
+    ]
+    },
+    "year": "2025-2026",
     "technologies": ["Photoshop", "Illustrator"]
   },
   {
@@ -113,12 +197,18 @@
     "description": "一頁式商品介紹設計，簡潔明瞭的展現商品優勢。",
     "detailedDescription": "將產品濃縮成高轉換率的單頁銷售文案，結合消費者痛點與共鳴建立，打造吸睛與行動呼籲結合的銷售頁面。",
     "category": "graphic",
-    "thumbnail": "images/Single Page-3D_03.png",
+    "thumbnail": "images/Single Page-02.png",
     "emoji": "🎯",
+    "gridGallery": {
+    "columns": 2,
     "images": [
-      "images/ad-1.jpg"
-    ],
-    "year": "2024",
+      "images/Single-Page-full-3D_06.png",
+      "images/Single-Page-full-3D_02.png",
+      "images/Single-Page-full-3D_03.png",
+      "images/Single-Page-full-3D_01.png"
+    ]
+    },
+    "year": "2025-2026",
     "technologies": ["Photoshop", "Illustrator"]
   }
 ]
