@@ -2,7 +2,7 @@
   {
     "id": "video-edit-1",
     "title": "影片剪輯",
-    "description": "使用Premiere與Effect剪輯品牌形象、產品展示，以及其他興趣剪輯。"
+    "description": "使用Premiere與Effect剪輯品牌形象、產品展示，以及其他興趣剪輯。",
     "videos": [
       {
         "url": "https://youtu.be/BguIOytDtq4",
@@ -26,7 +26,7 @@
       }
     ],
     "category": "video",
-    "thumbnail": "images/video_0.png"
+    "thumbnail": "images/video_0.png",
     "year": "2023",
     "technologies": ["Premiere","Effect","Blender", "Photoshop"]
   },
@@ -39,49 +39,49 @@
     "thumbnail": "images/3D_01.png",
     "emoji": "🎨",
     "gridGallery": {
-    "columns": 3,
-    "images": [
-      "images/3D-deatil/3D_05/3D_05_deatil_01.jpg",
-      "images/3D-deatil/3D_05/3D_05_deatil_02.jpg",
-      "images/3D-deatil/3D_05/3D_05_deatil_03.jpg",
-      "images/3D-deatil/3D_05/3D_05_deatil_04.jpg",
-      "images/3D-deatil/3D_05/3D_05_deatil_05.jpg"
-    ]
-  },
-  "additionalGalleries": [
-    {
       "columns": 3,
       "images": [
-        "images/3D-deatil/3D_02/3D_02_deatil_01.jpg",
-        "images/3D-deatil/3D_02/3D_02_deatil_02.jpg",
-        "images/3D-deatil/3D_02/3D_02_deatil_03.jpg",
-        "images/3D-deatil/3D_02/3D_02_deatil_04.jpg",
-        "images/3D-deatil/3D_02/3D_02_deatil_05.jpg"
+        "images/3D-deatil/3D_05/3D_05_deatil_01.jpg",
+        "images/3D-deatil/3D_05/3D_05_deatil_02.jpg",
+        "images/3D-deatil/3D_05/3D_05_deatil_03.jpg",
+        "images/3D-deatil/3D_05/3D_05_deatil_04.jpg",
+        "images/3D-deatil/3D_05/3D_05_deatil_05.jpg"
       ]
     },
-    {
-      "columns": 3,
-      "images": [
-        "images/3D-deatil/3D_06/3D_06_deatil_01.jpg",
-        "images/3D-deatil/3D_06/3D_06_deatil_02.jpg",
-        "images/3D-deatil/3D_06/3D_06_deatil_03.jpg",
-        "images/3D-deatil/3D_06/3D_06_deatil_04.jpg",
-        "images/3D-deatil/3D_06/3D_06_deatil_05.jpg",
-        "images/3D-deatil/3D_06/3D_06_deatil_06.jpg"
-      ]
-    }
-    {
-      "columns": 3,
-      "images": [
-        "images/3D-deatil/3D_01/3D_01_deatil_01.jpg",
-        "images/3D-deatil/3D_01/3D_01_deatil_02.jpg",
-        "images/3D-deatil/3D_01/3D_01_deatil_03.jpg",
-        "images/3D-deatil/3D_01/3D_01_deatil_04.jpg",
-        "images/3D-deatil/3D_01/3D_01_deatil_05.jpg",
-        "images/3D-deatil/3D_01/3D_01_deatil_06.jpg"
-      ]
-    }
-  ],
+    "additionalGalleries": [
+      {
+        "columns": 3,
+        "images": [
+          "images/3D-deatil/3D_02/3D_02_deatil_01.jpg",
+          "images/3D-deatil/3D_02/3D_02_deatil_02.jpg",
+          "images/3D-deatil/3D_02/3D_02_deatil_03.jpg",
+          "images/3D-deatil/3D_02/3D_02_deatil_04.jpg",
+          "images/3D-deatil/3D_02/3D_02_deatil_05.jpg"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "images/3D-deatil/3D_06/3D_06_deatil_01.jpg",
+          "images/3D-deatil/3D_06/3D_06_deatil_02.jpg",
+          "images/3D-deatil/3D_06/3D_06_deatil_03.jpg",
+          "images/3D-deatil/3D_06/3D_06_deatil_04.jpg",
+          "images/3D-deatil/3D_06/3D_06_deatil_05.jpg",
+          "images/3D-deatil/3D_06/3D_06_deatil_06.jpg"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "images/3D-deatil/3D_01/3D_01_deatil_01.jpg",
+          "images/3D-deatil/3D_01/3D_01_deatil_02.jpg",
+          "images/3D-deatil/3D_01/3D_01_deatil_03.jpg",
+          "images/3D-deatil/3D_01/3D_01_deatil_04.jpg",
+          "images/3D-deatil/3D_01/3D_01_deatil_05.jpg",
+          "images/3D-deatil/3D_01/3D_01_deatil_06.jpg"
+        ]
+      }
+    ],
     "year": "2025-2026",
     "technologies": ["Blender", "Photoshop"]
   },
@@ -103,18 +103,18 @@
         "images/graphic-ecommerce/3D_06_5.png"
       ]
     },
-     "additionalGalleries": [
-    {
-      "columns": 3,
-      "images": [
-        "images/graphic-ecommerce/3D_01_1.png",
-        "images/graphic-ecommerce/3D_01_2.png",
-        "images/graphic-ecommerce/3D_01_3.png",
-        "images/graphic-ecommerce/3D_01_4.png",
-        "images/graphic-ecommerce/3D_01_5.png",
-      ]
-    }
-     ],
+    "additionalGalleries": [
+      {
+        "columns": 3,
+        "images": [
+          "images/graphic-ecommerce/3D_01_1.png",
+          "images/graphic-ecommerce/3D_01_2.png",
+          "images/graphic-ecommerce/3D_01_3.png",
+          "images/graphic-ecommerce/3D_01_4.png",
+          "images/graphic-ecommerce/3D_01_5.png"
+        ]
+      }
+    ],
     "client": "啪哩啪哩%z%Z",
     "year": "2022-2026",
     "technologies": ["Illustrator", "Photoshop"]
@@ -146,14 +146,14 @@
         "title": "節日活動設計",
         "description": "根據季節、節日等設計活動視覺圖，以清晰明瞭的視覺呈現優惠活動，用以吸引追蹤者的目光，並增加其轉換率。",
         "columns": 3,
-       "images": [
-        "images/LINE_01.jpg",
-        "images/LINE_02.png",
-        "images/LINE_03.png",
-        "images/LINE_04.png",
-        "images/LINE_05.png",
-       ]
-      }
+        "images": [
+          "images/LINE_01.jpg",
+          "images/LINE_02.png",
+          "images/LINE_03.png",
+          "images/LINE_04.png",
+          "images/LINE_05.png"
+        ]
+      },
       {
         "title": "Instagram 貼文系列",
         "description": "為品牌 IG 設計的「知識懶人包」，用於提高品牌互動、增加其他點擊率。",
@@ -180,13 +180,13 @@
     "thumbnail": "images/ad-thumb.jpg",
     "emoji": "🎯",
     "gridGallery": {
-    "columns": 2,
-    "images": [
-      "images/FB-ad-1.jpg",
-      "images/FB-ad-2.jpg",
-      "images/FB-ad-3.jpg",
-      "images/FB-ad-4.jpg"
-    ]
+      "columns": 2,
+      "images": [
+        "images/FB-ad-1.jpg",
+        "images/FB-ad-2.jpg",
+        "images/FB-ad-3.jpg",
+        "images/FB-ad-4.jpg"
+      ]
     },
     "year": "2025-2026",
     "technologies": ["Photoshop", "Illustrator"]
@@ -200,13 +200,13 @@
     "thumbnail": "images/Single Page-02.png",
     "emoji": "🎯",
     "gridGallery": {
-    "columns": 2,
-    "images": [
-      "images/Single-Page-full-3D_06.png",
-      "images/Single-Page-full-3D_02.png",
-      "images/Single-Page-full-3D_03.png",
-      "images/Single-Page-full-3D_01.png"
-    ]
+      "columns": 2,
+      "images": [
+        "images/Single-Page-full-3D_06.png",
+        "images/Single-Page-full-3D_02.png",
+        "images/Single-Page-full-3D_03.png",
+        "images/Single-Page-full-3D_01.png"
+      ]
     },
     "year": "2025-2026",
     "technologies": ["Photoshop", "Illustrator"]
