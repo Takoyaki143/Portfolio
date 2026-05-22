@@ -33,7 +33,7 @@
   {
     "id": "3d-product-1",
     "title": "產品 3D 建模",
-    "description": "3C 產品建模，用於電商平台展示，以及素材製作等多種用途。",
+    "description": "3C 產品建模，用於電商平台展示，以及素材製作等多種用途",
     "detailedDescription": "為電商平台打造的 產品 3D 模型，注重材質真實感與細節呈現。透過建模與燈光設計，讓產品在網頁上也能展現出更清晰的外型。",
     "category": "3d",
     "thumbnail": "images/3D_01.png",
@@ -113,6 +113,18 @@
           "images/graphic-ecommerce/3D_01_4.png",
           "images/graphic-ecommerce/3D_01_5.png"
         ]
+      },
+      {
+        "columns": 1,
+        "images": [
+          "images/banner_01.jpg",
+          "images/banner_02.jpg",
+          "images/banner_03.jpg",
+          "images/banner_04.jpg",
+          "images/banner_05.png",
+          "images/banner_06.jpg",
+          "images/banner_07.png",
+        ]
       }
     ],
     "client": "啪哩啪哩%z%Z",
@@ -156,7 +168,7 @@
       },
       {
         "title": "Instagram 貼文系列",
-        "description": "為品牌 IG 設計的「知識懶人包」，用於提高品牌互動、增加其他點擊率。",
+        "description": "為品牌 IG 設計的「知識懶人包」，用於提高品牌互動、增加其他點擊率",
         "columns": 3,
         "images": [
           "images/IG/IG_1_01.png",
@@ -187,8 +199,8 @@
         "images/FB-ad-3.jpg",
         "images/FB-ad-4.jpg",
         "images/graphic-ecommerce-1.jpg",
-        "images/graphic-ecommerce-2.jpg",
-        "images/graphic-ecommerce-3.jpg"
+        "images/graphic-ecommerce-2.png",
+        "images/graphic-ecommerce-3.png"
       ]
     },
     "year": "2025-2026",
@@ -197,7 +209,7 @@
   {
     "id": "Single-Page-3D-1",
     "title": "銷售劇本",
-    "description": "一頁式商品介紹設計，簡潔明瞭的展現商品優勢。",
+    "description": "一頁式商品介紹設計，簡潔明瞭的展現商品優勢",
     "detailedDescription": "將產品濃縮成高轉換率的單頁銷售文案，結合消費者痛點與共鳴建立，打造吸睛與行動呼籲結合的銷售頁面",
     "category": "graphic",
     "thumbnail": "images/Single Page-02.png",
