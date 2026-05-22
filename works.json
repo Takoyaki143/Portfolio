@@ -2,7 +2,7 @@
   {
     "id": "video-edit-1",
     "title": "影片剪輯",
-    "description": "使用Premiere與Effect剪輯品牌形象、產品展示，以及其他興趣剪輯。",
+    "description": "使用Premiere與Effect剪輯品牌形象、產品展示，以及其他興趣剪輯",
     "videos": [
       {
         "url": "https://youtu.be/BguIOytDtq4",
@@ -20,7 +20,7 @@
         "description": "《葬送のフリーレン》動畫片段剪輯，主要使用Effect製作字體動畫與過場。"
       },
       {
-        "url": "https://youtube.com/shorts/MQVweeGQkWU?feature=share",
+        "url": "https://www.youtube.com/watch?v=MQVweeGQkWU",
         "title": "委託作品｜2023",
         "description": "VTuber實況精華/Short剪輯，主要使用Effect與網路素材。"
       }
