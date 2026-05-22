@@ -174,10 +174,10 @@
   {
     "id": "graphic-ad-1",
     "title": "廣告素材設計",
-    "description": "數位廣告圖像設計，符合平台規格",
+    "description": "以符合平台規格，設計產品的數位廣告素材。",
     "detailedDescription": "針對Facebook Ads、LINE Ads等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現。",
     "category": "graphic",
-    "thumbnail": "images/ad-thumb.jpg",
+    "thumbnail": "images/graphic-ad-1.png",
     "emoji": "🎯",
     "gridGallery": {
       "columns": 2,
@@ -185,7 +185,10 @@
         "images/FB-ad-1.jpg",
         "images/FB-ad-2.jpg",
         "images/FB-ad-3.jpg",
-        "images/FB-ad-4.jpg"
+        "images/FB-ad-4.jpg",
+        "images/graphic-ecommerce-1.jpg",
+        "images/graphic-ecommerce-2.jpg",
+        "images/graphic-ecommerce-3.jpg"
       ]
     },
     "year": "2025-2026",
