@@ -115,12 +115,12 @@
         ]
       },
       {
-        "columns": 1,
+        "columns": 2,
         "images": [
           "images/banner_01.jpg",
           "images/banner_02.jpg",
-          "images/banner_03.jpg",
-          "images/banner_04.jpg",
+          "images/banner_03.png",
+          "images/banner_04.png",
           "images/banner_05.png",
           "images/banner_06.jpg",
           "images/banner_07.png"
