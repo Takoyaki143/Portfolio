@@ -144,7 +144,7 @@
     "additionalGalleries": [
       {
         "title": "節日活動設計",
-        "description": "根據季節、節日等設計活動視覺圖，以清晰明瞭的視覺呈現優惠活動，用以吸引追蹤者的目光，並增加其轉換率。",
+        "description": "根據季節、節日等設計活動視覺圖，以清晰明瞭的視覺呈現優惠活動，用以吸引追蹤者的目光，並增加其轉換率",
         "columns": 3,
         "images": [
           "images/LINE_01.jpg",
@@ -175,7 +175,7 @@
     "id": "graphic-ad-1",
     "title": "廣告素材設計",
     "description": "以符合平台規格，設計產品的數位廣告素材。",
-    "detailedDescription": "針對Facebook Ads、LINE Ads等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現。",
+    "detailedDescription": "針對Facebook Ads、LINE Ads等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現",
     "category": "graphic",
     "thumbnail": "images/graphic-ad-1.png",
     "emoji": "🎯",
@@ -198,7 +198,7 @@
     "id": "Single-Page-3D-1",
     "title": "銷售劇本",
     "description": "一頁式商品介紹設計，簡潔明瞭的展現商品優勢。",
-    "detailedDescription": "將產品濃縮成高轉換率的單頁銷售文案，結合消費者痛點與共鳴建立，打造吸睛與行動呼籲結合的銷售頁面。",
+    "detailedDescription": "將產品濃縮成高轉換率的單頁銷售文案，結合消費者痛點與共鳴建立，打造吸睛與行動呼籲結合的銷售頁面",
     "category": "graphic",
     "thumbnail": "images/Single Page-02.png",
     "emoji": "🎯",
