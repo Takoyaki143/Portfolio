@@ -206,7 +206,7 @@
   {
     "id": "graphic-ad-1",
     "title": "廣告素材設計 ⮕",
-    "description": "以符合平台規格，設計產品的數位廣告素材。",
+    "description": "以符合平台規格，設計產品的數位廣告素材",
     "detailedDescription": "針對Facebook Ads、LINE Ads等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現",
     "category": "graphic",
     "thumbnail": "images/graphic-ad-1.png",
@@ -225,5 +225,56 @@
     },
     "year": "2025-2026",
     "technologies": ["Photoshop", "Illustrator"]
+  },
+ {
+    "id": "3d-product-1",
+    "title": "插畫創作 ⮕",
+    "description": "以興趣驅動的個人插畫創作，沒有特定主題",
+    "detailedDescription": "繪圖一直是我生活裡的一部分。就像嘗試不同的設計風格一樣，我喜歡讓畫風自由變化——題材可能是日常的觀察，也可能是某個說不清楚的心情。<br>對我來說，畫畫是一種紀錄生活的方式。",
+    "category": "graphic",
+    "thumbnail": "images/Draw/thumbnail_Draw.png",
+    "emoji": "🎨",
+    "gridGallery": {
+      "columns": 3,
+      "images": [
+        "images/Draw/fluorite.png",
+        "images/Draw/wine.png",
+        "images/Draw/ham.png"
+      ]
+    },
+    "additionalGalleries": [
+      {
+        "columns": 3,
+        "images": [
+          "images/Draw/loveis_1.png",
+          "images/Draw/loveis_2.png",
+          "images/Draw/loveis_3.png",
+          "images/Draw/loveis_4.png",
+          "images/Draw/loveis_5.png",
+          "images/Draw/loveis_6.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "images/Draw/cute_dog.png",
+          "images/Draw/cute_milkcat.png",
+          "images/Draw/goust.png",
+          "images/Draw/blue.png",
+          "images/Draw/blue_2.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "images/Draw/photo_donut.png",
+          "images/Draw/photo_gohome.png",
+          "images/Draw/csp_1.png",
+          "images/Draw/csp_2.png"
+        ]
+      }
+    ],
+    "year": "2023-2026",
+    "technologies": ["CLIP STUDIO PAINT", "Photoshop", "illustrator"]
   }
 ]
