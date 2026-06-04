@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>作品詳情 - Yun</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --bg-primary: #0a0a0a;
@@ -37,7 +33,6 @@
             top: 0;
             z-index: 100;
         }
-
         nav {
             max-width: 1200px;
             margin: 0 auto;
@@ -46,476 +41,210 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
+        .logo { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
         .back-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 6px;
+            display: flex; align-items: center; gap: 0.5rem;
+            color: var(--text-secondary); text-decoration: none;
+            transition: color 0.3s; padding: 0.5rem 1rem;
+            border: 1px solid var(--border); border-radius: 6px;
         }
+        .back-btn:hover { color: var(--text-primary); background: var(--bg-hover); }
 
-        .back-btn:hover {
-            color: var(--text-primary);
-            background: var(--bg-hover);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        /* Work Header */
-        .work-header {
-            margin-bottom: 3rem;
-        }
-
-        .work-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .work-meta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
+        /* ── Skill work layout (existing) ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+        .work-header { margin-bottom: 3rem; }
+        .work-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .work-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
         .meta-tag {
-            padding: 0.5rem 1rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+            padding: 0.5rem 1rem; background: var(--bg-secondary);
+            border: 1px solid var(--border); border-radius: 6px;
+            font-size: 0.9rem; color: var(--text-secondary);
         }
-
-        .work-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            max-width: 800px;
-        }
-
-        /* Media Section */
-        .media-section {
-            margin-bottom: 3rem;
-        }
-
+        .work-description { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; max-width: 800px; }
+        .media-section { margin-bottom: 3rem; }
         .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            background: var(--bg-secondary);
-            margin-bottom: 2rem;
+            position: relative; padding-bottom: 56.25%; height: 0;
+            overflow: hidden; border-radius: 12px;
+            background: var(--bg-secondary); margin-bottom: 2rem;
         }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .image-gallery {
-            display: grid;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .gallery-image {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--bg-secondary);
-        }
-
-        .gallery-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Grid Gallery Styles */
-        .grid-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .grid-gallery.cols-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-gallery.cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .grid-gallery.cols-4 {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .image-gallery { display: grid; gap: 2rem; margin-bottom: 2rem; }
+        .gallery-image { width: 100%; border-radius: 12px; overflow: hidden; background: var(--bg-secondary); }
+        .gallery-image img { width: 100%; height: auto; display: block; }
+        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .grid-gallery.cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-gallery.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-gallery.cols-4 { grid-template-columns: repeat(4, 1fr); }
         .grid-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--bg-secondary);
-            cursor: pointer;
+            position: relative; border-radius: 12px; overflow: hidden;
+            background: var(--bg-secondary); cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
         }
+        .grid-item:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .details-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+        .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .detail-item h3 { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .detail-item p { font-size: 1.1rem; color: var(--text-primary); }
+        .tech-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tech-tag { padding: 0.4rem 0.8rem; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; color: var(--text-primary); }
 
-        .grid-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        }
-
-        .grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Lightbox Styles */
+        /* ── Lightbox (skill) ── */
         .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.95);
+            z-index: 1000; align-items: center; justify-content: center;
         }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
+        .lightbox.active { display: flex; }
+        .lightbox-content { max-width: 90%; max-height: 90%; position: relative; }
+        .lightbox-content img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 8px; }
         .lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: 2rem; right: 2rem;
+            background: rgba(255,255,255,0.1); border: none; color: white;
+            font-size: 2rem; width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; transition: background 0.3s; display: flex; align-items: center; justify-content: center;
         }
-
-        .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
+        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
         .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); border: none; color: white;
+            font-size: 2rem; width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; transition: background 0.3s; display: flex; align-items: center; justify-content: center;
         }
-
-        .lightbox-nav:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .lightbox-nav.prev {
-            left: 2rem;
-        }
-
-        .lightbox-nav.next {
-            right: 2rem;
-        }
-
+        .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-nav.prev { left: 2rem; }
+        .lightbox-nav.next { right: 2rem; }
         .lightbox-counter {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            color: white; background: rgba(0,0,0,0.5); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;
         }
 
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .carousel-wrapper {
-            overflow: hidden;
-            border-radius: 12px;
-            background: var(--bg-secondary);
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.4s ease;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            position: relative;  
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
+        /* ── Carousel ── */
+        .carousel-container { position: relative; margin-bottom: 3rem; }
+        .carousel-wrapper { overflow: hidden; border-radius: 12px; background: var(--bg-secondary); }
+        .carousel-track { display: flex; transition: transform 0.4s ease; }
+        .carousel-slide { min-width: 100%; position: relative; }
+        .carousel-slide img { width: 100%; height: auto; display: block; }
         .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transition: background 0.3s;
-            z-index: 10;
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.6); color: white; border: none;
+            width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; transition: background 0.3s; z-index: 10;
         }
+        .carousel-nav:hover { background: rgba(0,0,0,0.8); }
+        .carousel-nav.prev { left: 1rem; }
+        .carousel-nav.next { right: 1rem; }
+        .carousel-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+        .carousel-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: background 0.3s; padding: 0; }
+        .carousel-dot.active { background: var(--text-primary); }
+        .carousel-counter { text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem; }
 
-        .carousel-nav:hover {
-            background: rgba(0, 0, 0, 0.8);
+        /* ── Project layout ── */
+        .phero { width: 100%; height: 400px; position: relative; overflow: hidden; }
+        .phero-bg {
+            width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            background-color: var(--bg-hover);
+            transition: transform 0.6s ease;
         }
+        .phero:hover .phero-bg { transform: scale(1.02); }
+        .phero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); }
+        .phero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to bottom, transparent, var(--bg-primary)); }
 
-        .carousel-nav.prev {
-            left: 1rem;
-        }
+        .pcontainer { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
 
-        .carousel-nav.next {
-            right: 1rem;
-        }
+        .pintro { padding: 2.2rem 0 1.75rem; border-bottom: 1px solid var(--border); }
+        .pmeta { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .ptag { display: inline-block; padding: 0.22rem 0.65rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.78rem; color: var(--text-secondary); background: var(--bg-secondary); }
+        .ptag.hi { border-color: #2a3d55; color: #7eb8f7; background: #0c1a28; }
+        .ptitle { font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 0.65rem; }
+        .psub { font-size: 0.95rem; color: var(--text-secondary); max-width: 580px; line-height: 1.75; }
+        .pstats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 1.5rem; }
+        .pstat { background: var(--bg-secondary); padding: 1rem 1.2rem; }
+        .pstat-val { font-size: 1.35rem; font-weight: 600; color: var(--text-primary); line-height: 1; }
+        .pstat-lbl { font-size: 0.72rem; color: #505050; margin-top: 0.3rem; }
 
-        .carousel-nav:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
+        .ptwocol { padding: 1.75rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 140px 1fr; gap: 2rem; align-items: start; }
+        .ptwocol-lbl { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #505050; padding-top: 0.15rem; }
+        .ptwocol-txt { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.85; }
+        .ptwocol-txt strong { color: var(--text-primary); font-weight: 500; }
+        .ptools { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .ptool { padding: 0.25rem 0.7rem; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; font-size: 0.8rem; color: var(--text-secondary); }
 
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
+        .psec { display: flex; align-items: center; gap: 0.75rem; padding: 2rem 0 1.5rem; border-top: 1px solid var(--border); }
+        .psec-lbl { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #505050; white-space: nowrap; }
+        .psec-line { flex: 1; height: 1px; background: var(--border); }
 
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border);
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-            padding: 0;
-        }
+        .psubsec { display: flex; align-items: center; gap: 0.55rem; margin: 2rem 0 0.9rem; }
+        .psubsec-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--bg-hover); border: 1px solid #3a3a3a; flex-shrink: 0; }
+        .psubsec-lbl { font-size: 0.75rem; color: #505050; letter-spacing: 0.08em; }
+        .psubsec-note { font-size: 0.7rem; color: #383838; margin-left: 0.2rem; }
 
-        .carousel-dot.active {
-            background: var(--text-primary);
-        }
+        /* Scroll preview */
+        .scroll-preview { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 0.5rem; }
+        .sp-bar { background: var(--bg-hover); padding: 0.55rem 0.9rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+        .sp-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+        .sp-url { flex: 1; background: var(--bg-secondary); border-radius: 3px; padding: 0.18rem 0.7rem; font-size: 0.72rem; color: #505050; margin: 0 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sp-body { height: 460px; overflow-y: auto; position: relative; }
+        .sp-body::-webkit-scrollbar { width: 4px; }
+        .sp-body::-webkit-scrollbar-track { background: var(--bg-hover); }
+        .sp-body::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 2px; }
+        .sp-body img { width: 100%; display: block; }
+        .sp-hint { position: sticky; bottom: 0; left: 0; right: 0; padding: 0.45rem; text-align: center; background: linear-gradient(to bottom, transparent, rgba(8,8,8,0.75)); font-size: 0.72rem; color: #505050; pointer-events: none; transition: opacity 0.3s; }
 
-        .carousel-counter {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
+        /* Project grids */
+        .proj-g2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 0.5rem; }
+        .proj-g2 .proj-gi { height: 240px; }
+        .proj-g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem; margin-bottom: 0.5rem; }
+        .proj-g3 .proj-gi { height: 165px; }
+        .proj-gsq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem; margin-bottom: 0.5rem; }
+        .proj-gsq .proj-gi { aspect-ratio: 1 / 1; }
+        .proj-gi { border-radius: 7px; overflow: hidden; cursor: zoom-in; transition: opacity 0.22s; }
+        .proj-gi:hover { opacity: 0.78; }
+        .proj-gi img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* Details Section */
-        .details-section {
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-        }
+        /* Copy cards */
+        .copy-card { border-left: 2px solid var(--border); padding: 0.85rem 1.1rem; background: var(--bg-secondary); border-radius: 0 7px 7px 0; margin-bottom: 0.65rem; }
+        .copy-type { font-size: 0.7rem; color: #505050; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+        .copy-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+        .copy-text em { color: #a0b8d0; font-style: normal; }
 
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
+        /* Project lightbox */
+        .proj-lb { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; }
+        .proj-lb.on { display: flex; }
+        .proj-lb img { max-width: 90%; max-height: 88vh; object-fit: contain; border-radius: 6px; cursor: default; }
+        .proj-lb-x { position: absolute; top: 1.2rem; right: 1.4rem; background: rgba(255,255,255,0.08); border: none; color: #aaa; font-size: 1.4rem; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .proj-lb-x:hover { background: rgba(255,255,255,0.15); color: #fff; }
 
-        .detail-item h3 {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
+        /* Shared states */
+        .loading { text-align: center; padding: 4rem 2rem; color: var(--text-secondary); }
+        .error { text-align: center; padding: 4rem 2rem; }
+        .error h2 { color: var(--text-primary); margin-bottom: 1rem; }
+        .error p { color: var(--text-secondary); margin-bottom: 2rem; }
+        .error a { display: inline-block; padding: 0.75rem 1.5rem; background: var(--accent); color: white; text-decoration: none; border-radius: 6px; transition: background 0.3s; }
+        .error a:hover { background: var(--accent-hover); }
 
-        .detail-item p {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-
-        .tech-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tech-tag {
-            padding: 0.4rem 0.8rem;
-            background: var(--bg-hover);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-        }
-
-        /* Loading State */
-        .loading {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-secondary);
-        }
-
-        .error {
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .error h2 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .error p {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .error a {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-
-        .error a:hover {
-            background: var(--accent-hover);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border);
-            margin-top: 4rem;
-        }
+        footer { text-align: center; padding: 2rem; color: var(--text-secondary); border-top: 1px solid var(--border); margin-top: 4rem; }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-image {
-                height: 400px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .work-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
+            .phero { height: 250px; }
+            .ptitle { font-size: 1.5rem; }
+            .ptwocol { grid-template-columns: 1fr; }
+            .pstats { grid-template-columns: 1fr; }
+            .proj-g2 { grid-template-columns: 1fr; }
+            .proj-g2 .proj-gi { height: 200px; }
+            .proj-g3 { grid-template-columns: repeat(2, 1fr); }
+            .proj-gsq { grid-template-columns: repeat(2, 1fr); }
             .grid-gallery.cols-2,
             .grid-gallery.cols-3,
-            .grid-gallery.cols-4 {
-                grid-template-columns: 1fr;
-            }
-
-            .lightbox-close,
-            .lightbox-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
-
-            .lightbox-close {
-                top: 1rem;
-                right: 1rem;
-            }
-
-            .lightbox-nav.prev {
-                left: 1rem;
-            }
-
-            .lightbox-nav.next {
-                right: 1rem;
-            }
+            .grid-gallery.cols-4 { grid-template-columns: 1fr; }
+            .lightbox-close, .lightbox-nav { width: 40px; height: 40px; font-size: 1.5rem; }
+            .lightbox-close { top: 1rem; right: 1rem; }
+            .lightbox-nav.prev { left: 1rem; }
+            .lightbox-nav.next { right: 1rem; }
         }
     </style>
 </head>
@@ -531,9 +260,7 @@
     </header>
 
     <div id="content">
-        <div class="loading">
-            <p>載入中...</p>
-        </div>
+        <div class="loading"><p>載入中...</p></div>
     </div>
 
     <footer>
@@ -541,7 +268,6 @@
     </footer>
 
     <script>
-        // Get work ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const workId = urlParams.get('id');
 
@@ -550,12 +276,7 @@
                 const response = await fetch('works.json');
                 const works = await response.json();
                 const work = works.find(w => w.id === workId);
-
-                if (!work) {
-                    showError('找不到該作品');
-                    return;
-                }
-
+                if (!work) { showError('找不到該作品'); return; }
                 displayWork(work);
             } catch (error) {
                 console.error('Error loading work:', error);
@@ -563,123 +284,241 @@
             }
         }
 
+        /* ── Dispatch ── */
         function displayWork(work) {
-            document.title = `${work.title} - Skat`;
-
-            const contentDiv = document.getElementById('content');
-            
-            // Build media section
-            let mediaHTML = '';
-            
-// Videos - support multiple videos with descriptions
-if (work.videos && work.videos.length > 0) {
-    work.videos.forEach(videoData => {
-        const videoId = extractVideoId(videoData.url);
-        if (videoId) {
-            mediaHTML += `
-                ${videoData.title ? `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${videoData.title}</h3>` : ''}
-                ${videoData.description ? `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${videoData.description}</p>` : ''}
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/${videoId}" 
-                            allowfullscreen></iframe>
-                </div>
-            `;
+            if (work.type === 'project') {
+                displayProjectWork(work);
+            } else {
+                displaySkillWork(work);
+            }
         }
-    });
-} else if (work.video) {
-    // Fallback for old single video format
-    const videoId = extractVideoId(work.video);
-    if (videoId) {
-        mediaHTML += `
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/${videoId}" 
-                        allowfullscreen></iframe>
-            </div>
-        `;
-    }
-}
 
-            // Images - support carousel, grid, and gridGallery
-            if (work.carouselImages && work.carouselImages.length > 0) {
-                mediaHTML += buildCarousel(work.carouselImages, 'carousel-1');
+        /* ══════════════════════════════
+           PROJECT layout
+        ══════════════════════════════ */
+        function displayProjectWork(work) {
+            document.title = `${work.title} - Skat`;
+            const contentDiv = document.getElementById('content');
+
+            const heroStyle = work.heroImage
+                ? `background-image: url('${work.heroImage}')`
+                : 'background: linear-gradient(160deg,#0d1b2a 0%,#1b2d42 55%,#0e2233 100%)';
+
+            const tagsHTML = (work.tags || []).map((t, i) =>
+                `<span class="ptag${i === 0 ? ' hi' : ''}">${t}</span>`
+            ).join('');
+
+            const statsHTML = (work.stats || []).map(s =>
+                `<div class="pstat"><div class="pstat-val">${s.value}</div><div class="pstat-lbl">${s.label}</div></div>`
+            ).join('');
+
+            const toolsHTML = (work.technologies || []).map(t =>
+                `<span class="ptool">${t}</span>`
+            ).join('');
+
+            const sectionsHTML = (work.projectSections || []).map(buildProjectSection).join('');
+
+            contentDiv.innerHTML = `
+                <div class="phero">
+                    <div class="phero-bg" style="${heroStyle}"></div>
+                    <div class="phero-overlay"></div>
+                    <div class="phero-fade"></div>
+                </div>
+                <div class="pcontainer">
+                    <div class="pintro">
+                        <div class="pmeta">${tagsHTML}</div>
+                        <h1 class="ptitle">${work.title}</h1>
+                        <p class="psub">${work.detailedDescription || work.description}</p>
+                        ${work.stats ? `<div class="pstats">${statsHTML}</div>` : ''}
+                    </div>
+                    ${work.overview ? `
+                        <div class="ptwocol">
+                            <div class="ptwocol-lbl">Overview</div>
+                            <div class="ptwocol-txt">${work.overview}</div>
+                        </div>` : ''}
+                    ${work.technologies && work.technologies.length ? `
+                        <div class="ptwocol" style="border-bottom:none">
+                            <div class="ptwocol-lbl">Tools</div>
+                            <div class="ptools">${toolsHTML}</div>
+                        </div>` : ''}
+                    <div class="psec">
+                        <span class="psec-lbl">Visual</span>
+                        <div class="psec-line"></div>
+                    </div>
+                    ${sectionsHTML}
+                    <div style="height:3rem"></div>
+                </div>`;
+
+            initProjectLightbox();
+
+            document.querySelectorAll('.sp-body').forEach(sp => {
+                const hint = sp.querySelector('.sp-hint');
+                sp.addEventListener('scroll', () => {
+                    if (hint) hint.style.opacity = sp.scrollTop > 40 ? '0' : '1';
+                });
+            });
+        }
+
+        function buildProjectSection(sec) {
+            const sub = `
+                <div class="psubsec">
+                    <div class="psubsec-dot"></div>
+                    <span class="psubsec-lbl">${sec.label}</span>
+                    ${sec.note ? `<span class="psubsec-note">${sec.note}</span>` : ''}
+                </div>`;
+
+            switch (sec.type) {
+                case 'scrollPreview': {
+                    const fname = sec.image ? sec.image.split('/').pop() : '';
+                    const inner = sec.image
+                        ? `<img src="${sec.image}" alt="${sec.label}">`
+                        : `<div style="height:400px;background:var(--bg-hover)"></div>`;
+                    return sub + `
+                        <div class="scroll-preview">
+                            <div class="sp-bar">
+                                <div class="sp-dot" style="background:#c0453a"></div>
+                                <div class="sp-dot" style="background:#b07830"></div>
+                                <div class="sp-dot" style="background:#3a8040"></div>
+                                <div class="sp-url">${fname}</div>
+                            </div>
+                            <div class="sp-body">
+                                ${inner}
+                                <div class="sp-hint">↓ 向下捲動</div>
+                            </div>
+                        </div>`;
+                }
+                case 'grid2': {
+                    const imgs = (sec.images || []).map((src, i) =>
+                        `<div class="proj-gi" data-src="${src}"><img src="${src}" alt="${sec.label} ${i+1}" loading="lazy"></div>`
+                    ).join('');
+                    return sub + `<div class="proj-g2">${imgs}</div>`;
+                }
+                case 'grid3': {
+                    const imgs = (sec.images || []).map((src, i) =>
+                        `<div class="proj-gi" data-src="${src}"><img src="${src}" alt="${sec.label} ${i+1}" loading="lazy"></div>`
+                    ).join('');
+                    return sub + `<div class="proj-g3">${imgs}</div>`;
+                }
+                case 'gridSquare': {
+                    const imgs = (sec.images || []).map((src, i) =>
+                        `<div class="proj-gi" data-src="${src}"><img src="${src}" alt="${sec.label} ${i+1}" loading="lazy"></div>`
+                    ).join('');
+                    return sub + `<div class="proj-gsq">${imgs}</div>`;
+                }
+                case 'copy': {
+                    const cards = (sec.items || []).map(item => `
+                        <div class="copy-card">
+                            <div class="copy-type">${item.type}</div>
+                            <div class="copy-text">
+                                ${item.headline ? `<em>${item.headline}</em><br>` : ''}
+                                ${item.body || ''}
+                            </div>
+                        </div>`).join('');
+                    return sub + cards;
+                }
+                default: return '';
+            }
+        }
+
+        function initProjectLightbox() {
+            let lb = document.getElementById('proj-lb');
+            if (!lb) {
+                lb = document.createElement('div');
+                lb.id = 'proj-lb';
+                lb.className = 'proj-lb';
+                lb.innerHTML = `<button class="proj-lb-x" id="proj-lb-x">×</button><img src="" alt="" id="proj-lb-img">`;
+                document.body.appendChild(lb);
+                lb.addEventListener('click', () => lb.classList.remove('on'));
+                document.getElementById('proj-lb-x').addEventListener('click', e => {
+                    e.stopPropagation();
+                    lb.classList.remove('on');
+                });
+                document.addEventListener('keydown', e => {
+                    if (e.key === 'Escape') lb.classList.remove('on');
+                });
+            }
+            document.querySelectorAll('.proj-gi').forEach(el => {
+                el.addEventListener('click', () => {
+                    document.getElementById('proj-lb-img').src = el.dataset.src;
+                    lb.classList.add('on');
+                });
+            });
+        }
+
+        /* ══════════════════════════════
+           SKILL layout (original)
+        ══════════════════════════════ */
+        function displaySkillWork(work) {
+            document.title = `${work.title} - Skat`;
+            const contentDiv = document.getElementById('content');
+            let mediaHTML = '';
+
+            // Videos
+            if (work.videos && work.videos.length > 0) {
+                work.videos.forEach(videoData => {
+                    const videoId = extractVideoId(videoData.url);
+                    if (videoId) {
+                        mediaHTML += `
+                            ${videoData.title ? `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${videoData.title}</h3>` : ''}
+                            ${videoData.description ? `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${videoData.description}</p>` : ''}
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                            </div>`;
+                    }
+                });
+            } else if (work.video) {
+                const videoId = extractVideoId(work.video);
+                if (videoId) {
+                    mediaHTML += `<div class="video-container"><iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe></div>`;
+                }
             }
 
-           if (work.gridGallery && work.gridGallery.images && work.gridGallery.images.length > 0) {
-    mediaHTML += buildGridGallery(work.gridGallery);
-}
+            if (work.carouselImages && work.carouselImages.length > 0)
+                mediaHTML += buildCarousel(work.carouselImages, 'carousel-1');
 
-// Support multiple grid galleries
-if (work.additionalGalleries && work.additionalGalleries.length > 0) {
-    work.additionalGalleries.forEach(gallery => {
-        if (gallery.title) {
-            mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${gallery.title}</h3>`;
-        }
-        if (gallery.description) {
-            mediaHTML += `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${gallery.description}</p>`;
-        }
-        mediaHTML += buildGridGallery(gallery);
-    });
-}
+            if (work.gridGallery && work.gridGallery.images && work.gridGallery.images.length > 0)
+                mediaHTML += buildGridGallery(work.gridGallery);
+
+            if (work.additionalGalleries && work.additionalGalleries.length > 0) {
+                work.additionalGalleries.forEach(gallery => {
+                    if (gallery.title) mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${gallery.title}</h3>`;
+                    if (gallery.description) mediaHTML += `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${gallery.description}</p>`;
+                    mediaHTML += buildGridGallery(gallery);
+                });
+            }
 
             if (work.images && work.images.length > 0) {
                 mediaHTML += '<div class="image-gallery">';
                 work.images.forEach(img => {
-                    mediaHTML += `
-                        <div class="gallery-image">
-                            <img src="${img}" alt="${work.title}">
-                        </div>
-                    `;
+                    mediaHTML += `<div class="gallery-image"><img src="${img}" alt="${work.title}"></div>`;
                 });
                 mediaHTML += '</div>';
             }
 
-            // Support multiple carousels
             if (work.additionalCarousels && work.additionalCarousels.length > 0) {
                 work.additionalCarousels.forEach((carousel, index) => {
-                    if (carousel.title) {
-                        mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${carousel.title}</h3>`;
-                    }
+                    if (carousel.title) mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${carousel.title}</h3>`;
                     mediaHTML += buildCarousel(carousel.images, `carousel-${index + 2}`);
                 });
             }
 
-            // Build tech tags
             let techTagsHTML = '';
             if (work.technologies && work.technologies.length > 0) {
                 techTagsHTML = '<div class="tech-tags">';
-                work.technologies.forEach(tech => {
-                    techTagsHTML += `<span class="tech-tag">${tech}</span>`;
-                });
+                work.technologies.forEach(tech => { techTagsHTML += `<span class="tech-tag">${tech}</span>`; });
                 techTagsHTML += '</div>';
             }
 
-            // Build details section
             let detailsHTML = '';
             if (work.client || work.year || work.technologies) {
                 detailsHTML = `
                     <div class="details-section">
                         <div class="details-grid">
-                            ${work.client ? `
-                                <div class="detail-item">
-                                    <h3>客戶</h3>
-                                    <p>${work.client}</p>
-                                </div>
-                            ` : ''}
-                            ${work.year ? `
-                                <div class="detail-item">
-                                    <h3>年份</h3>
-                                    <p>${work.year}</p>
-                                </div>
-                            ` : ''}
-                            ${work.technologies && work.technologies.length > 0 ? `
-                                <div class="detail-item">
-                                    <h3>使用技術</h3>
-                                    ${techTagsHTML}
-                                </div>
-                            ` : ''}
+                            ${work.client ? `<div class="detail-item"><h3>客戶</h3><p>${work.client}</p></div>` : ''}
+                            ${work.year ? `<div class="detail-item"><h3>年份</h3><p>${work.year}</p></div>` : ''}
+                            ${work.technologies && work.technologies.length > 0 ? `<div class="detail-item"><h3>使用技術</h3>${techTagsHTML}</div>` : ''}
                         </div>
-                    </div>
-                `;
+                    </div>`;
             }
 
             contentDiv.innerHTML = `
@@ -691,61 +530,34 @@ if (work.additionalGalleries && work.additionalGalleries.length > 0) {
                         </div>
                         <p class="work-description">${work.detailedDescription || work.description}</p>
                     </div>
-                    
-                    <div class="media-section">
-                        ${mediaHTML}
-                    </div>
-
+                    <div class="media-section">${mediaHTML}</div>
                     ${detailsHTML}
-                </div>
-            `;
+                </div>`;
 
-            // Initialize all carousels if present
             const carousels = document.querySelectorAll('.carousel-container');
-            if (carousels.length > 0) {
-                carousels.forEach(carousel => initCarousel(carousel));
-            }
-
-            // Initialize lightbox for grid galleries
-            const gridGalleries = document.querySelectorAll('.grid-gallery');
-            if (gridGalleries.length > 0) {
-                initLightbox();
-            }
+            if (carousels.length > 0) carousels.forEach(c => initCarousel(c));
+            if (document.querySelectorAll('.grid-gallery').length > 0) initLightbox();
         }
 
+        /* ── Shared helpers ── */
         function buildGridGallery(galleryData) {
             const cols = galleryData.columns || 3;
-            const colsClass = cols > 0 ? `cols-${cols}` : '';
-            
-            let gridHTML = `<div class="grid-gallery ${colsClass}" data-gallery="grid">`;
-            
+            let gridHTML = `<div class="grid-gallery cols-${cols}" data-gallery="grid">`;
             galleryData.images.forEach((img, index) => {
-                gridHTML += `
-                    <div class="grid-item" data-index="${index}">
-                        <img src="${img}" alt="Gallery image ${index + 1}">
-                    </div>
-                `;
+                gridHTML += `<div class="grid-item" data-index="${index}"><img src="${img}" alt="Gallery image ${index + 1}"></div>`;
             });
-            
-            gridHTML += '</div>';
-            return gridHTML;
+            return gridHTML + '</div>';
         }
 
         function initLightbox() {
-            // Create lightbox element
             const lightbox = document.createElement('div');
             lightbox.className = 'lightbox';
             lightbox.innerHTML = `
                 <button class="lightbox-close">×</button>
                 <button class="lightbox-nav prev">‹</button>
                 <button class="lightbox-nav next">›</button>
-                <div class="lightbox-content">
-                    <img src="" alt="">
-                </div>
-                <div class="lightbox-counter">
-                    <span class="current">1</span> / <span class="total">1</span>
-                </div>
-            `;
+                <div class="lightbox-content"><img src="" alt=""></div>
+                <div class="lightbox-counter"><span class="current">1</span> / <span class="total">1</span></div>`;
             document.body.appendChild(lightbox);
 
             const lightboxImg = lightbox.querySelector('.lightbox-content img');
@@ -754,106 +566,55 @@ if (work.additionalGalleries && work.additionalGalleries.length > 0) {
             const nextBtn = lightbox.querySelector('.lightbox-nav.next');
             const currentEl = lightbox.querySelector('.current');
             const totalEl = lightbox.querySelector('.total');
+            let currentGallery = [], currentIndex = 0;
 
-            let currentGallery = [];
-            let currentIndex = 0;
-
-            // Open lightbox
             document.querySelectorAll('.grid-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const gallery = item.closest('.grid-gallery');
                     const items = Array.from(gallery.querySelectorAll('.grid-item'));
-                    
                     currentGallery = items.map(i => i.querySelector('img').src);
                     currentIndex = parseInt(item.dataset.index);
-                    
                     showImage();
                     lightbox.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 });
             });
 
-            // Close lightbox
+            const closeLightbox = () => { lightbox.classList.remove('active'); document.body.style.overflow = ''; };
             closeBtn.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) closeLightbox();
-            });
-
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            // Navigation
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    showImage();
-                }
-            });
-
-            nextBtn.addEventListener('click', () => {
-                if (currentIndex < currentGallery.length - 1) {
-                    currentIndex++;
-                    showImage();
-                }
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
+            lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+            prevBtn.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; showImage(); } });
+            nextBtn.addEventListener('click', () => { if (currentIndex < currentGallery.length - 1) { currentIndex++; showImage(); } });
+            document.addEventListener('keydown', e => {
                 if (!lightbox.classList.contains('active')) return;
-                
                 if (e.key === 'Escape') closeLightbox();
-                if (e.key === 'ArrowLeft' && currentIndex > 0) {
-                    currentIndex--;
-                    showImage();
-                }
-                if (e.key === 'ArrowRight' && currentIndex < currentGallery.length - 1) {
-                    currentIndex++;
-                    showImage();
-                }
+                if (e.key === 'ArrowLeft' && currentIndex > 0) { currentIndex--; showImage(); }
+                if (e.key === 'ArrowRight' && currentIndex < currentGallery.length - 1) { currentIndex++; showImage(); }
             });
 
             function showImage() {
                 lightboxImg.src = currentGallery[currentIndex];
                 currentEl.textContent = currentIndex + 1;
                 totalEl.textContent = currentGallery.length;
-                
                 prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
                 nextBtn.style.display = currentIndex === currentGallery.length - 1 ? 'none' : 'flex';
             }
         }
 
         function buildCarousel(images, carouselId = 'carousel-1') {
-            let slidesHTML = '';
-            let dotsHTML = '';
-            
+            let slidesHTML = '', dotsHTML = '';
             images.forEach((img, index) => {
-                slidesHTML += `
-                    <div class="carousel-slide">
-                        <img src="${img}" alt="Slide ${index + 1}">
-                    </div>
-                `;
+                slidesHTML += `<div class="carousel-slide"><img src="${img}" alt="Slide ${index + 1}"></div>`;
                 dotsHTML += `<button class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></button>`;
             });
-
             return `
                 <div class="carousel-container" data-carousel-id="${carouselId}">
-                    <div class="carousel-wrapper">
-                        <div class="carousel-track">
-                            ${slidesHTML}
-                        </div>
-                    </div>
+                    <div class="carousel-wrapper"><div class="carousel-track">${slidesHTML}</div></div>
                     <button class="carousel-nav prev" aria-label="Previous">‹</button>
                     <button class="carousel-nav next" aria-label="Next">›</button>
-                    <div class="carousel-dots">
-                        ${dotsHTML}
-                    </div>
-                    <div class="carousel-counter">
-                        <span class="current-slide">1</span> / <span class="total-slides">${images.length}</span>
-                    </div>
-                </div>
-            `;
+                    <div class="carousel-dots">${dotsHTML}</div>
+                    <div class="carousel-counter"><span class="current-slide">1</span> / <span class="total-slides">${images.length}</span></div>
+                </div>`;
         }
 
         function initCarousel(carouselContainer) {
@@ -863,119 +624,49 @@ if (work.additionalGalleries && work.additionalGalleries.length > 0) {
             const nextBtn = carouselContainer.querySelector('.carousel-nav.next');
             const dots = Array.from(carouselContainer.querySelectorAll('.carousel-dot'));
             const currentSlideEl = carouselContainer.querySelector('.current-slide');
-            
             let currentIndex = 0;
 
             function updateCarousel() {
                 const slideWidth = slides[0].getBoundingClientRect().width;
                 track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-                
-                // Update dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-                
-                // Update counter
+                dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex));
                 currentSlideEl.textContent = currentIndex + 1;
-                
-                // Update button states
                 prevBtn.disabled = currentIndex === 0;
                 nextBtn.disabled = currentIndex === slides.length - 1;
             }
 
-            // Next button
-            nextBtn.addEventListener('click', () => {
-                if (currentIndex < slides.length - 1) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-            });
+            nextBtn.addEventListener('click', () => { if (currentIndex < slides.length - 1) { currentIndex++; updateCarousel(); } });
+            prevBtn.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; updateCarousel(); } });
+            dots.forEach((dot, index) => dot.addEventListener('click', () => { currentIndex = index; updateCarousel(); }));
 
-            // Previous button
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
-            });
-
-            // Dots navigation
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateCarousel();
-                });
-            });
-
-            // Touch swipe support
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            track.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            track.addEventListener('touchend', (e) => {
+            let touchStartX = 0, touchEndX = 0;
+            track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+            track.addEventListener('touchend', e => {
                 touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
+                if (touchEndX < touchStartX - 50 && currentIndex < slides.length - 1) { currentIndex++; updateCarousel(); }
+                if (touchEndX > touchStartX + 50 && currentIndex > 0) { currentIndex--; updateCarousel(); }
             });
 
-            function handleSwipe() {
-                if (touchEndX < touchStartX - 50 && currentIndex < slides.length - 1) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-                if (touchEndX > touchStartX + 50 && currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
-            }
-
-            // Initial state
             updateCarousel();
         }
 
         function extractVideoId(url) {
-            // YouTube URL patterns
-            const patterns = [
-                /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/,
-                /youtube\.com\/embed\/([^&\s]+)/
-            ];
-            
-            for (const pattern of patterns) {
-                const match = url.match(pattern);
-                if (match) return match[1];
-            }
-            
+            const patterns = [/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/, /youtube\.com\/embed\/([^&\s]+)/];
+            for (const pattern of patterns) { const match = url.match(pattern); if (match) return match[1]; }
             return null;
         }
 
         function getCategoryName(category) {
-            const names = {
-                'video': '影片',
-                '3d': '3D',
-                'graphic': '平面設計'
-            };
-            return names[category] || category;
+            return { 'video': '影片', '3d': '3D', 'graphic': '平面設計' }[category] || category;
         }
 
         function showError(message) {
-            const contentDiv = document.getElementById('content');
-            contentDiv.innerHTML = `
-                <div class="error">
-                    <h2>糟糕！</h2>
-                    <p>${message}</p>
-                    <a href="index.html">返回首頁</a>
-                </div>
-            `;
+            document.getElementById('content').innerHTML = `
+                <div class="error"><h2>糟糕！</h2><p>${message}</p><a href="index.html">返回首頁</a></div>`;
         }
 
-        // Load work on page load
-        if (workId) {
-            loadWorkDetail();
-        } else {
-            showError('未指定作品 ID');
-        }
+        if (workId) loadWorkDetail();
+        else showError('未指定作品 ID');
     </script>
 </body>
 </html>
