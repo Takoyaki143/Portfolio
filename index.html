@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yun's Portfolio - Graphic Design</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --bg-primary: #0a0a0a;
@@ -37,7 +33,6 @@
             top: 0;
             z-index: 100;
         }
-
         nav {
             max-width: 1200px;
             margin: 0 auto;
@@ -46,289 +41,91 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--text-primary);
-        }
+        .logo { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
 
         /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            text-align: center;
-            padding: 0;
-            margin-bottom: 4rem;
-        }
-
+        /* Hero */
+        .hero { position: relative; text-align: center; padding: 0; margin-bottom: 4rem; }
         .hero-image {
-            width: 100%;
-            height: 500px;
-            background-size: cover;
-            background-position: center;
-            background-image: url('images/Portfolio_info_images/index_banner.jpg'); /* 替換成你的圖片網址 */
+            width: 100%; height: 500px;
+            background-size: cover; background-position: center;
+            background-image: url('images/Portfolio_info_images/index_banner.jpg');
             position: relative;
         }
+        .hero-image::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+        .hero-image::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 150px; background: linear-gradient(to bottom, transparent, var(--bg-primary)); }
+        .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 100%; padding: 0 2rem; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+        .hero p { font-size: 1.25rem; color: #e8e8e8; max-width: 600px; margin: 0 auto; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
 
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* 黑色半透明 */
-        }
+        /* Section header */
+        .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+        .section-label { font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.15em; text-transform: uppercase; white-space: nowrap; }
+        .section-line { flex: 1; height: 1px; background: var(--border); }
 
-        .hero-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, var(--bg-primary)); /* 底部淡出漸層 */
+        /* Project Cards */
+        .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .project-card {
+            background: var(--bg-secondary); border-radius: 12px; overflow: hidden;
+            border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none; color: inherit; display: block;
         }
-
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            width: 100%;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: white;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: #e8e8e8;
-            max-width: 600px;
-            margin: 0 auto;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-        }
+        .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
+        .project-card-image { width: 100%; height: 210px; background-size: cover; background-position: center; background-color: var(--bg-hover); }
+        .project-card-content { padding: 1.25rem 1.5rem 1.5rem; }
+        .project-card-content h3 { font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .project-card-content p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
+        .project-card-tag { display: inline-block; margin-top: 1rem; padding: 0.25rem 0.7rem; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; font-size: 0.78rem; color: var(--text-secondary); }
 
         /* Category Filter */
-        .category-filter {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .category-btn {
-            padding: 0.5rem 1.25rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1rem;
-        }
-
-        .category-btn:hover {
-            background: var(--bg-hover);
-            color: var(--text-primary);
-        }
-
-        .category-btn.active {
-            background: #9a9a9a;
-            color: #151515;
-            border-color: #9a9a9a;
-        }
+        .category-filter { display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem; flex-wrap: wrap; }
+        .category-btn { padding: 0.5rem 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-secondary); border-radius: 8px; cursor: pointer; transition: all 0.3s; font-size: 1rem; }
+        .category-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .category-btn.active { background: #9a9a9a; color: #151515; border-color: #9a9a9a; }
 
         /* Work Grid */
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .work-item { background: var(--bg-secondary); border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--border); cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .work-item:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+        .work-thumbnail { width: 100%; height: 250px; background-size: cover; background-position: center; background-color: var(--bg-hover); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 3rem; }
+        .work-info { padding: 1.5rem; }
+        .work-info h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
+        .work-info p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        .work-item {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--border);
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
+        /* About */
+        .about-content { max-width: 800px; margin: 0 auto; }
+        .about-content h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        .about-content p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .skills { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+        .skill-tag { padding: 0.5rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; font-size: 0.9rem; color: var(--text-secondary); }
 
-        .work-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        }
+        /* Contact */
+        .contact-content { max-width: 600px; margin: 0 auto; text-align: center; }
+        .contact-content h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+        .contact-link { padding: 1rem 2rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); text-decoration: none; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .contact-link:hover { background: var(--accent); border-color: var(--accent); }
 
-        .work-thumbnail {
-            width: 100%;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            background-color: var(--bg-hover);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 3rem;
-        }
+        .hidden { display: none; }
 
-        .work-info {
-            padding: 1.5rem;
-        }
-
-        .work-info h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-        }
-
-        .work-info p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .skills {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .skill-tag {
-            padding: 0.5rem 1rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .contact-link {
-            padding: 1rem 2rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .contact-link:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
-
-        /* Hidden class */
-        .hidden {
-            display: none;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border);
-            margin-top: 4rem;
-        }
+        footer { text-align: center; padding: 2rem; color: var(--text-secondary); border-top: 1px solid var(--border); margin-top: 4rem; }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
-            .hero-image {
-                height: 400px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .work-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
+            .hero-image { height: 400px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .work-grid { grid-template-columns: 1fr; }
+            .nav-links { gap: 1rem; }
+            .project-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -347,6 +144,7 @@
     <!-- Home Section -->
     <section id="home" class="page-section">
         <div class="container">
+            <!-- Hero -->
             <div class="hero">
                 <div class="hero-image">
                     <div class="hero-content">
@@ -356,16 +154,26 @@
                 </div>
             </div>
 
+            <!-- Project Section -->
+            <div class="section-header">
+                <span class="section-label">Project</span>
+                <div class="section-line"></div>
+            </div>
+            <!-- 動態從 works.json 讀取 type === "project" 的項目 -->
+            <div class="project-grid" id="projectGrid"></div>
+
+            <!-- Skill Section -->
+            <div class="section-header" style="margin-top: 3rem;">
+                <span class="section-label">Skill</span>
+                <div class="section-line"></div>
+            </div>
             <div class="category-filter">
                 <button class="category-btn active" data-category="all">全部作品</button>
                 <button class="category-btn" data-category="video">影片</button>
                 <button class="category-btn" data-category="3d">3D</button>
                 <button class="category-btn" data-category="graphic">視覺設計</button>
             </div>
-
-            <div class="work-grid" id="workGrid">
-                <!-- 作品會從 works.json 自動載入 -->
-            </div>
+            <div class="work-grid" id="workGrid"></div>
         </div>
     </section>
 
@@ -374,12 +182,11 @@
         <div class="container">
             <div class="about-content">
                 <h2>關於我</h2>
-                <p>嗨！我是Yun!<p>
-                <p>我擁有五年 3C 電商領域的實務經驗，專注於視覺設計。<p>
+                <p>嗨！我是Yun!</p>
+                <p>我擁有五年 3C 電商領域的實務經驗，專注於視覺設計。</p>
                 <p>其工作經驗涵蓋電商品牌視覺設計、品牌網站管理、廣告素材設計以及 3D 產品建模渲染；同時，熟練使用 Adobe Creative Suite（Illustrator、Photoshop、Premiere、After Effects）以及 Blender，並將 AI 工具整合至工作流程中，提升設計效率與品質。</p>
-                <p>同時，我也在行銷工作中學習，獨立投放廣告、分析成效，隨時做出廣告素材的調整與控管。
+                <p>同時，我也在行銷工作中學習，獨立投放廣告、分析成效，隨時做出廣告素材的調整與控管。</p>
                 <p>我致力於為品牌打造專業、精緻，或是具有親和力的視覺形象，透過設計提升品牌價值與用戶體驗。</p>
-
                 <h3 style="margin-top: 3rem; margin-bottom: 1rem;">專業技能</h3>
                 <div class="skills">
                     <span class="skill-tag">Adobe Illustrator</span>
@@ -402,7 +209,6 @@
             <div class="contact-content">
                 <h2>聯絡方式</h2>
                 <p style="color: var(--text-secondary); margin-bottom: 2rem;">歡迎與我聯繫討論合作機會</p>
-                
                 <div class="contact-links">
                     <a href="mailto:yueying314@gmail.com" class="contact-link">
                         <span>📧</span>
@@ -418,136 +224,109 @@
     </footer>
 
     <script>
-        // Load works from JSON
         let allWorks = [];
 
         async function loadWorks() {
             try {
                 const response = await fetch('works.json');
                 allWorks = await response.json();
-                displayWorks('all');
             } catch (error) {
                 console.error('Error loading works:', error);
-                // 如果 JSON 載入失敗，顯示範例資料
-                allWorks = [
-                    {
-                        id: "video-edit-1",
-                        title: "影片剪輯",
-                        description: "產品廣告、品牌形象、MAD 等影片剪輯作品",
-                        category: "video",
-                        thumbnail: "",
-                        emoji: "🎬"
-                    },
-                    {
-                        id: "3d-model-1",
-                        title: "產品 3D 建模",
-                        description: "高精度 3C 產品建模，用於電商平台展示",
-                        category: "3d",
-                        thumbnail: "",
-                        emoji: "🎨"
-                    },
-                    {
-                        id: "graphic-ecommerce",
-                        title: "電商視覺設計",
-                        description: "產品主視覺、Banner 設計，提升轉換率",
-                        category: "graphic",
-                        thumbnail: "",
-                        emoji: "🖼️"
-                    },
-                    {
-                        id: "graphic-social",
-                        title: "社群媒體設計",
-                        description: "Instagram、Facebook 貼文視覺設計",
-                        category: "graphic",
-                        thumbnail: "",
-                        emoji: "📱"
-                    },
-                    {
-                        id: "graphic-ad",
-                        title: "廣告素材設計",
-                        description: "數位廣告圖像設計，符合平台規格",
-                        category: "graphic",
-                        thumbnail: "",
-                        emoji: "🎯"
-                    }
-                ];
-                displayWorks('all');
+                allWorks = [];
             }
+            displayProjects();
+            displayWorks('all');
         }
 
+        /* Project 卡片：讀取 type === "project" 的項目 */
+        function displayProjects() {
+            const grid = document.getElementById('projectGrid');
+            grid.innerHTML = '';
+
+            const projects = allWorks.filter(w => w.type === 'project');
+
+            projects.forEach(work => {
+                const el = document.createElement('a');
+                el.className = 'project-card';
+                el.href = `work.html?id=${work.id}`;
+
+                const thumbStyle = work.thumbnail
+                    ? `background-image: url('${work.thumbnail}')`
+                    : '';
+
+                const tag = (work.tags && work.tags[0]) || getCategoryName(work.category);
+
+                el.innerHTML = `
+                    <div class="project-card-image" style="${thumbStyle}"></div>
+                    <div class="project-card-content">
+                        <h3>${work.title}</h3>
+                        <p>${work.description}</p>
+                        <span class="project-card-tag">${tag}</span>
+                    </div>
+                `;
+                grid.appendChild(el);
+            });
+        }
+
+        /* Skill 卡片：排除 type === "project" 的項目 */
         function displayWorks(category) {
             const grid = document.getElementById('workGrid');
             grid.innerHTML = '';
 
-            const filteredWorks = category === 'all' 
-                ? allWorks 
-                : allWorks.filter(work => work.category === category);
+            const skillWorks = allWorks.filter(w => w.type !== 'project');
+            const filtered = category === 'all'
+                ? skillWorks
+                : skillWorks.filter(w => w.category === category);
 
-            filteredWorks.forEach(work => {
-                const workItem = document.createElement('a');
-                workItem.className = 'work-item';
-                workItem.href = `work.html?id=${work.id}`;
-                workItem.dataset.category = work.category;
+            filtered.forEach(work => {
+                const el = document.createElement('a');
+                el.className = 'work-item';
+                el.href = `work.html?id=${work.id}`;
+                el.dataset.category = work.category;
 
-                const thumbnailStyle = work.thumbnail 
-                    ? `background-image: url('${work.thumbnail}')` 
+                const thumbStyle = work.thumbnail
+                    ? `background-image: url('${work.thumbnail}')`
                     : '';
 
-                workItem.innerHTML = `
-                    <div class="work-thumbnail" style="${thumbnailStyle}">
-                        ${!work.thumbnail ? work.emoji : ''}
+                el.innerHTML = `
+                    <div class="work-thumbnail" style="${thumbStyle}">
+                        ${!work.thumbnail ? (work.emoji || '') : ''}
                     </div>
                     <div class="work-info">
                         <h3>${work.title}</h3>
                         <p>${work.description}</p>
                     </div>
                 `;
-
-                grid.appendChild(workItem);
+                grid.appendChild(el);
             });
         }
 
-        // Page Navigation
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('.page-section');
+        function getCategoryName(category) {
+            return { 'video': '影片', '3d': '3D', 'graphic': '視覺設計' }[category] || category;
+        }
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
+        /* Page Navigation */
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', e => {
                 e.preventDefault();
                 const targetId = link.getAttribute('href').substring(1);
-
-                // Update active nav link
-                navLinks.forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
-
-                // Show target section
-                sections.forEach(section => {
-                    if (section.id === targetId) {
-                        section.classList.remove('hidden');
-                    } else {
-                        section.classList.add('hidden');
-                    }
+                document.querySelectorAll('.page-section').forEach(s => {
+                    s.id === targetId ? s.classList.remove('hidden') : s.classList.add('hidden');
                 });
             });
         });
 
-        // Category Filter
-        const categoryBtns = document.querySelectorAll('.category-btn');
-
-        categoryBtns.forEach(btn => {
+        /* Category Filter */
+        document.querySelectorAll('.category-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                const category = btn.dataset.category;
-
-                // Update active button
-                categoryBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
-                // Display filtered works
-                displayWorks(category);
+                displayWorks(btn.dataset.category);
             });
         });
 
-        // Load works on page load
         loadWorks();
     </script>
 </body>
