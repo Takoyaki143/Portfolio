@@ -5,146 +5,246 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>作品詳情 - Yun</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --bg-primary:#0a0a0a;--bg-secondary:#151515;--bg-hover:#1f1f1f;
-            --text-primary:#e8e8e8;--text-secondary:#a0a0a0;
-            --accent:#3b82f6;--accent-hover:#2563eb;--border:#2a2a2a;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #151515;
+            --bg-hover: #1f1f1f;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #2a2a2a;
         }
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6}
 
-        /* ── Header ── */
-        header{background:var(--bg-secondary);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-        nav{max-width:1200px;margin:0 auto;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center}
-        .logo{font-size:1.5rem;font-weight:600;color:var(--text-primary);text-decoration:none}
-        .back-btn{display:flex;align-items:center;gap:.5rem;color:var(--text-secondary);text-decoration:none;transition:color .3s;padding:.5rem 1rem;border:1px solid var(--border);border-radius:6px}
-        .back-btn:hover{color:var(--text-primary);background:var(--bg-hover)}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
 
-        /* ── Skill page layout (existing) ── */
-        .container{max-width:1200px;margin:0 auto;padding:4rem 2rem}
-        .work-header{margin-bottom:3rem}
-        .work-header h1{font-size:2.5rem;margin-bottom:1rem}
-        .work-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
-        .meta-tag{padding:.5rem 1rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:6px;font-size:.9rem;color:var(--text-secondary)}
-        .work-description{font-size:1.1rem;color:var(--text-secondary);line-height:1.8;max-width:800px}
-        .media-section{margin-bottom:3rem}
-        .video-container{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:var(--bg-secondary);margin-bottom:2rem}
-        .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
-        .image-gallery{display:grid;gap:2rem;margin-bottom:2rem}
-        .gallery-image{width:100%;border-radius:12px;overflow:hidden;background:var(--bg-secondary)}
-        .gallery-image img{width:100%;height:auto;display:block}
-        .grid-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-bottom:2rem}
-        .grid-gallery.cols-2{grid-template-columns:repeat(2,1fr)}
-        .grid-gallery.cols-3{grid-template-columns:repeat(3,1fr)}
-        .grid-gallery.cols-4{grid-template-columns:repeat(4,1fr)}
-        .grid-item{position:relative;border-radius:12px;overflow:hidden;background:var(--bg-secondary);cursor:pointer;transition:transform .3s,box-shadow .3s}
-        .grid-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-        .grid-item img{width:100%;height:100%;object-fit:cover;display:block}
-        .lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:1000;align-items:center;justify-content:center}
-        .lightbox.active{display:flex}
-        .lightbox-content{max-width:90%;max-height:90%;position:relative}
-        .lightbox-content img{max-width:100%;max-height:90vh;object-fit:contain;border-radius:8px}
-        .lightbox-close{position:absolute;top:2rem;right:2rem;background:rgba(255,255,255,.1);border:none;color:white;font-size:2rem;width:50px;height:50px;border-radius:50%;cursor:pointer;transition:background .3s;display:flex;align-items:center;justify-content:center}
-        .lightbox-close:hover{background:rgba(255,255,255,.2)}
-        .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:none;color:white;font-size:2rem;width:50px;height:50px;border-radius:50%;cursor:pointer;transition:background .3s;display:flex;align-items:center;justify-content:center}
-        .lightbox-nav:hover{background:rgba(255,255,255,.2)}
-        .lightbox-nav.prev{left:2rem}
-        .lightbox-nav.next{right:2rem}
-        .lightbox-counter{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:white;background:rgba(0,0,0,.5);padding:.5rem 1rem;border-radius:20px;font-size:.9rem}
-        .carousel-container{position:relative;margin-bottom:3rem}
-        .carousel-wrapper{overflow:hidden;border-radius:12px;background:var(--bg-secondary)}
-        .carousel-track{display:flex;transition:transform .4s ease}
-        .carousel-slide{min-width:100%;position:relative}
-        .carousel-slide img{width:100%;height:auto;display:block}
-        .carousel-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.6);color:white;border:none;width:50px;height:50px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:background .3s;z-index:10}
-        .carousel-nav:hover{background:rgba(0,0,0,.8)}
-        .carousel-nav.prev{left:1rem}
-        .carousel-nav.next{right:1rem}
-        .carousel-nav:disabled{opacity:.3;cursor:not-allowed}
-        .carousel-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1rem}
-        .carousel-dot{width:10px;height:10px;border-radius:50%;background:var(--border);border:none;cursor:pointer;transition:background .3s;padding:0}
-        .carousel-dot.active{background:var(--text-primary)}
-        .carousel-counter{text-align:center;color:var(--text-secondary);font-size:.9rem;margin-top:.5rem}
-        .details-section{margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border)}
-        .details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
-        .detail-item h3{font-size:.9rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
-        .detail-item p{font-size:1.1rem;color:var(--text-primary)}
-        .tech-tags{display:flex;gap:.5rem;flex-wrap:wrap}
-        .tech-tag{padding:.4rem .8rem;background:var(--bg-hover);border:1px solid var(--border);border-radius:6px;font-size:.85rem;color:var(--text-primary)}
-        .loading{text-align:center;padding:4rem 2rem;color:var(--text-secondary)}
-        .error{text-align:center;padding:4rem 2rem}
-        .error h2{color:var(--text-primary);margin-bottom:1rem}
-        .error p{color:var(--text-secondary);margin-bottom:2rem}
-        .error a{display:inline-block;padding:.75rem 1.5rem;background:var(--accent);color:white;text-decoration:none;border-radius:6px;transition:background .3s}
-        .error a:hover{background:var(--accent-hover)}
+        /* Header */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+        .back-btn {
+            display: flex; align-items: center; gap: 0.5rem;
+            color: var(--text-secondary); text-decoration: none;
+            transition: color 0.3s; padding: 0.5rem 1rem;
+            border: 1px solid var(--border); border-radius: 6px;
+        }
+        .back-btn:hover { color: var(--text-primary); background: var(--bg-hover); }
 
-        /* ── Project page styles (new) ── */
-        .proj-hero{width:100%;height:400px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0d1b2a,#1b2d42,#0e2233);background-size:cover;background-position:center}
-        .proj-hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.2)}
-        .proj-hero-fade{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--bg-primary))}
-        .proj-container{max-width:900px;margin:0 auto;padding:0 2rem 4rem}
-        .proj-intro{padding:2rem 0 1.75rem;border-bottom:1px solid var(--border)}
-        .proj-meta-row{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
-        .proj-tag{display:inline-block;padding:.22rem .65rem;border:1px solid var(--border);border-radius:4px;font-size:.72rem;color:var(--text-secondary);background:var(--bg-secondary)}
-        .proj-tag-hi{border-color:#2a3d55;color:#7eb8f7;background:#0c1a28}
-        .proj-title{font-size:1.9rem;font-weight:600;letter-spacing:-.02em;line-height:1.25;margin-bottom:.6rem}
-        .proj-desc{font-size:.9rem;color:var(--text-secondary);max-width:560px;line-height:1.75}
-        .proj-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:1.5rem}
-        .proj-stat{background:var(--bg-secondary);padding:.9rem 1.1rem}
-        .proj-stat-val{font-size:1.3rem;font-weight:600;color:var(--text-primary);line-height:1}
-        .proj-stat-lbl{font-size:.7rem;color:#505050;margin-top:.25rem}
-        .proj-two-col{padding:1.75rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:130px 1fr;gap:1.75rem;align-items:start}
-        .proj-col-lbl{font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#505050;padding-top:.15rem}
-        .proj-col-txt{font-size:.88rem;color:var(--text-secondary);line-height:1.85}
-        .proj-col-txt strong{color:var(--text-primary);font-weight:500}
-        .proj-tool-tags{display:flex;gap:.4rem;flex-wrap:wrap}
-        .proj-tool-tag{padding:.25rem .7rem;background:var(--bg-hover);border:1px solid var(--border);border-radius:4px;font-size:.76rem;color:var(--text-secondary)}
-        .proj-sec{display:flex;align-items:center;gap:.75rem;padding:2rem 0 1.5rem}
-        .proj-sec-lbl{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#505050;white-space:nowrap}
-        .proj-sec-line{flex:1;height:1px;background:var(--border)}
-        .proj-subsec{display:flex;align-items:center;gap:.55rem;margin:2rem 0 .9rem}
-        .proj-subsec-dot{width:5px;height:5px;border-radius:50%;background:#262626;border:1px solid #3a3a3a;flex-shrink:0}
-        .proj-subsec-lbl{font-size:.72rem;color:#505050;letter-spacing:.08em}
-        .proj-subsec-note{font-size:.68rem;color:#383838;margin-left:.2rem}
-        .scroll-preview{border-radius:10px;overflow:hidden;border:1px solid var(--border);margin-bottom:.75rem}
-        .sp-bar{background:var(--bg-hover);padding:.5rem .9rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
-        .sp-dot{width:9px;height:9px;border-radius:50%}
-        .sp-url{flex:1;background:#252525;border-radius:3px;padding:.18rem .7rem;font-size:.7rem;color:#505050;margin:0 .5rem}
-        .sp-body{height:460px;overflow-y:auto;position:relative;background:var(--bg-secondary)}
-        .sp-body::-webkit-scrollbar{width:4px}
-        .sp-body::-webkit-scrollbar-track{background:var(--bg-hover)}
-        .sp-body::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
-        .sp-hint{position:sticky;bottom:0;left:0;right:0;padding:.45rem;text-align:center;background:linear-gradient(to bottom,transparent,rgba(8,8,8,.75));font-size:.7rem;color:#505050;pointer-events:none;transition:opacity .3s}
-        .proj-g2{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-bottom:.75rem}
-        .proj-g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-bottom:.75rem}
-        .proj-gsq{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin-bottom:.75rem}
-        .proj-gi{border-radius:7px;overflow:hidden;cursor:zoom-in;transition:opacity .22s;aspect-ratio:1/1}
-        .proj-gi:hover{opacity:.78}
-        .proj-gi>img{width:100%;height:100%;object-fit:cover;display:block}
-        .copy-card{border-left:2px solid var(--border);padding:.85rem 1.1rem;background:var(--bg-secondary);border-radius:0 7px 7px 0;margin-bottom:.65rem}
-        .copy-type{font-size:.68rem;color:#505050;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
-        .copy-text{font-size:.875rem;color:var(--text-secondary);line-height:1.8}
-        .proj-lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:1000;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
-        .proj-lightbox.active{display:flex}
-        .proj-lb-img{max-width:92vw;max-height:84vh;object-fit:contain;border-radius:6px}
-        .proj-lb-close{position:absolute;top:1.2rem;right:1.4rem;background:rgba(255,255,255,.08);border:none;color:#aaa;font-size:1.3rem;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
-        .proj-lb-close:hover{background:rgba(255,255,255,.15);color:#fff}
-        .proj-lb-counter{font-size:.8rem;color:#606060}
+        /* ── Skill work layout (existing) ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+        .work-header { margin-bottom: 3rem; }
+        .work-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .work-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .meta-tag {
+            padding: 0.5rem 1rem; background: var(--bg-secondary);
+            border: 1px solid var(--border); border-radius: 6px;
+            font-size: 0.9rem; color: var(--text-secondary);
+        }
+        .work-description { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; max-width: 800px; }
+        .media-section { margin-bottom: 3rem; }
+        .video-container {
+            position: relative; padding-bottom: 56.25%; height: 0;
+            overflow: hidden; border-radius: 12px;
+            background: var(--bg-secondary); margin-bottom: 2rem;
+        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .image-gallery { display: grid; gap: 2rem; margin-bottom: 2rem; }
+        .gallery-image { width: 100%; border-radius: 12px; overflow: hidden; background: var(--bg-secondary); }
+        .gallery-image img { width: 100%; height: auto; display: block; }
+        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .grid-gallery.cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-gallery.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-gallery.cols-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-item {
+            position: relative; border-radius: 12px; overflow: hidden;
+            background: var(--bg-secondary); cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .grid-item:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .details-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+        .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .detail-item h3 { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .detail-item p { font-size: 1.1rem; color: var(--text-primary); }
+        .tech-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tech-tag { padding: 0.4rem 0.8rem; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; color: var(--text-primary); }
 
-        footer{text-align:center;padding:2rem;color:var(--text-secondary);border-top:1px solid var(--border);margin-top:4rem}
+        /* ── Lightbox (skill) ── */
+        .lightbox {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.95);
+            z-index: 1000; align-items: center; justify-content: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox-content { max-width: 90%; max-height: 90%; position: relative; }
+        .lightbox-content img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+        .lightbox-close {
+            position: absolute; top: 2rem; right: 2rem;
+            background: rgba(255,255,255,0.1); border: none; color: white;
+            font-size: 2rem; width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; transition: background 0.3s; display: flex; align-items: center; justify-content: center;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); border: none; color: white;
+            font-size: 2rem; width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; transition: background 0.3s; display: flex; align-items: center; justify-content: center;
+        }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-nav.prev { left: 2rem; }
+        .lightbox-nav.next { right: 2rem; }
+        .lightbox-counter {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            color: white; background: rgba(0,0,0,0.5); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;
+        }
 
-        @media(max-width:768px){
-            .grid-gallery.cols-2,.grid-gallery.cols-3,.grid-gallery.cols-4{grid-template-columns:1fr}
-            .lightbox-close,.lightbox-nav{width:40px;height:40px;font-size:1.5rem}
-            .lightbox-close{top:1rem;right:1rem}
-            .lightbox-nav.prev{left:1rem}
-            .lightbox-nav.next{right:1rem}
-            .proj-hero{height:240px}
-            .proj-title{font-size:1.45rem}
-            .proj-stats{grid-template-columns:1fr}
-            .proj-two-col{grid-template-columns:1fr}
-            .proj-g3{grid-template-columns:repeat(2,1fr)}
-            .proj-gsq{grid-template-columns:repeat(2,1fr)}
+        /* ── Carousel ── */
+        .carousel-container { position: relative; margin-bottom: 3rem; }
+        .carousel-wrapper { overflow: hidden; border-radius: 12px; background: var(--bg-secondary); }
+        .carousel-track { display: flex; transition: transform 0.4s ease; }
+        .carousel-slide { min-width: 100%; position: relative; }
+        .carousel-slide img { width: 100%; height: auto; display: block; }
+        .carousel-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.6); color: white; border: none;
+            width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; transition: background 0.3s; z-index: 10;
+        }
+        .carousel-nav:hover { background: rgba(0,0,0,0.8); }
+        .carousel-nav.prev { left: 1rem; }
+        .carousel-nav.next { right: 1rem; }
+        .carousel-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+        .carousel-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; transition: background 0.3s; padding: 0; }
+        .carousel-dot.active { background: var(--text-primary); }
+        .carousel-counter { text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem; }
+
+        /* ── Project layout ── */
+        .phero { width: 100%; height: 400px; position: relative; overflow: hidden; }
+        .phero-bg {
+            width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            background-color: var(--bg-hover);
+            transition: transform 0.6s ease;
+        }
+        .phero:hover .phero-bg { transform: scale(1.02); }
+        .phero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.2); }
+        .phero-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to bottom, transparent, var(--bg-primary)); }
+
+        .pcontainer { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+        .pintro { padding: 2.2rem 0 1.75rem; border-bottom: 1px solid var(--border); }
+        .pmeta { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .ptag { display: inline-block; padding: 0.22rem 0.65rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.78rem; color: var(--text-secondary); background: var(--bg-secondary); }
+        .ptag.hi { border-color: #2a3d55; color: #7eb8f7; background: #0c1a28; }
+        .ptitle { font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 0.65rem; }
+        .psub { font-size: 0.95rem; color: var(--text-secondary); max-width: 580px; line-height: 1.75; }
+        .pstats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 1.5rem; }
+        .pstat { background: var(--bg-secondary); padding: 1rem 1.2rem; }
+        .pstat-val { font-size: 1.35rem; font-weight: 600; color: var(--text-primary); line-height: 1; }
+        .pstat-lbl { font-size: 0.72rem; color: #505050; margin-top: 0.3rem; }
+
+        .ptwocol { padding: 1.75rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 140px 1fr; gap: 2rem; align-items: start; }
+        .ptwocol-lbl { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #505050; padding-top: 0.15rem; }
+        .ptwocol-txt { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.85; }
+        .ptwocol-txt strong { color: var(--text-primary); font-weight: 500; }
+        .ptools { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .ptool { padding: 0.25rem 0.7rem; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; font-size: 0.8rem; color: var(--text-secondary); }
+
+        .psec { display: flex; align-items: center; gap: 0.75rem; padding: 2rem 0 1.5rem; border-top: 1px solid var(--border); }
+        .psec-lbl { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #505050; white-space: nowrap; }
+        .psec-line { flex: 1; height: 1px; background: var(--border); }
+
+        .psubsec { display: flex; align-items: center; gap: 0.55rem; margin: 2rem 0 0.9rem; }
+        .psubsec-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--bg-hover); border: 1px solid #3a3a3a; flex-shrink: 0; }
+        .psubsec-lbl { font-size: 0.75rem; color: #505050; letter-spacing: 0.08em; }
+        .psubsec-note { font-size: 0.7rem; color: #383838; margin-left: 0.2rem; }
+
+        /* Scroll preview */
+        .scroll-preview { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 0.5rem; }
+        .sp-bar { background: var(--bg-hover); padding: 0.55rem 0.9rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); }
+        .sp-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+        .sp-url { flex: 1; background: var(--bg-secondary); border-radius: 3px; padding: 0.18rem 0.7rem; font-size: 0.72rem; color: #505050; margin: 0 0.5rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sp-body { height: 460px; overflow-y: auto; position: relative; }
+        .sp-body::-webkit-scrollbar { width: 4px; }
+        .sp-body::-webkit-scrollbar-track { background: var(--bg-hover); }
+        .sp-body::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 2px; }
+        .sp-body img { width: 100%; display: block; }
+        .sp-hint { position: sticky; bottom: 0; left: 0; right: 0; padding: 0.45rem; text-align: center; background: linear-gradient(to bottom, transparent, rgba(8,8,8,0.75)); font-size: 0.72rem; color: #505050; pointer-events: none; transition: opacity 0.3s; }
+
+        /* Project grids */
+        .proj-g2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 0.5rem; }
+        .proj-g2 .proj-gi { height: 240px; }
+        .proj-g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem; margin-bottom: 0.5rem; }
+        .proj-g3 .proj-gi { height: 165px; }
+        .proj-gsq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem; margin-bottom: 0.5rem; }
+        .proj-gsq .proj-gi { aspect-ratio: 1 / 1; }
+        .proj-gi { border-radius: 7px; overflow: hidden; cursor: zoom-in; transition: opacity 0.22s; }
+        .proj-gi:hover { opacity: 0.78; }
+        .proj-gi img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* Copy cards */
+        .copy-card { border-left: 2px solid var(--border); padding: 0.85rem 1.1rem; background: var(--bg-secondary); border-radius: 0 7px 7px 0; margin-bottom: 0.65rem; }
+        .copy-type { font-size: 0.7rem; color: #505050; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+        .copy-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8; }
+        .copy-text em { color: #a0b8d0; font-style: normal; }
+
+        /* Project lightbox */
+        .proj-lb { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; }
+        .proj-lb.on { display: flex; }
+        .proj-lb img { max-width: 90%; max-height: 88vh; object-fit: contain; border-radius: 6px; cursor: default; }
+        .proj-lb-x { position: absolute; top: 1.2rem; right: 1.4rem; background: rgba(255,255,255,0.08); border: none; color: #aaa; font-size: 1.4rem; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .proj-lb-x:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+        /* Shared states */
+        .loading { text-align: center; padding: 4rem 2rem; color: var(--text-secondary); }
+        .error { text-align: center; padding: 4rem 2rem; }
+        .error h2 { color: var(--text-primary); margin-bottom: 1rem; }
+        .error p { color: var(--text-secondary); margin-bottom: 2rem; }
+        .error a { display: inline-block; padding: 0.75rem 1.5rem; background: var(--accent); color: white; text-decoration: none; border-radius: 6px; transition: background 0.3s; }
+        .error a:hover { background: var(--accent-hover); }
+
+        footer { text-align: center; padding: 2rem; color: var(--text-secondary); border-top: 1px solid var(--border); margin-top: 4rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .phero { height: 250px; }
+            .ptitle { font-size: 1.5rem; }
+            .ptwocol { grid-template-columns: 1fr; }
+            .pstats { grid-template-columns: 1fr; }
+            .proj-g2 { grid-template-columns: 1fr; }
+            .proj-g2 .proj-gi { height: 200px; }
+            .proj-g3 { grid-template-columns: repeat(2, 1fr); }
+            .proj-gsq { grid-template-columns: repeat(2, 1fr); }
+            .grid-gallery.cols-2,
+            .grid-gallery.cols-3,
+            .grid-gallery.cols-4 { grid-template-columns: 1fr; }
+            .lightbox-close, .lightbox-nav { width: 40px; height: 40px; font-size: 1.5rem; }
+            .lightbox-close { top: 1rem; right: 1rem; }
+            .lightbox-nav.prev { left: 1rem; }
+            .lightbox-nav.next { right: 1rem; }
         }
     </style>
 </head>
@@ -152,7 +252,10 @@
     <header>
         <nav>
             <a href="index.html" class="logo">Yun's Portfolio</a>
-            <a href="index.html" class="back-btn"><span>←</span><span>返回作品集</span></a>
+            <a href="index.html" class="back-btn">
+                <span>←</span>
+                <span>返回作品集</span>
+            </a>
         </nav>
     </header>
 
@@ -181,36 +284,193 @@
             }
         }
 
-        /* ════════════════════════════════
-           Router
-        ════════════════════════════════ */
+        /* ── Dispatch ── */
         function displayWork(work) {
-            document.title = `${work.title} - Yun`;
-
-            // 專案頁 → 新版型
             if (work.type === 'project') {
                 displayProjectWork(work);
-                return;
+            } else {
+                displaySkillWork(work);
             }
+        }
 
-            // 技能頁 → 原版型
+        /* ══════════════════════════════
+           PROJECT layout
+        ══════════════════════════════ */
+        function displayProjectWork(work) {
+            document.title = `${work.title} - Skat`;
+            const contentDiv = document.getElementById('content');
+
+            const heroStyle = work.heroImage
+                ? `background-image: url('${work.heroImage}')`
+                : 'background: linear-gradient(160deg,#0d1b2a 0%,#1b2d42 55%,#0e2233 100%)';
+
+            const tagsHTML = (work.tags || []).map((t, i) =>
+                `<span class="ptag${i === 0 ? ' hi' : ''}">${t}</span>`
+            ).join('');
+
+            const statsHTML = (work.stats || []).map(s =>
+                `<div class="pstat"><div class="pstat-val">${s.value}</div><div class="pstat-lbl">${s.label}</div></div>`
+            ).join('');
+
+            const toolsHTML = (work.technologies || []).map(t =>
+                `<span class="ptool">${t}</span>`
+            ).join('');
+
+            const sectionsHTML = (work.projectSections || []).map(buildProjectSection).join('');
+
+            contentDiv.innerHTML = `
+                <div class="phero">
+                    <div class="phero-bg" style="${heroStyle}"></div>
+                    <div class="phero-overlay"></div>
+                    <div class="phero-fade"></div>
+                </div>
+                <div class="pcontainer">
+                    <div class="pintro">
+                        <div class="pmeta">${tagsHTML}</div>
+                        <h1 class="ptitle">${work.title}</h1>
+                        <p class="psub">${work.detailedDescription || work.description}</p>
+                        ${work.stats ? `<div class="pstats">${statsHTML}</div>` : ''}
+                    </div>
+                    ${work.overview ? `
+                        <div class="ptwocol">
+                            <div class="ptwocol-lbl">Overview</div>
+                            <div class="ptwocol-txt">${work.overview}</div>
+                        </div>` : ''}
+                    ${work.technologies && work.technologies.length ? `
+                        <div class="ptwocol" style="border-bottom:none">
+                            <div class="ptwocol-lbl">Tools</div>
+                            <div class="ptools">${toolsHTML}</div>
+                        </div>` : ''}
+                    <div class="psec">
+                        <span class="psec-lbl">Visual</span>
+                        <div class="psec-line"></div>
+                    </div>
+                    ${sectionsHTML}
+                    <div style="height:3rem"></div>
+                </div>`;
+
+            initProjectLightbox();
+
+            document.querySelectorAll('.sp-body').forEach(sp => {
+                const hint = sp.querySelector('.sp-hint');
+                sp.addEventListener('scroll', () => {
+                    if (hint) hint.style.opacity = sp.scrollTop > 40 ? '0' : '1';
+                });
+            });
+        }
+
+        function buildProjectSection(sec) {
+            const sub = `
+                <div class="psubsec">
+                    <div class="psubsec-dot"></div>
+                    <span class="psubsec-lbl">${sec.label}</span>
+                    ${sec.note ? `<span class="psubsec-note">${sec.note}</span>` : ''}
+                </div>`;
+
+            switch (sec.type) {
+                case 'scrollPreview': {
+                    const fname = sec.image ? sec.image.split('/').pop() : '';
+                    const inner = sec.image
+                        ? `<img src="${sec.image}" alt="${sec.label}">`
+                        : `<div style="height:400px;background:var(--bg-hover)"></div>`;
+                    return sub + `
+                        <div class="scroll-preview">
+                            <div class="sp-bar">
+                                <div class="sp-dot" style="background:#c0453a"></div>
+                                <div class="sp-dot" style="background:#b07830"></div>
+                                <div class="sp-dot" style="background:#3a8040"></div>
+                                <div class="sp-url">${fname}</div>
+                            </div>
+                            <div class="sp-body">
+                                ${inner}
+                                <div class="sp-hint">↓ 向下捲動</div>
+                            </div>
+                        </div>`;
+                }
+                case 'grid2': {
+                    const imgs = (sec.images || []).map((src, i) =>
+                        `<div class="proj-gi" data-src="${src}"><img src="${src}" alt="${sec.label} ${i+1}" loading="lazy"></div>`
+                    ).join('');
+                    return sub + `<div class="proj-g2">${imgs}</div>`;
+                }
+                case 'grid3': {
+                    const imgs = (sec.images || []).map((src, i) =>
+                        `<div class="proj-gi" data-src="${src}"><img src="${src}" alt="${sec.label} ${i+1}" loading="lazy"></div>`
+                    ).join('');
+                    return sub + `<div class="proj-g3">${imgs}</div>`;
+                }
+                case 'gridSquare': {
+                    const imgs = (sec.images || []).map((src, i) =>
+                        `<div class="proj-gi" data-src="${src}"><img src="${src}" alt="${sec.label} ${i+1}" loading="lazy"></div>`
+                    ).join('');
+                    return sub + `<div class="proj-gsq">${imgs}</div>`;
+                }
+                case 'copy': {
+                    const cards = (sec.items || []).map(item => `
+                        <div class="copy-card">
+                            <div class="copy-type">${item.type}</div>
+                            <div class="copy-text">
+                                ${item.headline ? `<em>${item.headline}</em><br>` : ''}
+                                ${item.body || ''}
+                            </div>
+                        </div>`).join('');
+                    return sub + cards;
+                }
+                default: return '';
+            }
+        }
+
+        function initProjectLightbox() {
+            let lb = document.getElementById('proj-lb');
+            if (!lb) {
+                lb = document.createElement('div');
+                lb.id = 'proj-lb';
+                lb.className = 'proj-lb';
+                lb.innerHTML = `<button class="proj-lb-x" id="proj-lb-x">×</button><img src="" alt="" id="proj-lb-img">`;
+                document.body.appendChild(lb);
+                lb.addEventListener('click', () => lb.classList.remove('on'));
+                document.getElementById('proj-lb-x').addEventListener('click', e => {
+                    e.stopPropagation();
+                    lb.classList.remove('on');
+                });
+                document.addEventListener('keydown', e => {
+                    if (e.key === 'Escape') lb.classList.remove('on');
+                });
+            }
+            document.querySelectorAll('.proj-gi').forEach(el => {
+                el.addEventListener('click', () => {
+                    document.getElementById('proj-lb-img').src = el.dataset.src;
+                    lb.classList.add('on');
+                });
+            });
+        }
+
+        /* ══════════════════════════════
+           SKILL layout (original)
+        ══════════════════════════════ */
+        function displaySkillWork(work) {
+            document.title = `${work.title} - Skat`;
             const contentDiv = document.getElementById('content');
             let mediaHTML = '';
 
+            // Videos
             if (work.videos && work.videos.length > 0) {
-                work.videos.forEach(v => {
-                    const vid = extractVideoId(v.url);
-                    if (!vid) return;
-                    mediaHTML += `
-                        ${v.title ? `<h3 style="margin:2rem 0 1rem;color:var(--text-primary)">${v.title}</h3>` : ''}
-                        ${v.description ? `<p style="margin-bottom:1rem;color:var(--text-secondary)">${v.description}</p>` : ''}
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe>
-                        </div>`;
+                work.videos.forEach(videoData => {
+                    const videoId = extractVideoId(videoData.url);
+                    if (videoId) {
+                        mediaHTML += `
+                            ${videoData.title ? `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${videoData.title}</h3>` : ''}
+                            ${videoData.description ? `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${videoData.description}</p>` : ''}
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                            </div>`;
+                    }
                 });
             } else if (work.video) {
-                const vid = extractVideoId(work.video);
-                if (vid) mediaHTML += `<div class="video-container"><iframe src="https://www.youtube.com/embed/${vid}" allowfullscreen></iframe></div>`;
+                const videoId = extractVideoId(work.video);
+                if (videoId) {
+                    mediaHTML += `<div class="video-container"><iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe></div>`;
+                }
             }
 
             if (work.carouselImages && work.carouselImages.length > 0)
@@ -220,10 +480,10 @@
                 mediaHTML += buildGridGallery(work.gridGallery);
 
             if (work.additionalGalleries && work.additionalGalleries.length > 0) {
-                work.additionalGalleries.forEach(g => {
-                    if (g.title) mediaHTML += `<h3 style="margin:2rem 0 1rem;color:var(--text-primary)">${g.title}</h3>`;
-                    if (g.description) mediaHTML += `<p style="margin-bottom:1rem;color:var(--text-secondary)">${g.description}</p>`;
-                    mediaHTML += buildGridGallery(g);
+                work.additionalGalleries.forEach(gallery => {
+                    if (gallery.title) mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${gallery.title}</h3>`;
+                    if (gallery.description) mediaHTML += `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${gallery.description}</p>`;
+                    mediaHTML += buildGridGallery(gallery);
                 });
             }
 
@@ -236,358 +496,177 @@
             }
 
             if (work.additionalCarousels && work.additionalCarousels.length > 0) {
-                work.additionalCarousels.forEach((c, i) => {
-                    if (c.title) mediaHTML += `<h3 style="margin:2rem 0 1rem;color:var(--text-primary)">${c.title}</h3>`;
-                    mediaHTML += buildCarousel(c.images, `carousel-${i + 2}`);
+                work.additionalCarousels.forEach((carousel, index) => {
+                    if (carousel.title) mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${carousel.title}</h3>`;
+                    mediaHTML += buildCarousel(carousel.images, `carousel-${index + 2}`);
                 });
             }
 
             let techTagsHTML = '';
             if (work.technologies && work.technologies.length > 0) {
-                techTagsHTML = '<div class="tech-tags">' + work.technologies.map(t => `<span class="tech-tag">${t}</span>`).join('') + '</div>';
+                techTagsHTML = '<div class="tech-tags">';
+                work.technologies.forEach(tech => { techTagsHTML += `<span class="tech-tag">${tech}</span>`; });
+                techTagsHTML += '</div>';
             }
 
             let detailsHTML = '';
             if (work.client || work.year || work.technologies) {
-                detailsHTML = `<div class="details-section"><div class="details-grid">
-                    ${work.client ? `<div class="detail-item"><h3>客戶</h3><p>${work.client}</p></div>` : ''}
-                    ${work.year ? `<div class="detail-item"><h3>年份</h3><p>${work.year}</p></div>` : ''}
-                    ${work.technologies && work.technologies.length > 0 ? `<div class="detail-item"><h3>使用技術</h3>${techTagsHTML}</div>` : ''}
-                </div></div>`;
+                detailsHTML = `
+                    <div class="details-section">
+                        <div class="details-grid">
+                            ${work.client ? `<div class="detail-item"><h3>客戶</h3><p>${work.client}</p></div>` : ''}
+                            ${work.year ? `<div class="detail-item"><h3>年份</h3><p>${work.year}</p></div>` : ''}
+                            ${work.technologies && work.technologies.length > 0 ? `<div class="detail-item"><h3>使用技術</h3>${techTagsHTML}</div>` : ''}
+                        </div>
+                    </div>`;
             }
 
             contentDiv.innerHTML = `
                 <div class="container">
                     <div class="work-header">
                         <h1>${work.title}</h1>
-                        <div class="work-meta"><span class="meta-tag">${getCategoryName(work.category)}</span></div>
+                        <div class="work-meta">
+                            <span class="meta-tag">${getCategoryName(work.category)}</span>
+                        </div>
                         <p class="work-description">${work.detailedDescription || work.description}</p>
                     </div>
                     <div class="media-section">${mediaHTML}</div>
                     ${detailsHTML}
                 </div>`;
 
-            document.querySelectorAll('.carousel-container').forEach(c => initCarousel(c));
+            const carousels = document.querySelectorAll('.carousel-container');
+            if (carousels.length > 0) carousels.forEach(c => initCarousel(c));
             if (document.querySelectorAll('.grid-gallery').length > 0) initLightbox();
         }
 
-        /* ════════════════════════════════
-           Project Page
-        ════════════════════════════════ */
-        function displayProjectWork(work) {
-            const contentDiv = document.getElementById('content');
-
-            // Hero background
-            const heroBg = work.hero
-                ? `background-image:url('${work.hero}');background-size:cover;background-position:center`
-                : work.thumbnail
-                ? `background-image:url('${work.thumbnail}');background-size:cover;background-position:center`
-                : '';
-
-            // Meta tags
-            let metaHTML = `<span class="proj-tag proj-tag-hi">${getCategoryName(work.category)}</span>`;
-            if (work.year) metaHTML += `<span class="proj-tag">${work.year}</span>`;
-            (work.projectTags || []).forEach(t => metaHTML += `<span class="proj-tag">${t}</span>`);
-
-            // Stats
-            let statsHTML = '';
-            if (work.stats && work.stats.length) {
-                statsHTML = `<div class="proj-stats">${work.stats.map(s =>
-                    `<div class="proj-stat">
-                        <div class="proj-stat-val">${s.val}</div>
-                        <div class="proj-stat-lbl">${s.label}</div>
-                    </div>`
-                ).join('')}</div>`;
-            }
-
-            // Tools
-            let toolsHTML = '';
-            if (work.technologies && work.technologies.length) {
-                toolsHTML = `<div class="proj-two-col">
-                    <div class="proj-col-lbl">Tools</div>
-                    <div class="proj-tool-tags">${work.technologies.map(t =>
-                        `<span class="proj-tool-tag">${t}</span>`).join('')}
-                    </div>
-                </div>`;
-            }
-
-            // Visual sub-sections
-            let visualHTML = '';
-            if (work.subSections && work.subSections.length) {
-                visualHTML = `
-                <div class="proj-sec" style="border-top:1px solid var(--border)">
-                    <span class="proj-sec-lbl">Visual</span>
-                    <div class="proj-sec-line"></div>
-                </div>
-                ${work.subSections.map(buildProjSubSection).join('')}`;
-            }
-
-            contentDiv.innerHTML = `
-                <div class="proj-hero" style="${heroBg}">
-                    <div class="proj-hero-overlay"></div>
-                    <div class="proj-hero-fade"></div>
-                </div>
-                <div class="proj-container">
-                    <div class="proj-intro">
-                        <div class="proj-meta-row">${metaHTML}</div>
-                        <h1 class="proj-title">${work.title}</h1>
-                        <p class="proj-desc">${work.description}</p>
-                        ${statsHTML}
-                    </div>
-                    <div class="proj-two-col">
-                        <div class="proj-col-lbl">Overview</div>
-                        <div class="proj-col-txt">${work.overview || work.detailedDescription || work.description}</div>
-                    </div>
-                    ${toolsHTML}
-                    ${visualHTML}
-                    <div style="height:3rem"></div>
-                </div>`;
-
-            initProjectLightbox();
-            document.querySelectorAll('.sp-body').forEach(sp => {
-                const hint = sp.querySelector('.sp-hint');
-                if (!hint) return;
-                sp.addEventListener('scroll', () => {
-                    hint.style.opacity = sp.scrollTop > 40 ? '0' : '1';
-                });
+        /* ── Shared helpers ── */
+        function buildGridGallery(galleryData) {
+            const cols = galleryData.columns || 3;
+            let gridHTML = `<div class="grid-gallery cols-${cols}" data-gallery="grid">`;
+            galleryData.images.forEach((img, index) => {
+                gridHTML += `<div class="grid-item" data-index="${index}"><img src="${img}" alt="Gallery image ${index + 1}"></div>`;
             });
-        }
-
-        function buildProjSubSection(sec) {
-            const note = sec.note || (sec.type === 'scrollPreview' ? '完整頁面 — 向下捲動瀏覽' : '');
-            const header = `
-                <div class="proj-subsec">
-                    <div class="proj-subsec-dot"></div>
-                    <span class="proj-subsec-lbl">${sec.title || ''}</span>
-                    ${note ? `<span class="proj-subsec-note">${note}</span>` : ''}
-                </div>`;
-            switch (sec.type) {
-                case 'scrollPreview': return header + buildProjScrollPreview(sec);
-                case 'grid2':         return header + buildProjGrid(sec.images, 'proj-g2');
-                case 'grid3':         return header + buildProjGrid(sec.images, 'proj-g3');
-                case 'gridSquare':    return header + buildProjGrid(sec.images, 'proj-gsq');
-                case 'copy':          return header + buildProjCopyCards(sec.items || []);
-                default: return '';
-            }
-        }
-
-        function buildProjScrollPreview(sec) {
-            const filename = sec.image ? sec.image.split('/').pop() : '—';
-            const content = sec.image
-                ? `<img src="${sec.image}" style="width:100%;display:block" alt="sales page">`
-                : `<div style="min-height:600px"></div>`;
-            return `
-                <div class="scroll-preview">
-                    <div class="sp-bar">
-                        <div class="sp-dot" style="background:#c0453a"></div>
-                        <div class="sp-dot" style="background:#b07830"></div>
-                        <div class="sp-dot" style="background:#3a8040"></div>
-                        <div class="sp-url">${filename}</div>
-                    </div>
-                    <div class="sp-body">
-                        ${content}
-                        <div class="sp-hint">↓ 向下捲動</div>
-                    </div>
-                </div>`;
-        }
-
-        function buildProjGrid(images, cls) {
-            if (!images || !images.length) return '';
-            const items = images.map((img, i) =>
-                `<div class="proj-gi proj-gallery-item" data-src="${img}" data-index="${i}">
-                    <img src="${img}" alt="">
-                </div>`).join('');
-            return `<div class="${cls} proj-gallery" style="margin-bottom:.75rem">${items}</div>`;
-        }
-
-        function buildProjCopyCards(items) {
-            return items.map(item => `
-                <div class="copy-card">
-                    <div class="copy-type">${item.label || ''}</div>
-                    <div class="copy-text">${item.text || ''}</div>
-                </div>`).join('');
-        }
-
-        function initProjectLightbox() {
-            let lb = document.querySelector('.proj-lightbox');
-            if (!lb) {
-                lb = document.createElement('div');
-                lb.className = 'proj-lightbox';
-                lb.innerHTML = `
-                    <button class="proj-lb-close">×</button>
-                    <img class="proj-lb-img" src="" alt="">
-                    <div class="proj-lb-counter">
-                        <span class="proj-lb-cur">1</span> / <span class="proj-lb-tot">1</span>
-                    </div>`;
-                document.body.appendChild(lb);
-                lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-                lb.querySelector('.proj-lb-close').addEventListener('click', closeLb);
-            }
-
-            const lbImg = lb.querySelector('.proj-lb-img');
-            const lbCur = lb.querySelector('.proj-lb-cur');
-            const lbTot = lb.querySelector('.proj-lb-tot');
-            let gallery = [], cur = 0;
-
-            function showImg() {
-                lbImg.src = gallery[cur];
-                lbCur.textContent = cur + 1;
-                lbTot.textContent = gallery.length;
-            }
-            function closeLb() {
-                lb.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-
-            document.querySelectorAll('.proj-gallery-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const pg = item.closest('.proj-gallery');
-                    gallery = Array.from(pg.querySelectorAll('.proj-gallery-item')).map(i => i.dataset.src);
-                    cur = parseInt(item.dataset.index);
-                    showImg();
-                    lb.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-            document.addEventListener('keydown', e => {
-                if (!lb.classList.contains('active')) return;
-                if (e.key === 'Escape') closeLb();
-                if (e.key === 'ArrowLeft' && cur > 0)  { cur--; showImg(); }
-                if (e.key === 'ArrowRight' && cur < gallery.length - 1) { cur++; showImg(); }
-            });
-        }
-
-        /* ════════════════════════════════
-           Shared helpers (unchanged)
-        ════════════════════════════════ */
-        function buildGridGallery(g) {
-            const cls = g.columns ? `cols-${g.columns}` : '';
-            let html = `<div class="grid-gallery ${cls}" data-gallery="grid">`;
-            g.images.forEach((img, i) => {
-                html += `<div class="grid-item" data-index="${i}"><img src="${img}" alt="Gallery ${i+1}"></div>`;
-            });
-            return html + '</div>';
+            return gridHTML + '</div>';
         }
 
         function initLightbox() {
-            const lb = document.createElement('div');
-            lb.className = 'lightbox';
-            lb.innerHTML = `
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            lightbox.innerHTML = `
                 <button class="lightbox-close">×</button>
                 <button class="lightbox-nav prev">‹</button>
                 <button class="lightbox-nav next">›</button>
                 <div class="lightbox-content"><img src="" alt=""></div>
-                <div class="lightbox-counter">
-                    <span class="current">1</span> / <span class="total">1</span>
-                </div>`;
-            document.body.appendChild(lb);
+                <div class="lightbox-counter"><span class="current">1</span> / <span class="total">1</span></div>`;
+            document.body.appendChild(lightbox);
 
-            const img = lb.querySelector('.lightbox-content img');
-            const closeBtn = lb.querySelector('.lightbox-close');
-            const prevBtn = lb.querySelector('.lightbox-nav.prev');
-            const nextBtn = lb.querySelector('.lightbox-nav.next');
-            const curEl = lb.querySelector('.current');
-            const totEl = lb.querySelector('.total');
-            let gal = [], idx = 0;
-
-            function show() {
-                img.src = gal[idx];
-                curEl.textContent = idx + 1;
-                totEl.textContent = gal.length;
-                prevBtn.style.display = idx === 0 ? 'none' : 'flex';
-                nextBtn.style.display = idx === gal.length - 1 ? 'none' : 'flex';
-            }
-            function close() { lb.classList.remove('active'); document.body.style.overflow = ''; }
+            const lightboxImg = lightbox.querySelector('.lightbox-content img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.lightbox-nav.prev');
+            const nextBtn = lightbox.querySelector('.lightbox-nav.next');
+            const currentEl = lightbox.querySelector('.current');
+            const totalEl = lightbox.querySelector('.total');
+            let currentGallery = [], currentIndex = 0;
 
             document.querySelectorAll('.grid-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    const items = Array.from(item.closest('.grid-gallery').querySelectorAll('.grid-item'));
-                    gal = items.map(i => i.querySelector('img').src);
-                    idx = parseInt(item.dataset.index);
-                    show();
-                    lb.classList.add('active');
+                    const gallery = item.closest('.grid-gallery');
+                    const items = Array.from(gallery.querySelectorAll('.grid-item'));
+                    currentGallery = items.map(i => i.querySelector('img').src);
+                    currentIndex = parseInt(item.dataset.index);
+                    showImage();
+                    lightbox.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 });
             });
 
-            closeBtn.addEventListener('click', close);
-            lb.addEventListener('click', e => { if (e.target === lb) close(); });
-            prevBtn.addEventListener('click', () => { if (idx > 0) { idx--; show(); } });
-            nextBtn.addEventListener('click', () => { if (idx < gal.length - 1) { idx++; show(); } });
+            const closeLightbox = () => { lightbox.classList.remove('active'); document.body.style.overflow = ''; };
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+            prevBtn.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; showImage(); } });
+            nextBtn.addEventListener('click', () => { if (currentIndex < currentGallery.length - 1) { currentIndex++; showImage(); } });
             document.addEventListener('keydown', e => {
-                if (!lb.classList.contains('active')) return;
-                if (e.key === 'Escape') close();
-                if (e.key === 'ArrowLeft' && idx > 0) { idx--; show(); }
-                if (e.key === 'ArrowRight' && idx < gal.length - 1) { idx++; show(); }
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft' && currentIndex > 0) { currentIndex--; showImage(); }
+                if (e.key === 'ArrowRight' && currentIndex < currentGallery.length - 1) { currentIndex++; showImage(); }
             });
+
+            function showImage() {
+                lightboxImg.src = currentGallery[currentIndex];
+                currentEl.textContent = currentIndex + 1;
+                totalEl.textContent = currentGallery.length;
+                prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+                nextBtn.style.display = currentIndex === currentGallery.length - 1 ? 'none' : 'flex';
+            }
         }
 
-        function buildCarousel(images, id = 'carousel-1') {
-            const slides = images.map(img => `<div class="carousel-slide"><img src="${img}" alt="Slide"></div>`).join('');
-            const dots = images.map((_, i) => `<button class="carousel-dot ${i === 0 ? 'active' : ''}" data-index="${i}"></button>`).join('');
+        function buildCarousel(images, carouselId = 'carousel-1') {
+            let slidesHTML = '', dotsHTML = '';
+            images.forEach((img, index) => {
+                slidesHTML += `<div class="carousel-slide"><img src="${img}" alt="Slide ${index + 1}"></div>`;
+                dotsHTML += `<button class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></button>`;
+            });
             return `
-                <div class="carousel-container" data-carousel-id="${id}">
-                    <div class="carousel-wrapper"><div class="carousel-track">${slides}</div></div>
-                    <button class="carousel-nav prev">‹</button>
-                    <button class="carousel-nav next">›</button>
-                    <div class="carousel-dots">${dots}</div>
-                    <div class="carousel-counter">
-                        <span class="current-slide">1</span> / <span class="total-slides">${images.length}</span>
-                    </div>
+                <div class="carousel-container" data-carousel-id="${carouselId}">
+                    <div class="carousel-wrapper"><div class="carousel-track">${slidesHTML}</div></div>
+                    <button class="carousel-nav prev" aria-label="Previous">‹</button>
+                    <button class="carousel-nav next" aria-label="Next">›</button>
+                    <div class="carousel-dots">${dotsHTML}</div>
+                    <div class="carousel-counter"><span class="current-slide">1</span> / <span class="total-slides">${images.length}</span></div>
                 </div>`;
         }
 
-        function initCarousel(c) {
-            const track = c.querySelector('.carousel-track');
+        function initCarousel(carouselContainer) {
+            const track = carouselContainer.querySelector('.carousel-track');
             const slides = Array.from(track.children);
-            const prevBtn = c.querySelector('.carousel-nav.prev');
-            const nextBtn = c.querySelector('.carousel-nav.next');
-            const dots = Array.from(c.querySelectorAll('.carousel-dot'));
-            const curEl = c.querySelector('.current-slide');
-            let idx = 0;
+            const prevBtn = carouselContainer.querySelector('.carousel-nav.prev');
+            const nextBtn = carouselContainer.querySelector('.carousel-nav.next');
+            const dots = Array.from(carouselContainer.querySelectorAll('.carousel-dot'));
+            const currentSlideEl = carouselContainer.querySelector('.current-slide');
+            let currentIndex = 0;
 
-            function update() {
-                track.style.transform = `translateX(-${idx * slides[0].getBoundingClientRect().width}px)`;
-                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-                curEl.textContent = idx + 1;
-                prevBtn.disabled = idx === 0;
-                nextBtn.disabled = idx === slides.length - 1;
+            function updateCarousel() {
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex));
+                currentSlideEl.textContent = currentIndex + 1;
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === slides.length - 1;
             }
 
-            nextBtn.addEventListener('click', () => { if (idx < slides.length - 1) { idx++; update(); } });
-            prevBtn.addEventListener('click', () => { if (idx > 0) { idx--; update(); } });
-            dots.forEach((d, i) => d.addEventListener('click', () => { idx = i; update(); }));
+            nextBtn.addEventListener('click', () => { if (currentIndex < slides.length - 1) { currentIndex++; updateCarousel(); } });
+            prevBtn.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; updateCarousel(); } });
+            dots.forEach((dot, index) => dot.addEventListener('click', () => { currentIndex = index; updateCarousel(); }));
 
-            let tx = 0, ty = 0;
-            track.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; });
+            let touchStartX = 0, touchEndX = 0;
+            track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
             track.addEventListener('touchend', e => {
-                const dx = e.changedTouches[0].screenX - tx;
-                if (dx < -50 && idx < slides.length - 1) { idx++; update(); }
-                if (dx >  50 && idx > 0) { idx--; update(); }
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50 && currentIndex < slides.length - 1) { currentIndex++; updateCarousel(); }
+                if (touchEndX > touchStartX + 50 && currentIndex > 0) { currentIndex--; updateCarousel(); }
             });
-            update();
+
+            updateCarousel();
         }
 
         function extractVideoId(url) {
             const patterns = [/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/, /youtube\.com\/embed\/([^&\s]+)/];
-            for (const p of patterns) { const m = url.match(p); if (m) return m[1]; }
+            for (const pattern of patterns) { const match = url.match(pattern); if (match) return match[1]; }
             return null;
         }
 
-        function getCategoryName(cat) {
-            return { video:'影片', '3d':'3D', graphic:'平面設計' }[cat] || cat;
+        function getCategoryName(category) {
+            return { 'video': '影片', '3d': '3D', 'graphic': '平面設計' }[category] || category;
         }
 
-        function showError(msg) {
+        function showError(message) {
             document.getElementById('content').innerHTML = `
-                <div class="error">
-                    <h2>糟糕！</h2><p>${msg}</p>
-                    <a href="index.html">返回首頁</a>
-                </div>`;
+                <div class="error"><h2>糟糕！</h2><p>${message}</p><a href="index.html">返回首頁</a></div>`;
         }
 
-        if (workId) { loadWorkDetail(); } else { showError('未指定作品 ID'); }
+        if (workId) loadWorkDetail();
+        else showError('未指定作品 ID');
     </script>
 </body>
 </html>
