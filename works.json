@@ -2,31 +2,46 @@
   {
     "id": "project-1",
     "type": "project",
-    "title": "隨行風扇 ｜ 品牌商品視覺設計",
-    "description": "為品牌商品設定視覺語言，並保持品牌的視覺調性，與風格、其他商品視覺統一化；設計內容覆蓋銷售頁面、3D 素材、素材廣告與社群內容等。",
-    "detailedDescription": "為品牌的隨行風扇製作完整商品視覺，涵蓋3D渲染、主視覺及廣告素材。",
+    "title": {
+      "zh": "隨行風扇 ｜ 品牌商品視覺設計",
+      "en": "Portable Fan | Product Visual Design"
+    },
+    "description": {
+      "zh": "為品牌商品設定視覺語言，並保持品牌的視覺調性，與風格、其他商品視覺統一化；設計內容覆蓋銷售頁面、3D 素材、素材廣告與社群內容等。",
+      "en": "Built the visual language for this product and kept it consistent with the rest of the brand's lineup. Covers the sales page, 3D assets, ad creatives and social content."
+    },
+    "detailedDescription": {
+      "zh": "為品牌的隨行風扇製作完整商品視覺，涵蓋3D渲染、主視覺及廣告素材。",
+      "en": "A full visual package for a portable fan — 3D renders, key visuals, and ad creatives."
+    },
     "category": "graphic",
     "thumbnail": "images/3D_06.png",
     "year": "2025-2026",
     "heroImage": "images/3D_06.png",
-    "tags": ["電商視覺", "2025-2026", "視覺設計"],
+    "tags": {
+      "zh": ["電商視覺", "2025-2026", "視覺設計"],
+      "en": ["E-commerce", "2025-2026", "Visual Design"]
+    },
     "stats": [
-      { "value": "30+", "label": "設計素材產出" },
-      { "value": "1 人", "label": "全流程獨立負責" },
-      { "value": "3-6 mo", "label": "長期專案" }
+      { "value": "30+", "label": { "zh": "設計素材產出", "en": "Assets produced" } },
+      { "value": { "zh": "1 人", "en": "Solo" }, "label": { "zh": "全流程獨立負責", "en": "End-to-end ownership" } },
+      { "value": "3-6 mo", "label": { "zh": "長期專案", "en": "Ongoing project" } }
     ],
-    "overview": "這款風扇造型偏向直筒，同時內建行動電源功能，為了幫助消費者直覺理解，我用 3D 渲染製作了多角度、多型態的產品素材，清楚展示商品的外觀與使用方式。<br><br>一頁式的結構上，我刻意將兩個功能拆成兩段來說，避免同時接收雙重訊息造成認知負擔：前段聚焦風扇功能，用動態圖示範切換型態的前後對比，讓使用方式一目了然；後段再帶出行動電源的使用情境，以生活場景收尾，讓消費者自然想像商品融入日常的樣子。",
+    "overview": {
+      "zh": "這款風扇造型偏向直筒，同時內建行動電源功能，為了幫助消費者直覺理解，我用 3D 渲染製作了多角度、多型態的產品素材，清楚展示商品的外觀與使用方式。<br><br>一頁式的結構上，我刻意將兩個功能拆成兩段來說，避免同時接收雙重訊息造成認知負擔：前段聚焦風扇功能，用動態圖示範切換型態的前後對比，讓使用方式一目了然；後段再帶出行動電源的使用情境，以生活場景收尾，讓消費者自然想像商品融入日常的樣子。",
+      "en": "This fan has a straight, cylindrical body and doubles as a power bank. To make that easy to grasp at a glance, I rendered it from multiple angles and in both of its forms, so people can see exactly what it looks like and how it works.<br><br>For the sales page, I deliberately split the two functions into separate sections instead of pushing both at once — two messages at the same time is one too many. The first half stays on the fan itself, using motion graphics to show the before-and-after of switching modes. The second half brings in the power bank, closing on everyday scenarios so people can picture it in their own routine."
+    },
     "technologies": ["Photoshop", "Blender"],
     "projectSections": [
       {
         "type": "scrollPreview",
-        "label": "銷售頁面",
-        "note": "完整頁面 — 向下捲動瀏覽",
+        "label": { "zh": "銷售頁面", "en": "Sales Page" },
+        "note": { "zh": "完整頁面 — 向下捲動瀏覽", "en": "Full page — scroll to view" },
         "image": "images/Single-Page-full-3D_06.png"
       },
       {
         "type": "grid2",
-        "label": "3D 產品素材",
+        "label": { "zh": "3D 產品素材", "en": "3D Product Assets" },
         "images": [
           "images/3D-deatil/3D_06/3D_06_deatil_01.jpg",
           "images/3D-deatil/3D_06/3D_06_deatil_02.jpg",
@@ -38,7 +53,7 @@
       },
       {
         "type": "grid3",
-        "label": "商品視覺 / 廣告素材",
+        "label": { "zh": "商品視覺 / 廣告素材", "en": "Key Visuals / Ad Creatives" },
         "images": [
           "images/FB-ad-1.jpg",
           "images/FB-ad-2.jpg",
@@ -50,12 +65,18 @@
       },
       {
         "type": "copy",
-        "label": "商品文案",
+        "label": { "zh": "商品文案", "en": "Product Copy" },
         "items": [
           {
-            "type": "品牌instagram_商品文案",
+            "type": {
+              "zh": "品牌instagram_商品文案",
+              "en": "Brand Instagram — product copy"
+            },
             "headline": "˗ˏˋ☀︎-一起抵擋豔陽吧！-☀︎ˎˊ˗<br>【GA02 90°旋轉手持風扇】<br>☁︎ 4900mAh大容量<br>通勤、旅行，一路陪吹不斷電<br>☁︎ 安全感升級<br>隱藏式扇葉設計，不怕誤觸卡手，小朋友使用更安心<br>☁︎ 不只是風扇<br>手機快沒電時，還能臨時變身行動電源，救援低電量焦慮症<br>☁︎ 強力風速 × 多功能使用<br>吹鍵盤灰塵、吹化妝品來速乾，強風不只有降溫用途<br>☁︎ 三段風速自由切換<br>微風、涼風、強風隨心調整，今天想溫柔還是暴風模式自己決定 ✧",
-            "body": "針對 instagram 短文格式調整節奏，以清楚的條列式來表達產品特點，並搭配Emoji、特殊符號來點綴文章。"
+            "body": {
+              "zh": "針對 instagram 短文格式調整節奏，以清楚的條列式來表達產品特點，並搭配Emoji、特殊符號來點綴文章。",
+              "en": "Paced for Instagram's short-form format — features laid out as a clean list, with emoji and decorative characters breaking up the text."
+            }
           }
         ]
       }
@@ -64,31 +85,46 @@
   {
     "id": "project-2",
     "type": "project",
-    "title": "電源供應器 ｜ 品牌商品視覺設計",
-    "description": "以多功能行動電源為主軸，設定商品視覺語言並維持品牌調性；設計內容涵蓋銷售頁面、3D素材、廣告與社群內容。",
-    "detailedDescription": "為品牌的電源供應器製作3D渲染、主視覺及廣告素材等視覺設計。",
+    "title": {
+      "zh": "電源供應器 ｜ 品牌商品視覺設計",
+      "en": "Power Adapter | Product Visual Design"
+    },
+    "description": {
+      "zh": "以多功能行動電源為主軸，設定商品視覺語言並維持品牌調性；設計內容涵蓋銷售頁面、3D素材、廣告與社群內容。",
+      "en": "Visual direction for a multi-function power bank, kept in line with the brand's existing tone. Sales page, 3D assets, ads and social content."
+    },
+    "detailedDescription": {
+      "zh": "為品牌的電源供應器製作3D渲染、主視覺及廣告素材等視覺設計。",
+      "en": "3D renders, key visuals and ad creatives for a brand's power adapter."
+    },
     "category": "graphic",
     "thumbnail": "images/3D_02.png",
     "year": "2026",
     "heroImage": "images/3D_02.png",
-    "tags": ["3D 建模", "視覺設計", "2026"],
+    "tags": {
+      "zh": ["3D 建模", "視覺設計", "2026"],
+      "en": ["3D Modeling", "Visual Design", "2026"]
+    },
     "stats": [
-      { "value": "20+", "label": "視覺素材" },
-      { "value": "1 人", "label": "全流程獨立負責" },
-      { "value": "2-3 mo", "label": "專案製作" }
+      { "value": "20+", "label": { "zh": "視覺素材", "en": "Visual assets" } },
+      { "value": { "zh": "1 人", "en": "Solo" }, "label": { "zh": "全流程獨立負責", "en": "End-to-end ownership" } },
+      { "value": "2-3 mo", "label": { "zh": "專案製作", "en": "Project duration" } }
     ],
-    "overview": "有別於需要建立使用情境的新商品，行動電源屬於消費者已熟悉的品項<br>視覺敘事的重點因此從『說明需求』的提出痛點，轉向『突顯差異』：以多功能、自帶線等產品特色為核心，設計涵蓋銷售頁面、3D素材、廣告與社群內容。",
+    "overview": {
+      "zh": "有別於需要建立使用情境的新商品，行動電源屬於消費者已熟悉的品項<br>視覺敘事的重點因此從『說明需求』的提出痛點，轉向『突顯差異』：以多功能、自帶線等產品特色為核心，設計涵蓋銷售頁面、3D素材、廣告與社群內容。",
+      "en": "Unlike a new product category that needs its use case explained, a power bank is something people already understand.<br>So the story shifts from \"here's the problem\" to \"here's what makes this one different\" — the built-in cable, the two-in-one design. That thinking carried through the sales page, 3D assets, ads and social posts."
+    },
     "technologies": ["Blender", "Photoshop"],
     "projectSections": [
       {
         "type": "scrollPreview",
-        "label": "銷售頁面",
-        "note": "完整頁面 — 向下捲動瀏覽",
+        "label": { "zh": "銷售頁面", "en": "Sales Page" },
+        "note": { "zh": "完整頁面 — 向下捲動瀏覽", "en": "Full page — scroll to view" },
         "image": "images/Single-Page-full-3D_02.png"
       },
       {
         "type": "grid2",
-        "label": "3D 產品素材",
+        "label": { "zh": "3D 產品素材", "en": "3D Product Assets" },
         "images": [
           "images/3D-deatil/3D_02/3D_02_deatil_01.jpg",
           "images/3D-deatil/3D_02/3D_02_deatil_02.jpg",
@@ -99,20 +135,29 @@
       },
       {
         "type": "grid3",
-        "label": "商品視覺 / 廣告素材",
-        "description": "作為使用AI的嘗試，此次將3D渲染圖放進了Gemini當中，並以提示詞要求結合渲染圖產出產品素材，最後使用Photoshop進行圖片編輯與排版設計。",
+        "label": { "zh": "商品視覺 / 廣告素材", "en": "Key Visuals / Ad Creatives" },
+        "description": {
+          "zh": "作為使用AI的嘗試，此次將3D渲染圖放進了Gemini當中，並以提示詞要求結合渲染圖產出產品素材，最後使用Photoshop進行圖片編輯與排版設計。",
+          "en": "An experiment with AI in the workflow — I fed my own 3D renders into Gemini and prompted it to build out product scenes around them, then finished the editing and layout in Photoshop."
+        },
         "images": [
           "images/FB-ad-4.jpg"
         ]
       },
       {
         "type": "copy",
-        "label": "商品文案",
+        "label": { "zh": "商品文案", "en": "Product Copy" },
         "items": [
           {
-            "type": "品牌Facebook專頁_商品文案",
+            "type": {
+              "zh": "品牌Facebook專頁_商品文案",
+              "en": "Brand Facebook page — product copy"
+            },
             "headline": "-＝-＝-＝-＝-＝-＝-＝-＝-<br>˗ˏˋ 𝘕𝘦𝘸 𝘤𝘰𝘮𝘮𝘰𝘥𝘪𝘵𝘺  .ᐟ.ᐟ<br>-＝-＝-＝-＝-＝-＝-＝-＝-<br>多功能33W電源供應器<br>｜充電器＋行動電源 二合一<br>｜33W 高功率快充，時間不再浪費<br>｜自帶Type-C快充線與 USB-C插孔<br>｜支援PD快速充電協議<br>｜充電線＝掛繩設計，方便攜帶和收納\n少帶一顆，多一份效率 .ᐟ.ᐟ",
-            "body": "於商品上架品牌官網時發佈，以「新商品」作為文案開頭，文字描述簡單輕鬆、並將商品特色以條列式展出，讓追蹤者能快速了解新品的特色。"
+            "body": {
+              "zh": "於商品上架品牌官網時發佈，以「新商品」作為文案開頭，文字描述簡單輕鬆、並將商品特色以條列式展出，讓追蹤者能快速了解新品的特色。",
+              "en": "Posted when the product went live on the brand site. Opens with a straightforward \"new arrival\" hook, keeps the tone light, and lists the specs so followers can take it in quickly."
+            }
           }
         ]
       }
@@ -120,40 +165,67 @@
   },
   {
     "id": "video-edit-1",
-    "title": "影片剪輯 ⮕",
-    "description": "使用Premiere與Effect剪輯品牌形象、產品展示，以及其他興趣剪輯",
+    "title": {
+      "zh": "影片剪輯 ⮕",
+      "en": "Video Editing ⮕"
+    },
+    "description": {
+      "zh": "使用Premiere與Effect剪輯品牌形象、產品展示，以及其他興趣剪輯",
+      "en": "Brand films, product demos and personal edits, cut in Premiere and After Effects"
+    },
     "videos": [
       {
         "url": "https://youtu.be/BguIOytDtq4",
         "title": "Casual lifestyle | 2024",
-        "description": "負責品牌的概念短影片剪輯，主要使用Premiere做初步剪輯與調色、速度微調等。"
+        "description": {
+          "zh": "負責品牌的概念短影片剪輯，主要使用Premiere做初步剪輯與調色、速度微調等。",
+          "en": "A concept short for the brand — cut, graded and speed-adjusted in Premiere."
+        }
       },
       {
         "url": "https://www.youtube.com/watch?v=IbXL8MDZ_MY",
-        "title": "產品展示 | 2023",
-        "description": "使用Blender進行建模與動畫渲染，最後使用Adobe Premiere進行剪輯串場。此影片用於品牌網站的部分背景區塊。"
+        "title": { "zh": "產品展示 | 2023", "en": "Product Showcase | 2023" },
+        "description": {
+          "zh": "使用Blender進行建模與動畫渲染，最後使用Adobe Premiere進行剪輯串場。此影片用於品牌網站的部分背景區塊。",
+          "en": "Modeled and animated in Blender, then assembled in Premiere. Used as a background section on the brand's website."
+        }
       },
       {
         "url": "https://www.youtube.com/watch?v=K8kV-UjTsHI",
-        "title": "練習作品｜2023",
-        "description": "《葬送のフリーレン》動畫片段剪輯，主要使用Effect製作字體動畫與過場。"
+        "title": { "zh": "練習作品｜2023", "en": "Practice Piece | 2023" },
+        "description": {
+          "zh": "《葬送のフリーレン》動畫片段剪輯，主要使用Effect製作字體動畫與過場。",
+          "en": "An anime clip edit, mostly an excuse to play with kinetic typography and transitions in After Effects."
+        }
       },
       {
         "url": "https://www.youtube.com/watch?v=MQVweeGQkWU",
-        "title": "委託作品｜2023",
-        "description": "VTuber實況精華/Short剪輯，主要使用Effect與網路素材。"
+        "title": { "zh": "委託作品｜2023", "en": "Commissioned Work | 2023" },
+        "description": {
+          "zh": "VTuber實況精華/Short剪輯，主要使用Effect與網路素材。",
+          "en": "VTuber stream highlights and Shorts, built in After Effects with sourced assets."
+        }
       }
     ],
     "category": "video",
     "thumbnail": "images/video_0.png",
     "year": "2023",
-    "technologies": ["Premiere", "Effect", "Blender", "Photoshop"]
+    "technologies": ["Premiere", "After Effects", "Blender", "Photoshop"]
   },
   {
     "id": "3d-product-1",
-    "title": "產品 3D 建模 ⮕",
-    "description": "3C 產品建模，用於電商平台展示，以及素材製作等多種用途",
-    "detailedDescription": "為電商平台打造的 產品 3D 模型，注重材質真實感與細節呈現。透過建模與燈光設計，讓產品在網頁上也能展現出更清晰的外型。",
+    "title": {
+      "zh": "產品 3D 建模 ⮕",
+      "en": "3D Product Modeling ⮕"
+    },
+    "description": {
+      "zh": "3C 產品建模，用於電商平台展示，以及素材製作等多種用途",
+      "en": "Consumer electronics modeled for e-commerce listings and design assets"
+    },
+    "detailedDescription": {
+      "zh": "為電商平台打造的 產品 3D 模型，注重材質真實感與細節呈現。透過建模與燈光設計，讓產品在網頁上也能展現出更清晰的外型。",
+      "en": "3D product models built for e-commerce, with a focus on believable materials and fine detail. Careful modeling and lighting means the product reads clearly on screen — no photo shoot required."
+    },
     "category": "3d",
     "thumbnail": "images/3D_01.png",
     "emoji": "🎨",
@@ -206,9 +278,18 @@
   },
   {
     "id": "Single-Page-3D-1",
-    "title": "銷售劇本 ⮕",
-    "description": "一頁式商品介紹設計，簡潔明瞭的展現商品優勢",
-    "detailedDescription": "將產品濃縮成高轉換率的單頁銷售文案，結合消費者痛點與共鳴建立，打造吸睛與行動呼籲結合的銷售頁面",
+    "title": {
+      "zh": "銷售劇本 ⮕",
+      "en": "Sales Page Design ⮕"
+    },
+    "description": {
+      "zh": "一頁式商品介紹設計，簡潔明瞭的展現商品優勢",
+      "en": "Single-page product stories that get the point across fast"
+    },
+    "detailedDescription": {
+      "zh": "將產品濃縮成高轉換率的單頁銷售文案，結合消費者痛點與共鳴建立，打造吸睛與行動呼籲結合的銷售頁面",
+      "en": "Condensing a product into a single page that actually converts — leading with the problem the buyer already has, building some recognition, then landing on a call to action."
+    },
     "category": "graphic",
     "thumbnail": "images/Single Page-02.png",
     "emoji": "🎯",
@@ -226,9 +307,18 @@
   },
   {
     "id": "graphic-ecommerce-1",
-    "title": "電商視覺設計 ⮕",
-    "description": "產品主視覺、Banner 設計，提升轉換率",
-    "detailedDescription": "針對電商平台設計的視覺素材，包含產品主視覺、促銷 Banner、以及商品詳情頁設計。透過清晰的資訊架構與吸睛的視覺語言，提升點擊率與轉換率",
+    "title": {
+      "zh": "電商視覺設計 ⮕",
+      "en": "E-commerce Visuals ⮕"
+    },
+    "description": {
+      "zh": "產品主視覺、Banner 設計，提升轉換率",
+      "en": "Key visuals and banners built to lift conversion"
+    },
+    "detailedDescription": {
+      "zh": "針對電商平台設計的視覺素材，包含產品主視覺、促銷 Banner、以及商品詳情頁設計。透過清晰的資訊架構與吸睛的視覺語言，提升點擊率與轉換率",
+      "en": "Visual assets made for e-commerce platforms — product key visuals, promo banners, and detail page layouts. Clear information hierarchy paired with visuals that stop the scroll, aimed at click-through and conversion."
+    },
     "category": "graphic",
     "thumbnail": "images/banner_0.png",
     "emoji": "🖼️",
@@ -272,9 +362,18 @@
   },
   {
     "id": "graphic-social-1",
-    "title": "社群媒體設計 ⮕",
-    "description": "Instagram、Facebook貼文視覺設計",
-    "detailedDescription": "為社群平台設計的系列視覺內容,維持品牌調性的同時，針對不同平台特性調整視覺比例與資訊呈現方式；並根據不同風格，產出符合需求的文案。",
+    "title": {
+      "zh": "社群媒體設計 ⮕",
+      "en": "Social Media Design ⮕"
+    },
+    "description": {
+      "zh": "Instagram、Facebook貼文視覺設計",
+      "en": "Post visuals for Instagram and Facebook"
+    },
+    "detailedDescription": {
+      "zh": "為社群平台設計的系列視覺內容,維持品牌調性的同時，針對不同平台特性調整視覺比例與資訊呈現方式；並根據不同風格，產出符合需求的文案。",
+      "en": "Social content built as a series — same brand voice throughout, but with the proportions and information density adjusted for each platform. Copy written to match, too."
+    },
     "category": "graphic",
     "thumbnail": "images/graphic-social_0.png",
     "emoji": "📱",
@@ -294,8 +393,11 @@
     },
     "additionalGalleries": [
       {
-        "title": "節日活動設計",
-        "description": "根據季節、節日等設計活動視覺圖，以清晰明瞭的視覺呈現優惠活動，用以吸引追蹤者的目光，並增加其轉換率",
+        "title": { "zh": "節日活動設計", "en": "Seasonal Campaign Visuals" },
+        "description": {
+          "zh": "根據季節、節日等設計活動視覺圖，以清晰明瞭的視覺呈現優惠活動，用以吸引追蹤者的目光，並增加其轉換率",
+          "en": "Campaign graphics tied to seasons and holidays. The offer has to be readable in a second — that's most of the job."
+        },
         "columns": 3,
         "images": [
           "images/LINE_01.jpg",
@@ -306,8 +408,11 @@
         ]
       },
       {
-        "title": "Instagram 貼文系列",
-        "description": "為品牌 IG 設計的「知識懶人包」，用於提高品牌互動、增加其他點擊率",
+        "title": { "zh": "Instagram 貼文系列", "en": "Instagram Post Series" },
+        "description": {
+          "zh": "為品牌 IG 設計的「知識懶人包」，用於提高品牌互動、增加其他點擊率",
+          "en": "Explainer carousels for the brand's Instagram — the kind people actually save and share, which was the point."
+        },
         "columns": 3,
         "images": [
           "images/IG/IG_1_01.png",
@@ -324,9 +429,18 @@
   },
   {
     "id": "graphic-ad-1",
-    "title": "廣告素材設計 ⮕",
-    "description": "以符合平台規格，設計產品的數位廣告素材",
-    "detailedDescription": "針對Facebook Ads、LINE Ads等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現",
+    "title": {
+      "zh": "廣告素材設計 ⮕",
+      "en": "Ad Creative Design ⮕"
+    },
+    "description": {
+      "zh": "以符合平台規格，設計產品的數位廣告素材",
+      "en": "Digital ad creatives built to each platform's spec"
+    },
+    "detailedDescription": {
+      "zh": "針對Facebook Ads、LINE Ads等數位廣告平台設計的素材，精準掌握各平台規格限制，並透過 A/B Testing 優化視覺表現",
+      "en": "Creatives for Facebook Ads, LINE Ads and similar platforms — each one built to spec, then refined through A/B testing to see what actually performs."
+    },
     "category": "graphic",
     "thumbnail": "images/graphic-ad-1.png",
     "emoji": "🎯",
@@ -347,9 +461,18 @@
   },
   {
     "id": "Draw-1",
-    "title": "插畫創作 ⮕",
-    "description": "以興趣驅動的個人插畫創作，沒有特定主題",
-    "detailedDescription": "繪圖一直是我生活裡的一部分。就像嘗試不同的設計風格一樣，我喜歡讓畫風自由變化——題材可能是日常的觀察，也可能是某個說不清楚的心情。<br>對我來說，畫畫是一種紀錄生活的方式。",
+    "title": {
+      "zh": "插畫創作 ⮕",
+      "en": "Illustration ⮕"
+    },
+    "description": {
+      "zh": "以興趣驅動的個人插畫創作，沒有特定主題",
+      "en": "Personal illustration work — no particular theme, just whatever I feel like drawing"
+    },
+    "detailedDescription": {
+      "zh": "繪圖一直是我生活裡的一部分。就像嘗試不同的設計風格一樣，我喜歡讓畫風自由變化——題材可能是日常的觀察，也可能是某個說不清楚的心情。<br>對我來說，畫畫是一種紀錄生活的方式。",
+      "en": "Drawing has always been part of my life. Much like trying on different design styles, I like letting the way I draw shift around — sometimes it's something I noticed during the day, sometimes it's a mood I can't quite name.<br>Mostly it's just how I keep track of things."
+    },
     "category": "graphic",
     "thumbnail": "images/Draw/thumbnail_Draw.png",
     "emoji": "🎨",
@@ -394,6 +517,6 @@
       }
     ],
     "year": "2023-2026",
-    "technologies": ["CLIP STUDIO PAINT", "Photoshop", "illustrator"]
+    "technologies": ["CLIP STUDIO PAINT", "Photoshop", "Illustrator"]
   }
 ]
