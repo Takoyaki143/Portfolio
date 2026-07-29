@@ -60,7 +60,7 @@
             color: var(--text-secondary);
             cursor: pointer;
             font-size: 0.85rem;
-            transition: color 0.3s, background 0.3s, border-color 0.3s;
+            transition: all 0.3s;
         }
         .lang-btn:hover { color: var(--text-primary); background: var(--bg-hover); }
         .lang-btn.active { color: var(--text-primary); border-color: var(--accent); }
@@ -263,3 +263,465 @@
         }
     </style>
 </head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Yun's Portfolio</a>
+            <div style="display:flex;align-items:center;gap:1rem">
+                <a href="index.html" class="back-btn">
+                    <span>←</span>
+                    <span data-zh="返回作品集" data-en="Back to work">返回作品集</span>
+                </a>
+                <div class="lang-switch">
+                    <button class="lang-btn" data-lang="zh">中</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="content">
+        <div class="loading"><p data-zh="載入中..." data-en="Loading...">載入中...</p></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Yunting-Wu. All rights reserved.</p>
+    </footer>
+
+    <script>
+        /* ── i18n ── */
+        let currentLang = localStorage.getItem('lang')
+            || (navigator.language && navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en');
+
+        function t(field) {
+            if (field === null || field === undefined) return '';
+            if (typeof field === 'string') return field;
+            return field[currentLang] || field.zh || field.en || '';
+        }
+
+        function applyStaticLang() {
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                const val = el.dataset[currentLang];
+                if (val !== undefined) el.textContent = val;
+            });
+            document.documentElement.lang = currentLang === 'zh' ? 'zh-TW' : 'en';
+            document.querySelectorAll('.lang-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.lang === currentLang);
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentLang = btn.dataset.lang;
+                localStorage.setItem('lang', currentLang);
+                applyStaticLang();
+                if (currentWork) displayWork(currentWork);
+            });
+        });
+
+        const T = {
+            zh: {
+                notFound: '找不到該作品', loadError: '載入作品時發生錯誤', noId: '未指定作品 ID',
+                oops: '糟糕！', backHome: '返回首頁', scrollDown: '↓ 向下捲動',
+                client: '客戶', year: '年份', tools: '使用技術'
+            },
+            en: {
+                notFound: 'Work not found', loadError: 'Something went wrong while loading', noId: 'No work ID specified',
+                oops: 'Oops!', backHome: 'Back to home', scrollDown: '↓ Scroll',
+                client: 'Client', year: 'Year', tools: 'Tools'
+            }
+        };
+        const L = k => T[currentLang][k];
+
+        /* ── Load ── */
+        const urlParams = new URLSearchParams(window.location.search);
+        const workId = urlParams.get('id');
+        let currentWork = null;
+
+        async function loadWorkDetail() {
+            try {
+                const response = await fetch('works.json');
+                const works = await response.json();
+                const work = works.find(w => w.id === workId);
+                if (!work) { showError(L('notFound')); return; }
+                currentWork = work;
+                displayWork(work);
+            } catch (error) {
+                console.error('Error loading work:', error);
+                showError(L('loadError'));
+            }
+        }
+
+        function displayWork(work) {
+            if (work.type === 'project') displayProjectWork(work);
+            else displaySkillWork(work);
+        }
+
+        /* ══ PROJECT layout ══ */
+        function displayProjectWork(work) {
+            document.title = `${t(work.title)} - Yun`;
+            const contentDiv = document.getElementById('content');
+
+            const heroStyle = work.heroImage
+                ? `background-image: url('${work.heroImage}')`
+                : 'background: linear-gradient(160deg,#0d1b2a 0%,#1b2d42 55%,#0e2233 100%)';
+
+            let tagList = [];
+            if (work.tags) tagList = Array.isArray(work.tags) ? work.tags : (work.tags[currentLang] || work.tags.zh || []);
+            const tagsHTML = tagList.map((tg, i) => `<span class="ptag${i === 0 ? ' hi' : ''}">${tg}</span>`).join('');
+
+            const statsHTML = (work.stats || []).map(s =>
+                `<div class="pstat"><div class="pstat-val">${t(s.value)}</div><div class="pstat-lbl">${t(s.label)}</div></div>`
+            ).join('');
+
+            const toolsHTML = (work.technologies || []).map(x => `<span class="ptool">${x}</span>`).join('');
+            const sectionsHTML = (work.projectSections || []).map(buildProjectSection).join('');
+
+            contentDiv.innerHTML = `
+                <div class="phero">
+                    <div class="phero-bg" style="${heroStyle}"></div>
+                    <div class="phero-overlay"></div>
+                    <div class="phero-fade"></div>
+                </div>
+                <div class="pcontainer">
+                    <div class="pintro">
+                        <div class="pmeta">${tagsHTML}</div>
+                        <h1 class="ptitle">${t(work.title)}</h1>
+                        <p class="psub">${t(work.detailedDescription) || t(work.description)}</p>
+                        ${work.stats ? `<div class="pstats">${statsHTML}</div>` : ''}
+                    </div>
+                    ${work.overview ? `
+                        <div class="ptwocol">
+                            <div class="ptwocol-lbl">Overview</div>
+                            <div class="ptwocol-txt">${t(work.overview)}</div>
+                        </div>` : ''}
+                    ${work.technologies && work.technologies.length ? `
+                        <div class="ptwocol" style="border-bottom:none">
+                            <div class="ptwocol-lbl">Tools</div>
+                            <div class="ptools">${toolsHTML}</div>
+                        </div>` : ''}
+                    <div class="psec">
+                        <span class="psec-lbl">Visual</span>
+                        <div class="psec-line"></div>
+                    </div>
+                    ${sectionsHTML}
+                    <div style="height:3rem"></div>
+                </div>`;
+
+            initProjectLightbox();
+
+            document.querySelectorAll('.sp-body').forEach(sp => {
+                const hint = sp.querySelector('.sp-hint');
+                sp.addEventListener('scroll', () => {
+                    if (hint) hint.style.opacity = sp.scrollTop > 40 ? '0' : '1';
+                });
+            });
+        }
+
+        function buildProjectSection(sec) {
+            const label = t(sec.label);
+            const sub = `
+                <div class="psubsec">
+                    <div class="psubsec-dot"></div>
+                    <span class="psubsec-lbl">${label}</span>
+                    ${sec.note ? `<span class="psubsec-note">${t(sec.note)}</span>` : ''}
+                </div>`;
+
+            const desc = sec.description ? `<p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.8;margin-bottom:0.9rem">${t(sec.description)}</p>` : '';
+
+            const gridOf = (cls) => {
+                const imgs = (sec.images || []).map((src, i) =>
+                    `<div class="proj-gi" data-src="${src}"><img src="${src}" alt="${label} ${i+1}" loading="lazy"></div>`
+                ).join('');
+                return sub + desc + `<div class="${cls}">${imgs}</div>`;
+            };
+
+            switch (sec.type) {
+                case 'scrollPreview': {
+                    const fname = sec.image ? sec.image.split('/').pop() : '';
+                    const inner = sec.image
+                        ? `<img src="${sec.image}" alt="${label}">`
+                        : `<div style="height:400px;background:var(--bg-hover)"></div>`;
+                    return sub + desc + `
+                        <div class="scroll-preview">
+                            <div class="sp-bar">
+                                <div class="sp-dot" style="background:#c0453a"></div>
+                                <div class="sp-dot" style="background:#b07830"></div>
+                                <div class="sp-dot" style="background:#3a8040"></div>
+                                <div class="sp-url">${fname}</div>
+                            </div>
+                            <div class="sp-body">
+                                ${inner}
+                                <div class="sp-hint">${L('scrollDown')}</div>
+                            </div>
+                        </div>`;
+                }
+                case 'grid2': return gridOf('proj-g2');
+                case 'grid3': return gridOf('proj-g3');
+                case 'gridSquare': return gridOf('proj-gsq');
+                case 'copy': {
+                    const cards = (sec.items || []).map(item => `
+                        <div class="copy-card">
+                            <div class="copy-type">${t(item.type)}</div>
+                            <div class="copy-text">
+                                ${item.headline ? `<em>${t(item.headline)}</em><br>` : ''}
+                                ${t(item.body)}
+                            </div>
+                        </div>`).join('');
+                    return sub + desc + cards;
+                }
+                default: return '';
+            }
+        }
+
+        function initProjectLightbox() {
+            let lb = document.getElementById('proj-lb');
+            if (!lb) {
+                lb = document.createElement('div');
+                lb.id = 'proj-lb';
+                lb.className = 'proj-lb';
+                lb.innerHTML = `<button class="proj-lb-x" id="proj-lb-x">×</button><img src="" alt="" id="proj-lb-img">`;
+                document.body.appendChild(lb);
+                lb.addEventListener('click', () => lb.classList.remove('on'));
+                document.getElementById('proj-lb-x').addEventListener('click', e => {
+                    e.stopPropagation();
+                    lb.classList.remove('on');
+                });
+                document.addEventListener('keydown', e => {
+                    if (e.key === 'Escape') lb.classList.remove('on');
+                });
+            }
+            document.querySelectorAll('.proj-gi').forEach(el => {
+                el.addEventListener('click', () => {
+                    document.getElementById('proj-lb-img').src = el.dataset.src;
+                    lb.classList.add('on');
+                });
+            });
+        }
+
+        /* ══ SKILL layout ══ */
+        function displaySkillWork(work) {
+            document.title = `${t(work.title)} - Yun`;
+            const contentDiv = document.getElementById('content');
+            let mediaHTML = '';
+
+            if (work.videos && work.videos.length > 0) {
+                work.videos.forEach(videoData => {
+                    const videoId = extractVideoId(videoData.url);
+                    if (videoId) {
+                        mediaHTML += `
+                            ${videoData.title ? `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${t(videoData.title)}</h3>` : ''}
+                            ${videoData.description ? `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${t(videoData.description)}</p>` : ''}
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                            </div>`;
+                    }
+                });
+            } else if (work.video) {
+                const videoId = extractVideoId(work.video);
+                if (videoId) mediaHTML += `<div class="video-container"><iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe></div>`;
+            }
+
+            if (work.carouselImages && work.carouselImages.length > 0)
+                mediaHTML += buildCarousel(work.carouselImages, 'carousel-1');
+
+            if (work.gridGallery && work.gridGallery.images && work.gridGallery.images.length > 0)
+                mediaHTML += buildGridGallery(work.gridGallery);
+
+            if (work.additionalGalleries && work.additionalGalleries.length > 0) {
+                work.additionalGalleries.forEach(gallery => {
+                    if (gallery.title) mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${t(gallery.title)}</h3>`;
+                    if (gallery.description) mediaHTML += `<p style="margin-bottom: 1rem; color: var(--text-secondary);">${t(gallery.description)}</p>`;
+                    mediaHTML += buildGridGallery(gallery);
+                });
+            }
+
+            if (work.images && work.images.length > 0) {
+                mediaHTML += '<div class="image-gallery">';
+                work.images.forEach(img => {
+                    mediaHTML += `<div class="gallery-image"><img src="${img}" alt="${t(work.title)}"></div>`;
+                });
+                mediaHTML += '</div>';
+            }
+
+            if (work.additionalCarousels && work.additionalCarousels.length > 0) {
+                work.additionalCarousels.forEach((carousel, index) => {
+                    if (carousel.title) mediaHTML += `<h3 style="margin: 2rem 0 1rem; color: var(--text-primary);">${t(carousel.title)}</h3>`;
+                    mediaHTML += buildCarousel(carousel.images, `carousel-${index + 2}`);
+                });
+            }
+
+            let techTagsHTML = '';
+            if (work.technologies && work.technologies.length > 0) {
+                techTagsHTML = '<div class="tech-tags">';
+                work.technologies.forEach(tech => { techTagsHTML += `<span class="tech-tag">${tech}</span>`; });
+                techTagsHTML += '</div>';
+            }
+
+            let detailsHTML = '';
+            if (work.client || work.year || work.technologies) {
+                detailsHTML = `
+                    <div class="details-section">
+                        <div class="details-grid">
+                            ${work.client ? `<div class="detail-item"><h3>${L('client')}</h3><p>${t(work.client)}</p></div>` : ''}
+                            ${work.year ? `<div class="detail-item"><h3>${L('year')}</h3><p>${work.year}</p></div>` : ''}
+                            ${work.technologies && work.technologies.length > 0 ? `<div class="detail-item"><h3>${L('tools')}</h3>${techTagsHTML}</div>` : ''}
+                        </div>
+                    </div>`;
+            }
+
+            contentDiv.innerHTML = `
+                <div class="container">
+                    <div class="work-header">
+                        <h1>${t(work.title)}</h1>
+                        <div class="work-meta">
+                            <span class="meta-tag">${getCategoryName(work.category)}</span>
+                        </div>
+                        <p class="work-description">${t(work.detailedDescription) || t(work.description)}</p>
+                    </div>
+                    <div class="media-section">${mediaHTML}</div>
+                    ${detailsHTML}
+                </div>`;
+
+            const carousels = document.querySelectorAll('.carousel-container');
+            if (carousels.length > 0) carousels.forEach(c => initCarousel(c));
+            if (document.querySelectorAll('.grid-gallery').length > 0) initLightbox();
+        }
+
+        /* ── Helpers ── */
+        function buildGridGallery(galleryData) {
+            const cols = galleryData.columns || 3;
+            let gridHTML = `<div class="grid-gallery cols-${cols}" data-gallery="grid">`;
+            galleryData.images.forEach((img, index) => {
+                gridHTML += `<div class="grid-item" data-index="${index}"><img src="${img}" alt="Gallery image ${index + 1}"></div>`;
+            });
+            return gridHTML + '</div>';
+        }
+
+        function initLightbox() {
+            if (document.querySelector('.lightbox')) return;
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            lightbox.innerHTML = `
+                <button class="lightbox-close">×</button>
+                <button class="lightbox-nav prev">‹</button>
+                <button class="lightbox-nav next">›</button>
+                <div class="lightbox-content"><img src="" alt=""></div>
+                <div class="lightbox-counter"><span class="current">1</span> / <span class="total">1</span></div>`;
+            document.body.appendChild(lightbox);
+
+            const lightboxImg = lightbox.querySelector('.lightbox-content img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.lightbox-nav.prev');
+            const nextBtn = lightbox.querySelector('.lightbox-nav.next');
+            const currentEl = lightbox.querySelector('.current');
+            const totalEl = lightbox.querySelector('.total');
+            let currentGallery = [], currentIndex = 0;
+
+            document.addEventListener('click', e => {
+                const item = e.target.closest('.grid-item');
+                if (!item) return;
+                const gallery = item.closest('.grid-gallery');
+                const items = Array.from(gallery.querySelectorAll('.grid-item'));
+                currentGallery = items.map(i => i.querySelector('img').src);
+                currentIndex = parseInt(item.dataset.index);
+                showImage();
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            const closeLightbox = () => { lightbox.classList.remove('active'); document.body.style.overflow = ''; };
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+            prevBtn.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; showImage(); } });
+            nextBtn.addEventListener('click', () => { if (currentIndex < currentGallery.length - 1) { currentIndex++; showImage(); } });
+            document.addEventListener('keydown', e => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft' && currentIndex > 0) { currentIndex--; showImage(); }
+                if (e.key === 'ArrowRight' && currentIndex < currentGallery.length - 1) { currentIndex++; showImage(); }
+            });
+
+            function showImage() {
+                lightboxImg.src = currentGallery[currentIndex];
+                currentEl.textContent = currentIndex + 1;
+                totalEl.textContent = currentGallery.length;
+                prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+                nextBtn.style.display = currentIndex === currentGallery.length - 1 ? 'none' : 'flex';
+            }
+        }
+
+        function buildCarousel(images, carouselId = 'carousel-1') {
+            let slidesHTML = '', dotsHTML = '';
+            images.forEach((img, index) => {
+                slidesHTML += `<div class="carousel-slide"><img src="${img}" alt="Slide ${index + 1}"></div>`;
+                dotsHTML += `<button class="carousel-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></button>`;
+            });
+            return `
+                <div class="carousel-container" data-carousel-id="${carouselId}">
+                    <div class="carousel-wrapper"><div class="carousel-track">${slidesHTML}</div></div>
+                    <button class="carousel-nav prev" aria-label="Previous">‹</button>
+                    <button class="carousel-nav next" aria-label="Next">›</button>
+                    <div class="carousel-dots">${dotsHTML}</div>
+                    <div class="carousel-counter"><span class="current-slide">1</span> / <span class="total-slides">${images.length}</span></div>
+                </div>`;
+        }
+
+        function initCarousel(carouselContainer) {
+            const track = carouselContainer.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const prevBtn = carouselContainer.querySelector('.carousel-nav.prev');
+            const nextBtn = carouselContainer.querySelector('.carousel-nav.next');
+            const dots = Array.from(carouselContainer.querySelectorAll('.carousel-dot'));
+            const currentSlideEl = carouselContainer.querySelector('.current-slide');
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex));
+                currentSlideEl.textContent = currentIndex + 1;
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === slides.length - 1;
+            }
+
+            nextBtn.addEventListener('click', () => { if (currentIndex < slides.length - 1) { currentIndex++; updateCarousel(); } });
+            prevBtn.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; updateCarousel(); } });
+            dots.forEach((dot, index) => dot.addEventListener('click', () => { currentIndex = index; updateCarousel(); }));
+
+            let touchStartX = 0, touchEndX = 0;
+            track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+            track.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50 && currentIndex < slides.length - 1) { currentIndex++; updateCarousel(); }
+                if (touchEndX > touchStartX + 50 && currentIndex > 0) { currentIndex--; updateCarousel(); }
+            });
+
+            updateCarousel();
+        }
+
+        function extractVideoId(url) {
+            const patterns = [/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/, /youtube\.com\/embed\/([^&\s]+)/];
+            for (const pattern of patterns) { const match = url.match(pattern); if (match) return match[1]; }
+            return null;
+        }
+
+        function getCategoryName(category) {
+            const map = {
+                zh: { 'video': '影片', '3d': '3D', 'graphic': '平面設計' },
+                en: { 'video': 'Video', '3d': '3D', 'graphic': 'Graphic Design' }
+            };
+            return map[currentLang][category] || category;
+        }
+
+        function showError(message) {
+            document.getElementById('content').innerHTML = `
+                <div class="error"><h2>${L('oops')}</h2><p>${message}</p><a href="index.html">${L('backHome')}</a></div>`;
+        }
+
+        applyStaticLang();
+        if (workId) loadWorkDetail();
+        else showError(L('noId'));
+    </script>
+</body>
+</html>
