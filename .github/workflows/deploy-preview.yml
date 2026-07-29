@@ -1,0 +1,49 @@
+name: Deploy site and previews
+
+on:
+  push:
+    branches:
+      - '**'   # 監控所有分支的 push
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v4
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-branch
+          fetch-depth: 0
+
+      - name: Copy files to correct destination
+        run: |
+          BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+
+          if [ "$BRANCH_NAME" = "main" ]; then
+            DEST="gh-pages-branch"
+          else
+            DEST="gh-pages-branch/preview/$BRANCH_NAME"
+          fi
+
+          mkdir -p "$DEST"
+          rsync -av --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='gh-pages-branch' \
+            ./ "$DEST/"
+
+      - name: Commit and push to gh-pages
+        run: |
+          cd gh-pages-branch
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --staged --quiet || git commit -m "Deploy from ${GITHUB_REF#refs/heads/}"
+          git push
