@@ -2,8 +2,8 @@ name: Deploy site and previews
 
 on:
   push:
-    branches:
-      - '**'   # 監控所有分支的 push
+    branches-ignore:
+      - gh-pages
 
 permissions:
   contents: write
