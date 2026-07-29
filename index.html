@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yun's Portfolio - Graphic Design</title>
+    <title>Yun's Portfolio - E-commerce Visual Design</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -25,7 +25,6 @@
             line-height: 1.6;
         }
 
-        /* Header */
         header {
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--border);
@@ -40,16 +39,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
         }
         .logo { font-size: 1.5rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
 
-        /* Container */
+        /* Language switch */
+        .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+        .lang-btn {
+            padding: 0.3rem 0.7rem; background: transparent; border: none;
+            color: var(--text-secondary); cursor: pointer; font-size: 0.8rem;
+            transition: all 0.25s; font-family: inherit;
+        }
+        .lang-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+        .lang-btn.active { background: #9a9a9a; color: #151515; }
+
         .container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
 
-        /* Hero */
         .hero { position: relative; text-align: center; padding: 0; margin-bottom: 4rem; }
         .hero-image {
             width: 100%; height: 500px;
@@ -63,12 +72,10 @@
         .hero h1 { font-size: 3rem; margin-bottom: 1rem; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
         .hero p { font-size: 1.25rem; color: #e8e8e8; max-width: 600px; margin: 0 auto; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
 
-        /* Section header */
         .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
         .section-label { font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.15em; text-transform: uppercase; white-space: nowrap; }
         .section-line { flex: 1; height: 1px; background: var(--border); }
 
-        /* Project Cards */
         .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         .project-card {
             background: var(--bg-secondary); border-radius: 12px; overflow: hidden;
@@ -82,13 +89,11 @@
         .project-card-content p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
         .project-card-tag { display: inline-block; margin-top: 1rem; padding: 0.25rem 0.7rem; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 4px; font-size: 0.78rem; color: var(--text-secondary); }
 
-        /* Category Filter */
         .category-filter { display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem; flex-wrap: wrap; }
-        .category-btn { padding: 0.5rem 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-secondary); border-radius: 8px; cursor: pointer; transition: all 0.3s; font-size: 1rem; }
+        .category-btn { padding: 0.5rem 1.25rem; background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-secondary); border-radius: 8px; cursor: pointer; transition: all 0.3s; font-size: 1rem; font-family: inherit; }
         .category-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
         .category-btn.active { background: #9a9a9a; color: #151515; border-color: #9a9a9a; }
 
-        /* Work Grid */
         .work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
         .work-item { background: var(--bg-secondary); border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--border); cursor: pointer; text-decoration: none; color: inherit; display: block; }
         .work-item:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
@@ -97,14 +102,12 @@
         .work-info h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
         .work-info p { color: var(--text-secondary); font-size: 0.95rem; }
 
-        /* About */
         .about-content { max-width: 800px; margin: 0 auto; }
         .about-content h2 { font-size: 2.5rem; margin-bottom: 2rem; }
         .about-content p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
         .skills { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
         .skill-tag { padding: 0.5rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; font-size: 0.9rem; color: var(--text-secondary); }
 
-        /* Contact */
         .contact-content { max-width: 600px; margin: 0 auto; text-align: center; }
         .contact-content h2 { font-size: 2.5rem; margin-bottom: 2rem; }
         .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
@@ -115,11 +118,12 @@
 
         footer { text-align: center; padding: 2rem; color: var(--text-secondary); border-top: 1px solid var(--border); margin-top: 4rem; }
 
-        /* Responsive */
         @media (max-width: 900px) {
             .project-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
+            nav { flex-wrap: wrap; }
+            .nav-right { gap: 1rem; width: 100%; justify-content: space-between; }
             .hero-image { height: 400px; }
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
@@ -133,86 +137,102 @@
     <header>
         <nav>
             <a href="#home" class="logo">Yun's Portfolio</a>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link active">作品展示</a></li>
-                <li><a href="#about" class="nav-link">關於我</a></li>
-                <li><a href="#contact" class="nav-link">聯絡方式</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active" data-zh="作品展示" data-en="Work">作品展示</a></li>
+                    <li><a href="#about" class="nav-link" data-zh="關於我" data-en="About">關於我</a></li>
+                    <li><a href="#contact" class="nav-link" data-zh="聯絡方式" data-en="Contact">聯絡方式</a></li>
+                </ul>
+                <div class="lang-switch">
+                    <button class="lang-btn" data-lang="zh">中</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <!-- Home Section -->
+    <!-- Home -->
     <section id="home" class="page-section">
         <div class="container">
-            <!-- Hero -->
             <div class="hero">
                 <div class="hero-image">
                     <div class="hero-content">
-                        <h1>Graphic Designer</h1>
-                        <p>專注於 3C 電商視覺設計、3D 建模與影片製作，打造專業精緻的品牌視覺體驗。</p>
+                        <h1 data-zh="Graphic Designer" data-en="E-commerce Visual Designer">Graphic Designer</h1>
+                        <p data-zh="專注於 3C 電商視覺設計、3D 建模與影片製作，打造專業精緻的品牌視覺體驗。"
+                           data-en="Product visuals, 3D renders and video for consumer electronics brands — the kind of work that makes a listing worth clicking.">專注於 3C 電商視覺設計、3D 建模與影片製作，打造專業精緻的品牌視覺體驗。</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Project Section -->
             <div class="section-header">
-                <span class="section-label">Project</span>
+                <span class="section-label" data-zh="Project" data-en="Project">Project</span>
                 <div class="section-line"></div>
             </div>
-            <!-- 動態從 works.json 讀取 type === "project" 的項目 -->
             <div class="project-grid" id="projectGrid"></div>
 
-            <!-- Skill Section -->
             <div class="section-header" style="margin-top: 3rem;">
-                <span class="section-label">Skill</span>
+                <span class="section-label" data-zh="Skill" data-en="Skill">Skill</span>
                 <div class="section-line"></div>
             </div>
             <div class="category-filter">
-                <button class="category-btn active" data-category="all">全部作品</button>
-                <button class="category-btn" data-category="video">影片</button>
-                <button class="category-btn" data-category="3d">3D</button>
-                <button class="category-btn" data-category="graphic">視覺設計</button>
+                <button class="category-btn active" data-category="all" data-zh="全部作品" data-en="All">全部作品</button>
+                <button class="category-btn" data-category="video" data-zh="影片" data-en="Video">影片</button>
+                <button class="category-btn" data-category="3d" data-zh="3D" data-en="3D">3D</button>
+                <button class="category-btn" data-category="graphic" data-zh="視覺設計" data-en="Visual Design">視覺設計</button>
             </div>
             <div class="work-grid" id="workGrid"></div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="page-section hidden">
         <div class="container">
             <div class="about-content">
-                <h2>關於我</h2>
-                <p>嗨！我是Yun!</p>
-                <p>我擁有五年 3C 電商領域的實務經驗，專注於視覺設計。</p>
-                <p>其工作經驗涵蓋電商品牌視覺設計、品牌網站管理、廣告素材設計以及 3D 產品建模渲染；同時，熟練使用 Adobe Creative Suite（Illustrator、Photoshop、Premiere、After Effects）以及 Blender，並將 AI 工具整合至工作流程中，提升設計效率與品質。</p>
-                <p>同時，我也在行銷工作中學習，獨立投放廣告、分析成效，隨時做出廣告素材的調整與控管。</p>
-                <p>我致力於為品牌打造專業、精緻，或是具有親和力的視覺形象，透過設計提升品牌價值與用戶體驗。</p>
-                <h3 style="margin-top: 3rem; margin-bottom: 1rem;">專業技能</h3>
+                <h2 data-zh="關於我" data-en="About">關於我</h2>
+
+                <p data-zh="嗨！我是Yun!"
+                   data-en="Hi, I'm Yun.">嗨！我是Yun!</p>
+
+                <p data-zh="我擁有五年 3C 電商領域的實務經驗，專注於視覺設計。"
+                   data-en="I'm a visual designer with five years in consumer electronics e-commerce.">我擁有五年 3C 電商領域的實務經驗，專注於視覺設計。</p>
+
+                <p data-zh="其工作經驗涵蓋電商品牌視覺設計、品牌網站管理、廣告素材設計以及 3D 產品建模渲染；同時，熟練使用 Adobe Creative Suite（Illustrator、Photoshop、Premiere、After Effects）以及 Blender，並將 AI 工具整合至工作流程中，提升設計效率與品質。"
+                   data-en="My work covers brand and product visuals, running brand websites, ad creatives, and 3D product modeling and rendering. Day to day I live in Illustrator, Photoshop, Premiere, After Effects and Blender — and I use AI tools to speed up iteration, never to replace the design work itself.">其工作經驗涵蓋電商品牌視覺設計、品牌網站管理、廣告素材設計以及 3D 產品建模渲染；同時，熟練使用 Adobe Creative Suite（Illustrator、Photoshop、Premiere、After Effects）以及 Blender，並將 AI 工具整合至工作流程中，提升設計效率與品質。</p>
+
+                <p data-zh="同時，我也在行銷工作中學習，獨立投放廣告、分析成效，隨時做出廣告素材的調整與控管。"
+                   data-en="I've also handled the marketing side — running the ads myself, reading the numbers, and reworking creatives based on what the data actually says.">同時，我也在行銷工作中學習，獨立投放廣告、分析成效，隨時做出廣告素材的調整與控管。</p>
+
+                <p data-zh="我致力於為品牌打造專業、精緻，或是具有親和力的視覺形象，透過設計提升品牌價值與用戶體驗。"
+                   data-en="Polished and premium, or warm and approachable — whichever a brand needs, my job is to make the visuals do the selling.">我致力於為品牌打造專業、精緻，或是具有親和力的視覺形象，透過設計提升品牌價值與用戶體驗。</p>
+
+                <h3 style="margin-top: 3rem; margin-bottom: 1rem;" data-zh="專業技能" data-en="Skills">專業技能</h3>
                 <div class="skills">
                     <span class="skill-tag">Adobe Illustrator</span>
                     <span class="skill-tag">Adobe Photoshop</span>
                     <span class="skill-tag">Adobe Premiere</span>
                     <span class="skill-tag">Adobe After Effects</span>
                     <span class="skill-tag">Blender 3D</span>
-                    <span class="skill-tag">電商視覺設計</span>
-                    <span class="skill-tag">品牌設計</span>
-                    <span class="skill-tag">影片製作</span>
-                    <span class="skill-tag">AI工具運用</span>
+                    <span class="skill-tag" data-zh="電商視覺設計" data-en="E-commerce Visuals">電商視覺設計</span>
+                    <span class="skill-tag" data-zh="品牌設計" data-en="Brand Design">品牌設計</span>
+                    <span class="skill-tag" data-zh="影片製作" data-en="Video Production">影片製作</span>
+                    <span class="skill-tag" data-zh="AI工具運用" data-en="AI-assisted Workflow">AI工具運用</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="page-section hidden">
         <div class="container">
             <div class="contact-content">
-                <h2>聯絡方式</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">歡迎與我聯繫討論合作機會</p>
+                <h2 data-zh="聯絡方式" data-en="Contact">聯絡方式</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;"
+                   data-zh="歡迎與我聯繫討論合作機會"
+                   data-en="Got a project in mind? I'd love to hear about it.">歡迎與我聯繫討論合作機會</p>
                 <div class="contact-links">
                     <a href="mailto:yueying314@gmail.com" class="contact-link">
                         <span>📧</span>
-                        <span>Email_yueying314@gmail.com</span>
+                        <span>yueying314@gmail.com</span>
                     </a>
                 </div>
             </div>
@@ -224,6 +244,41 @@
     </footer>
 
     <script>
+        /* ── i18n ── */
+        let currentLang = localStorage.getItem('lang')
+            || (navigator.language && navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en');
+
+        function t(field) {
+            if (field === null || field === undefined) return '';
+            if (typeof field === 'string') return field;
+            return field[currentLang] || field.zh || field.en || '';
+        }
+
+        function applyStaticLang() {
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                const val = el.dataset[currentLang];
+                if (val !== undefined) el.textContent = val;
+            });
+            document.documentElement.lang = currentLang === 'zh' ? 'zh-TW' : 'en';
+            document.querySelectorAll('.lang-btn').forEach(b => {
+                b.classList.toggle('active', b.dataset.lang === currentLang);
+            });
+        }
+
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            applyStaticLang();
+            displayProjects();
+            const active = document.querySelector('.category-btn.active');
+            displayWorks(active ? active.dataset.category : 'all');
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLang(btn.dataset.lang));
+        });
+
+        /* ── Works ── */
         let allWorks = [];
 
         async function loadWorks() {
@@ -234,41 +289,40 @@
                 console.error('Error loading works:', error);
                 allWorks = [];
             }
+            applyStaticLang();
             displayProjects();
             displayWorks('all');
         }
 
-        /* Project 卡片：讀取 type === "project" 的項目 */
         function displayProjects() {
             const grid = document.getElementById('projectGrid');
             grid.innerHTML = '';
 
-            const projects = allWorks.filter(w => w.type === 'project');
-
-            projects.forEach(work => {
+            allWorks.filter(w => w.type === 'project').forEach(work => {
                 const el = document.createElement('a');
                 el.className = 'project-card';
                 el.href = `work.html?id=${work.id}`;
 
-                const thumbStyle = work.thumbnail
-                    ? `background-image: url('${work.thumbnail}')`
-                    : '';
+                const thumbStyle = work.thumbnail ? `background-image: url('${work.thumbnail}')` : '';
 
-                const tag = (work.tags && work.tags[0]) || getCategoryName(work.category);
+                let tag = '';
+                if (work.tags) {
+                    const list = Array.isArray(work.tags) ? work.tags : (work.tags[currentLang] || work.tags.zh || []);
+                    tag = list[0] || '';
+                }
+                if (!tag) tag = getCategoryName(work.category);
 
                 el.innerHTML = `
                     <div class="project-card-image" style="${thumbStyle}"></div>
                     <div class="project-card-content">
-                        <h3>${work.title}</h3>
-                        <p>${work.description}</p>
+                        <h3>${t(work.title)}</h3>
+                        <p>${t(work.description)}</p>
                         <span class="project-card-tag">${tag}</span>
-                    </div>
-                `;
+                    </div>`;
                 grid.appendChild(el);
             });
         }
 
-        /* Skill 卡片：排除 type === "project" 的項目 */
         function displayWorks(category) {
             const grid = document.getElementById('workGrid');
             grid.innerHTML = '';
@@ -284,28 +338,29 @@
                 el.href = `work.html?id=${work.id}`;
                 el.dataset.category = work.category;
 
-                const thumbStyle = work.thumbnail
-                    ? `background-image: url('${work.thumbnail}')`
-                    : '';
+                const thumbStyle = work.thumbnail ? `background-image: url('${work.thumbnail}')` : '';
 
                 el.innerHTML = `
                     <div class="work-thumbnail" style="${thumbStyle}">
                         ${!work.thumbnail ? (work.emoji || '') : ''}
                     </div>
                     <div class="work-info">
-                        <h3>${work.title}</h3>
-                        <p>${work.description}</p>
-                    </div>
-                `;
+                        <h3>${t(work.title)}</h3>
+                        <p>${t(work.description)}</p>
+                    </div>`;
                 grid.appendChild(el);
             });
         }
 
         function getCategoryName(category) {
-            return { 'video': '影片', '3d': '3D', 'graphic': '視覺設計' }[category] || category;
+            const map = {
+                zh: { 'video': '影片', '3d': '3D', 'graphic': '視覺設計' },
+                en: { 'video': 'Video', '3d': '3D', 'graphic': 'Visual Design' }
+            };
+            return map[currentLang][category] || category;
         }
 
-        /* Page Navigation */
+        /* ── Navigation ── */
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', e => {
                 e.preventDefault();
@@ -318,7 +373,6 @@
             });
         });
 
-        /* Category Filter */
         document.querySelectorAll('.category-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
